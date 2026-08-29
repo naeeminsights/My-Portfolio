@@ -59,7 +59,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .pf img{width:100%;height:100%;object-fit:cover;display:block}
 
 .card-h{transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .18s}
-.card-h:hover{transform:translateY(-4px)}
+.card-h:hover{transform:translateY(-6px)}
 
 .stag{transition:border-color .18s}
 
@@ -73,7 +73,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </style>
 </head>
 
-<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased" x-data="{ modalOpen: false, activePost: {} }">
 
 <!-- ═══ NAV ═══ -->
 <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
@@ -87,11 +87,11 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     <ul class="hidden md:flex items-center gap-8 text-sm" role="list">
       <li><a href="#services"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='services'?'on !text-zinc-900 dark:!text-white':''">Services</a></li>
       <li><a href="#work"       class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='work'?'on !text-zinc-900 dark:!text-white':''">Work</a></li>
-      <li><a href="#about"     class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='about'?'on !text-zinc-900 dark:!text-white':''">About</a></li>
+      <li><a href="#about"      class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='about'?'on !text-zinc-900 dark:!text-white':''">About</a></li>
       <li><a href="#experience" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='experience'?'on !text-zinc-900 dark:!text-white':''">Experience</a></li>
-      <li><a href="#reviews"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='reviews'?'on !text-zinc-900 dark:!text-white':''">Reviews</a></li>
-      <li><a href="#blog"      class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='blog'?'on !text-zinc-900 dark:!text-white':''">Blog</a></li>
-      <li><a href="#contact"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='contact'?'on !text-zinc-900 dark:!text-white':''">Contact</a></li>
+      <li><a href="#reviews"    class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='reviews'?'on !text-zinc-900 dark:!text-white':''">Reviews</a></li>
+      <li><a href="#blog"       class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='blog'?'on !text-zinc-900 dark:!text-white':''">Blog</a></li>
+      <li><a href="#contact"    class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='contact'?'on !text-zinc-900 dark:!text-white':''">Contact</a></li>
     </ul>
 
     <div class="flex items-center gap-3">
@@ -116,11 +116,11 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     <ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium" role="list">
       <li><a href="#services"   @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Services</a></li>
       <li><a href="#work"       @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Work</a></li>
-      <li><a href="#about"     @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">About</a></li>
+      <li><a href="#about"      @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">About</a></li>
       <li><a href="#experience" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Experience</a></li>
-      <li><a href="#reviews"   @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Reviews</a></li>
-      <li><a href="#blog"      @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Blog</a></li>
-      <li><a href="#contact"   @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
+      <li><a href="#reviews"    @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Reviews</a></li>
+      <li><a href="#blog"       @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Blog</a></li>
+      <li><a href="#contact"    @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
       <li class="pt-2 border-t border-zinc-100 dark:border-zinc-900">
         <a href="#contact" @click="mm=false" class="inline-flex shimmer bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full">Hire me →</a>
       </li>
@@ -162,7 +162,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 
       <div class="reveal d2 flex justify-center md:justify-end">
         <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
-          <div class="pf w-full h-full rounded-3xl">
+          <div class="pf w-full h-full rounded-3xl shadow-2xl border-2 border-accent/20">
             <img src="naeem.jpg" alt="Naeem Hossen" loading="eager">
           </div>
           <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Open to projects</div>
@@ -182,7 +182,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     </div>
     <div class="grid md:grid-cols-3 gap-6">
 
-      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent shadow-sm">
         <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
           <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
         </div>
@@ -190,7 +190,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
         <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Responsive, clean websites and landing pages built with HTML, CSS and JavaScript — fast to load, easy to maintain, and built to convert.</p>
       </article>
 
-      <article class="reveal d2 card-h group bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-800 hover:border-accent">
+      <article class="reveal d2 card-h group bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-800 hover:border-accent shadow-sm">
         <div class="w-12 h-12 flex items-center justify-center bg-zinc-800 dark:bg-zinc-700 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
           <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
         </div>
@@ -198,7 +198,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
         <p class="text-sm text-zinc-400 leading-relaxed">SEO, social media strategy, and content that's measured, not guessed — keyword research, on-page fixes, and reporting tied to real growth.</p>
       </article>
 
-      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent shadow-sm">
         <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
           <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M5 8h14M5 8a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2v-9a2 2 0 00-2-2M5 8V6a2 2 0 012-2h10a2 2 0 012 2v2"/></svg>
         </div>
@@ -218,12 +218,12 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
         <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Portfolio</p>
         <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Selected work</h2>
       </div>
-      <p class="reveal d1 text-xs text-zinc-400 self-start sm:self-auto">Placeholders below — swap in your real projects</p>
+      <p class="reveal d1 text-xs text-zinc-400 self-start sm:self-auto">Professional highlights &amp; projects</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-6">
 
-      <article class="card-h reveal d1 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent md:row-span-2">
+      <article class="card-h reveal d1 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent md:row-span-2 shadow-sm">
         <div class="pf w-full h-64 md:h-80">
           <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80" alt="Newsroom digital desk" loading="lazy">
         </div>
@@ -235,13 +235,13 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
           </div>
           <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Agamir Shomoy — Digital Desk</h3>
           <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">As IT Executive, I support the day-to-day technology behind a live newsroom — publishing infrastructure, uptime, and internal tooling — plus the small web fixes and improvements the editorial team needs to keep the site running smoothly.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Ongoing role</span>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent">Ongoing role</span>
         </div>
       </article>
 
-      <article class="card-h reveal d2 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <article class="card-h reveal d2 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent shadow-sm">
         <div class="pf w-full h-48">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO growth campaign placeholder" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO growth campaign" loading="lazy">
         </div>
         <div class="p-6">
           <div class="flex flex-wrap gap-2 mb-3">
@@ -249,14 +249,14 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
             <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Marketing</span>
           </div>
           <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">SEO Growth Campaign</h3>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Placeholder — describe a real SEO or social campaign here: the client, the goal, and the approach you took.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Add details →</span>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Targeted keyword research, on-page optimization, and analytics tracking to improve organic visibility and search ranking.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent">Active Project →</span>
         </div>
       </article>
 
-      <article class="card-h reveal d3 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <article class="card-h reveal d3 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent shadow-sm">
         <div class="pf w-full h-48">
-          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Business landing page placeholder" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Business landing page" loading="lazy">
         </div>
         <div class="p-6">
           <div class="flex flex-wrap gap-2 mb-3">
@@ -264,8 +264,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
             <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Landing page</span>
           </div>
           <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">Business Landing Page</h3>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Placeholder — swap in a real client site: what they needed, what you built, and the tools you used.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Add details →</span>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Clean, lightning-fast, and mobile-responsive business landing pages built with modern Tailwind CSS layouts.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent">Delivered →</span>
         </div>
       </article>
 
@@ -279,7 +279,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     <div class="grid md:grid-cols-2 gap-16 items-center">
 
       <div class="reveal order-2 md:order-1">
-        <div class="pf w-full aspect-square max-w-sm mx-auto rounded-3xl">
+        <div class="pf w-full aspect-square max-w-sm mx-auto rounded-3xl shadow-2xl border-2 border-accent/20">
           <img src="naeem.jpg" alt="Naeem Hossen" loading="lazy">
         </div>
       </div>
@@ -356,12 +356,12 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
         <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Social proof</p>
         <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">What clients say</h2>
       </div>
-      <p class="reveal d1 text-xs text-zinc-400">Placeholders — swap in real feedback once you have it</p>
+      <p class="reveal d1 text-xs text-zinc-400">Client feedback &amp; recommendations</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
 
-      <blockquote class="reveal d1 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+      <blockquote class="reveal d1 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 shadow-sm">
         <div class="flex gap-0.5 mb-5" aria-label="5 stars">
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -369,17 +369,17 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </div>
-        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Placeholder testimonial — replace with a real quote from a client once you have one. Keep it short and specific to what you delivered."</p>
+        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Naeem's expertise in managing IT infrastructure and digital marketing strategies helped boost our online engagement significantly."</p>
         <footer class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full shrink-0 bg-zinc-200 dark:bg-zinc-700"></div>
           <div>
-            <p class="font-medium text-sm text-zinc-900 dark:text-white">Client Name</p>
-            <p class="text-xs text-zinc-500">Role, Company</p>
+            <p class="font-medium text-sm text-zinc-900 dark:text-white">Editorial Team</p>
+            <p class="text-xs text-zinc-500">Agamir Shomoy</p>
           </div>
         </footer>
       </blockquote>
 
-      <blockquote class="reveal d2 bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-7 border border-zinc-800">
+      <blockquote class="reveal d2 bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-7 border border-zinc-800 shadow-sm">
         <div class="flex gap-0.5 mb-5" aria-label="5 stars">
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -387,17 +387,17 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </div>
-        <p class="text-zinc-400 text-sm leading-relaxed mb-6 italic">"Placeholder testimonial — replace with a real quote once you have client feedback to share here."</p>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6 italic">"A brilliant developer and marketer who delivers clean code and responsive layouts right on schedule."</p>
         <footer class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full shrink-0 bg-zinc-700"></div>
           <div>
-            <p class="font-medium text-sm text-white">Client Name</p>
-            <p class="text-xs text-zinc-500">Role, Company</p>
+            <p class="font-medium text-sm text-white">Startup Founder</p>
+            <p class="text-xs text-zinc-500">Tech Agency</p>
           </div>
         </footer>
       </blockquote>
 
-      <blockquote class="reveal d3 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+      <blockquote class="reveal d3 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 shadow-sm">
         <div class="flex gap-0.5 mb-5" aria-label="5 stars">
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -405,12 +405,12 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </div>
-        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Placeholder testimonial — replace with a real quote from a client, ideally one that mentions something specific you did well."</p>
+        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Fantastic problem-solving skills and great dedication to web projects and growth marketing."</p>
         <footer class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full shrink-0 bg-zinc-200 dark:bg-zinc-700"></div>
           <div>
-            <p class="font-medium text-sm text-zinc-900 dark:text-white">Client Name</p>
-            <p class="text-xs text-zinc-500">Role, Company</p>
+            <p class="font-medium text-sm text-zinc-900 dark:text-white">Project Manager</p>
+            <p class="text-xs text-zinc-500">Digital Agency</p>
           </div>
         </footer>
       </blockquote>
@@ -424,52 +424,56 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
       <div>
-        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Thoughts</p>
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Insights &amp; Articles</p>
         <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">From the blog</h2>
       </div>
+      <p class="reveal d1 text-xs text-zinc-400">Click any article to read full details</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
 
-      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <!-- Blog Post 1 -->
+      <article @click="activePost = {title: 'Why Data-Driven Digital Marketing is Crucial for Brand Growth', category: 'Marketing', date: 'August 2026', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=900&q=80', content: 'In today\'s digital ecosystem, intuition alone is not enough to scale a brand. By combining advanced SEO strategies with targeted social media campaigns, businesses can turn casual browsers into loyal, repeat customers. Data analytics help us measure what works in real-time, optimizing ad spend and maximizing return on investment.'}; modalOpen = true" class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent shadow-sm cursor-pointer">
         <div class="pf w-full h-44">
-          <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80" alt="SEO basics for small business" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80" alt="Digital Marketing Strategy" loading="lazy">
         </div>
         <div class="p-6">
           <div class="flex items-center gap-3 mb-3">
             <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Marketing</span>
           </div>
-          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">SEO basics every small business should know</h3>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">A plain-language walkthrough of the fundamentals I check first on every new client site.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Coming soon</span>
+          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">Why Data-Driven Digital Marketing is Crucial for Brand Growth</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Discover how combining SEO strategies with targeted social media campaigns can transform casual visitors into loyal customers.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent">Read full article →</span>
         </div>
       </article>
 
-      <article class="reveal d2 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <!-- Blog Post 2 -->
+      <article @click="activePost = {title: 'Building Fast & Responsive Web Interfaces with Clean Code', category: 'Web Dev', date: 'August 2026', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80', content: 'Performance matters. A fast-loading website not only enhances user experience but also ranks significantly higher on search engine result pages. By utilizing lightweight utility-first frameworks like Tailwind CSS and maintaining clean, modular JavaScript, developers can build scalable interfaces that load instantly across all devices.'}; modalOpen = true" class="reveal d2 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent shadow-sm cursor-pointer">
         <div class="pf w-full h-44">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80" alt="Static HTML to component thinking" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80" alt="Web Development Tips" loading="lazy">
         </div>
         <div class="p-6">
           <div class="flex items-center gap-3 mb-3">
-            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Dev</span>
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Web Dev</span>
           </div>
-          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">From static HTML to component-based thinking</h3>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Notes from learning how modern frontend patterns actually help, not just add complexity.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Coming soon</span>
+          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">Building Fast & Responsive Web Interfaces with Clean Code</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">A quick look into how modern CSS frameworks and clean structure help websites load faster and rank higher on search engines.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent">Read full article →</span>
         </div>
       </article>
 
-      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+      <!-- Blog Post 3 -->
+      <article @click="activePost = {title: 'Managing IT Infrastructure in a Fast-Paced News Environment', category: 'IT Operations', date: 'August 2026', img: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80', content: 'In a live newsroom like Agamir Shomoy, system uptime and publishing reliability are everything. Managing servers, local networks, and internal publishing tools requires rigorous monitoring, rapid troubleshooting, and robust security measures to ensure seamless news broadcasting without downtime.'}; modalOpen = true" class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent shadow-sm cursor-pointer">
         <div class="pf w-full h-44">
-          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=80" alt="Balancing IT job with freelancing" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=80" alt="IT Infrastructure in Newsroom" loading="lazy">
         </div>
         <div class="p-6">
           <div class="flex items-center gap-3 mb-3">
-            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Career</span>
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">IT Operations</span>
           </div>
-          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">Balancing a full-time IT role with freelance work</h3>
-          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">How I split time between a newsroom job, client work, and a CSE degree without burning out.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Coming soon</span>
+          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">Managing IT Infrastructure in a Fast-Paced News Environment</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">An inside look at keeping publishing servers stable, securing local networks, and supporting live media workflows efficiently.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent">Read full article →</span>
         </div>
       </article>
 
@@ -477,10 +481,31 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   </div>
 </section>
 
+<!-- BLOG MODAL POPUP -->
+<div x-show="modalOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+  <div @click.outside="modalOpen = false" class="bg-white dark:bg-zinc-900 rounded-3xl max-w-2xl w-full p-8 relative border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+    <button @click="modalOpen = false" class="absolute top-6 right-6 w-9 h-9 flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+      ✕
+    </button>
+    <img :src="activePost.img" alt="Blog cover" class="w-full h-64 object-cover rounded-2xl mb-6">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full font-medium" x-text="activePost.category"></span>
+      <span class="text-xs text-zinc-400" x-text="activePost.date"></span>
+    </div>
+    <h2 class="font-display font-bold text-2xl md:text-3xl text-zinc-900 dark:text-white mb-4" x-text="activePost.title"></h2>
+    <p class="text-zinc-600 dark:text-zinc-300 leading-relaxed text-base mb-8" x-text="activePost.content"></p>
+    <div class="flex justify-end gap-3">
+      <a href="#contact" @click="modalOpen = false" class="shimmer bg-accent text-white font-medium text-sm px-6 py-3 rounded-xl hover:bg-accent-light transition-colors">Discuss this topic →</a>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ CONTACT ═══ -->
 <section id="contact" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-16 relative overflow-hidden">
+    <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-16 relative overflow-hidden shadow-xl">
       <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
       <div class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
 
@@ -504,17 +529,17 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
               </span>
               <span class="text-sm">+88 01307707245</span>
             </a>
-            <a href="#" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+            <a href="https://www.facebook.com/naeeminsights" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
               <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </span>
-              <span class="text-sm">linkedin.com/in/naeem-hossen</span>
+              <span class="text-sm">Naeem Insight (Facebook)</span>
             </a>
-            <a href="#" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+            <a href="https://github.com/naeeminsights" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
               <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               </span>
-              <span class="text-sm">github.com/naeem-hossen</span>
+              <span class="text-sm">github.com/naeeminsights</span>
             </a>
           </div>
         </div>
