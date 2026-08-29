@@ -1,498 +1,612 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="app()" :class="{'dark':dark}" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Naeem Hossen — IT Executive at Agamir Shomoy, Digital Marketing Specialist &amp; Web Developer. Building reliable systems, growing audiences, and shipping clean code.">
+<meta name="keywords" content="IT executive, digital marketing specialist, web developer, portfolio, Tailwind CSS, Alpine.js">
+<meta name="author" content="Naeem Hossen">
+<meta property="og:title" content="Naeem Hossen — IT Executive, Digital Marketer &amp; Web Developer">
+<meta property="og:description" content="I keep systems running, grow audiences, and build the web tools that connect the two.">
+<meta property="og:type" content="website">
 <title>Naeem Hossen — IT Executive, Digital Marketer &amp; Web Developer</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root{
-  --bg:#0b0f1a;
-  --surface:#121a2b;
-  --surface-2:#1a2438;
-  --border:rgba(241,237,228,0.09);
-  --border-strong:rgba(241,237,228,0.16);
-  --text:#f1ede4;
-  --text-muted:#8b93a8;
-  --cyan:#4fd8c4;
-  --lime:#cdef5f;
-  --radius:12px;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  line-height:1.65;
-  overflow-x:hidden;
-}
-a{color:inherit;}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
-::selection{background:var(--lime);color:#0b0f1a;}
-.mono{font-family:'JetBrains Mono',monospace;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 6vw;}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
-/* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
-
-/* ---------- nav ---------- */
-header{
-  position:fixed;top:0;left:0;width:100%;z-index:1000;
-  background:rgba(11,15,26,0.8);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-}
-nav{
-  max-width:1080px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 6vw;
-}
-.brand{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.08rem;
-  display:flex;align-items:center;gap:10px;
-}
-.brand .mark{
-  width:32px;height:32px;border-radius:8px;
-  background:linear-gradient(135deg,var(--cyan),var(--lime));
-  color:#0b0f1a;display:flex;align-items:center;justify-content:center;
-  font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8rem;
-}
-.brand .name-muted{color:var(--text-muted);font-weight:500;}
-nav ul{list-style:none;display:flex;gap:34px;}
-nav ul a{
-  text-decoration:none;color:var(--text-muted);font-size:.88rem;font-weight:500;
-  position:relative;padding-bottom:4px;transition:color .25s ease;
-}
-nav ul a::after{
-  content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--lime);
-  transition:width .25s ease;
-}
-nav ul a:hover{color:var(--text);}
-nav ul a:hover::after{width:100%;}
-.nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.35rem;cursor:pointer;}
-
-/* ---------- hero ---------- */
-.hero{
-  min-height:92vh;display:flex;align-items:center;
-  padding:150px 6vw 70px;
-}
-.hero-grid{
-  max-width:1080px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
-}
-.eyebrow{
-  color:var(--cyan);font-size:.82rem;letter-spacing:.03em;
-  display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;
-}
-.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);}
-.hero h1{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;
-  font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.06;letter-spacing:-.01em;
-}
-.hero .role-line{
-  font-family:'Space Grotesk',sans-serif;font-weight:500;color:var(--cyan);
-  font-size:1.1rem;margin:14px 0 18px;
-}
-.hero p{color:var(--text-muted);max-width:460px;font-size:.98rem;}
-.btn-group{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
-.btn{
-  padding:12px 24px;border-radius:8px;font-weight:600;font-size:.88rem;
-  text-decoration:none;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
-  display:inline-flex;align-items:center;gap:8px;
-}
-.btn.primary{background:var(--lime);color:#0b0f1a;}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(205,239,95,.16);}
-.btn.secondary{border:1px solid var(--border-strong);color:var(--text);}
-.btn.secondary:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);}
-
-/* hero signature visual */
-.hero-visual{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  overflow:hidden;box-shadow:0 16px 44px rgba(0,0,0,.3);
-}
-.hero-visual .bar{
-  display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--surface-2);
-}
-.hero-visual .bar span{width:9px;height:9px;border-radius:50%;background:#3a4460;}
-.hero-visual .body{padding:20px 20px 24px;}
-.hero-visual .line{color:var(--text-muted);font-size:.82rem;margin-bottom:9px;white-space:nowrap;}
-.hero-visual .line .k{color:var(--cyan);}
-.hero-visual .line .v{color:var(--lime);}
-.chart-svg{width:100%;height:auto;margin-top:12px;}
-.chart-path{
-  stroke-dasharray:600;stroke-dashoffset:600;
-  animation:draw 2s ease forwards .3s;
-}
-@keyframes draw{to{stroke-dashoffset:0;}}
-
-/* ---------- sections ---------- */
-section{padding:100px 6vw 0;}
-section:last-of-type{padding-bottom:100px;}
-.section-head{margin-bottom:44px;max-width:600px;}
-.section-head .eyebrow{margin-bottom:12px;}
-.section-head h2{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.75rem,3vw,2.3rem);
-}
-.section-head p{color:var(--text-muted);margin-top:10px;font-size:.95rem;}
-
-/* about */
-.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start;}
-.about-text p{color:var(--text-muted);font-size:.98rem;margin-bottom:15px;}
-.about-text p strong{color:var(--text);font-weight:600;}
-.info-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:24px 22px;
-}
-.info-card .row{
-  display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);
-  font-size:.88rem;
-}
-.info-card .row:last-child{border-bottom:none;}
-.info-card .row span:first-child{color:var(--text-muted);}
-.info-card .row span:last-child{color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:.82rem;}
-
-/* experience timeline */
-.timeline{position:relative;padding-left:28px;}
-.timeline::before{
-  content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;
-  background:linear-gradient(var(--cyan),var(--lime));opacity:.3;
-}
-.timeline-item{position:relative;padding-bottom:34px;}
-.timeline-item:last-child{padding-bottom:0;}
-.timeline-item::before{
-  content:'';position:absolute;left:-28px;top:4px;width:11px;height:11px;border-radius:50%;
-  background:var(--bg);border:2px solid var(--cyan);
-}
-.timeline-item.current::before{background:var(--lime);border-color:var(--lime);}
-.timeline-item .meta{
-  display:flex;align-items:center;gap:10px;font-size:.75rem;color:var(--text-muted);margin-bottom:6px;
-  font-family:'JetBrains Mono',monospace;
-}
-.timeline-item .meta .badge{
-  color:#0b0f1a;background:var(--lime);padding:2px 9px;border-radius:20px;font-size:.68rem;font-weight:600;
-}
-.timeline-item h5{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;margin-bottom:4px;}
-.timeline-item .org{color:var(--cyan);font-size:.86rem;margin-bottom:8px;display:block;}
-.timeline-item p{color:var(--text-muted);font-size:.9rem;max-width:580px;}
-
-/* skills */
-.skills-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
-.skill-col h4{
-  font-family:'Space Grotesk',sans-serif;font-size:1rem;margin-bottom:20px;
-  display:flex;align-items:center;gap:9px;color:var(--text);
-}
-.skill-col h4 i{color:var(--lime);font-size:.9rem;}
-.skill-col:last-child h4 i{color:var(--cyan);}
-.skill-item{margin-bottom:18px;}
-.skill-item .top{display:flex;justify-content:space-between;font-size:.86rem;margin-bottom:7px;}
-.skill-item .top span:last-child{color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:.76rem;}
-.bar-track{height:5px;background:var(--surface-2);border-radius:4px;overflow:hidden;}
-.bar-fill{
-  height:100%;border-radius:4px;width:0;
-  background:linear-gradient(90deg,var(--cyan),var(--lime));
-  transition:width 1.1s cubic-bezier(.2,.8,.2,1);
-}
-
-/* process */
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.process-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:24px 20px;transition:transform .25s ease,border-color .25s ease;
-}
-.process-card:hover{transform:translateY(-5px);border-color:var(--cyan);}
-.process-card .tag{
-  font-family:'JetBrains Mono',monospace;color:var(--lime);font-size:.74rem;margin-bottom:12px;display:block;
-}
-.process-card h5{font-family:'Space Grotesk',sans-serif;font-size:.98rem;margin-bottom:8px;}
-.process-card p{color:var(--text-muted);font-size:.85rem;}
-
-/* contact */
-.contact-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:46px 6vw;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;
-}
-.contact-card .cmd{color:var(--text-muted);font-size:.82rem;margin-bottom:6px;}
-.contact-card .cmd .p{color:var(--lime);}
-.contact-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.85rem;margin:10px 0 14px;}
-.contact-card > div:first-child > p{color:var(--text-muted);font-size:.92rem;}
-.contact-list a{
-  display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);
-  padding:11px 0;border-bottom:1px solid var(--border);font-size:.92rem;transition:color .2s ease,padding-left .2s ease;
-}
-.contact-list a:hover{color:var(--cyan);padding-left:6px;}
-.contact-list i{color:var(--lime);width:16px;}
-.social-links{display:flex;gap:12px;margin-top:22px;}
-.social-links a{
-  width:40px;height:40px;border-radius:50%;border:1px solid var(--border-strong);
-  display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text-muted);
-  transition:.25s ease;
-}
-.social-links a:hover{background:var(--lime);color:#0b0f1a;border-color:var(--lime);transform:translateY(-2px);}
-
-/* footer */
-footer{
-  border-top:1px solid var(--border);padding:24px 6vw;text-align:center;
-  color:var(--text-muted);font-size:.82rem;
-}
-
-/* ---------- responsive ---------- */
-@media (max-width:860px){
-  nav ul{
-    position:fixed;top:66px;right:0;height:calc(100vh - 66px);width:70%;
-    background:var(--surface);flex-direction:column;padding:38px 30px;gap:24px;
-    transform:translateX(100%);transition:transform .35s ease;border-left:1px solid var(--border);
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
+      colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+    }
   }
-  nav ul.open{transform:translateX(0);}
-  .nav-toggle{display:block;}
-  .hero-grid{grid-template-columns:1fr;text-align:left;}
-  .about-grid{grid-template-columns:1fr;}
-  .skills-cols{grid-template-columns:1fr;}
-  .process-grid{grid-template-columns:1fr 1fr;}
-  .contact-card{grid-template-columns:1fr;padding:34px 8%;}
-  .timeline-item{padding-left:2px;}
 }
-@media (max-width:520px){
-  .process-grid{grid-template-columns:1fr;}
-  .btn-group{flex-direction:column;align-items:stretch;}
-  .hero-visual .line{white-space:normal;}
-}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{font-family:'DM Sans',sans-serif}
+h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif}
+body{transition:background-color .3s,color .3s}
+
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+.nl{position:relative}
+.nl::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .22s cubic-bezier(.4,0,.2,1)}
+.nl:hover::after,.nl.on::after{width:100%}
+.nl.on{font-weight:500}
+
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s cubic-bezier(.4,0,.2,1)}
+.shimmer:hover::after{left:160%}
+
+.pf{overflow:hidden;background:#d4d4d8}
+.pf img{width:100%;height:100%;object-fit:cover;display:block}
+
+.card-h{transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .18s}
+.card-h:hover{transform:translateY(-4px)}
+
+.stag{transition:border-color .18s}
+
+.tl{position:relative;padding-left:2rem}
+.tl::before{content:'';position:absolute;left:.3rem;top:.4rem;bottom:.4rem;width:1px;background:linear-gradient(#FF6B2B,transparent)}
+.tl-item{position:relative;padding-bottom:2rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-2rem;top:.35rem;width:.7rem;height:.7rem;border-radius:9999px;border:2px solid #FF6B2B;background:var(--dotbg,#fff)}
+
+[x-cloak]{display:none!important}
 </style>
 </head>
-<body>
 
-<header id="siteHeader">
-  <nav>
-    <div class="brand"><div class="mark">NH</div>Naeem<span class="name-muted">&nbsp;Hossen</span></div>
-    <ul id="navMenu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#contact">Contact</a></li>
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+
+<!-- ═══ NAV ═══ -->
+<header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+  :class="sc?'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5':''">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+
+    <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
+      <span class="text-zinc-900 dark:text-white">na</span><span class="text-accent">eem</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 text-sm" role="list">
+      <li><a href="#services"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='services'?'on !text-zinc-900 dark:!text-white':''">Services</a></li>
+      <li><a href="#work"       class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='work'?'on !text-zinc-900 dark:!text-white':''">Work</a></li>
+      <li><a href="#about"     class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='about'?'on !text-zinc-900 dark:!text-white':''">About</a></li>
+      <li><a href="#experience" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='experience'?'on !text-zinc-900 dark:!text-white':''">Experience</a></li>
+      <li><a href="#reviews"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='reviews'?'on !text-zinc-900 dark:!text-white':''">Reviews</a></li>
+      <li><a href="#blog"      class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='blog'?'on !text-zinc-900 dark:!text-white':''">Blog</a></li>
+      <li><a href="#contact"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='contact'?'on !text-zinc-900 dark:!text-white':''">Contact</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+    <div class="flex items-center gap-3">
+      <button @click="dark=!dark" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-label="dark?'Light mode':'Dark mode'">
+        <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg x-show="dark"  class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </button>
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
+        Hire me <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <button @click="mm=!mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" :aria-expanded="mm" aria-label="Toggle menu">
+        <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg x-show="mm"  class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
   </nav>
+
+  <div x-show="mm" x-cloak
+    x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
+    class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+    <ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium" role="list">
+      <li><a href="#services"   @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Services</a></li>
+      <li><a href="#work"       @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Work</a></li>
+      <li><a href="#about"     @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">About</a></li>
+      <li><a href="#experience" @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Experience</a></li>
+      <li><a href="#reviews"   @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Reviews</a></li>
+      <li><a href="#blog"      @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Blog</a></li>
+      <li><a href="#contact"   @click="mm=false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
+      <li class="pt-2 border-t border-zinc-100 dark:border-zinc-900">
+        <a href="#contact" @click="mm=false" class="inline-flex shimmer bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full">Hire me →</a>
+      </li>
+    </ul>
+  </div>
 </header>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-grid">
-    <div>
-      <div class="eyebrow mono"><span class="dot"></span> ~/naeem-hossen $ whoami</div>
-      <h1 class="reveal">Naeem Hossen</h1>
-      <div class="role-line reveal">IT Executive at Agamir Shomoy — News Media</div>
-      <p class="reveal">I keep a newsroom's digital backbone running, grow its audience through data-driven marketing, and build the web tools that connect the two — while completing a degree in Computer Science Engineering.</p>
-      <div class="btn-group reveal">
-        <a href="#contact" class="btn primary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
-        <a href="#experience" class="btn secondary"><i class="fas fa-briefcase"></i> See My Work</a>
-      </div>
-    </div>
-    <div class="hero-visual reveal">
-      <div class="bar"><span></span><span></span><span></span></div>
-      <div class="body">
-        <div class="line mono"><span class="k">role</span> &nbsp;: <span class="v">"IT Executive — News Media"</span></div>
-        <div class="line mono"><span class="k">org</span> &nbsp;&nbsp;: <span class="v">"Agamir Shomoy"</span></div>
-        <div class="line mono"><span class="k">skills</span>: <span class="v">["Web Dev","SEO","IT Ops"]</span></div>
-        <div class="line mono"><span class="k">study</span> : <span class="v">"CSE, in progress"</span></div>
-        <div class="line mono"><span class="k">status</span>: <span class="v">available_for_freelance</span></div>
-        <svg class="chart-svg" viewBox="0 0 300 90" fill="none">
-          <path class="chart-path" d="M2 70 L50 55 L95 60 L140 35 L190 40 L235 15 L298 8" stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs><linearGradient id="g" x1="0" y1="0" x2="300" y2="0"><stop offset="0" stop-color="#4fd8c4"/><stop offset="1" stop-color="#cdef5f"/></linearGradient></defs>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
+<main>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow mono"><span class="dot"></span> about</div>
-      <h2>Where logic meets strategy</h2>
-      <p>A quick look at what I do day to day, and how I got here.</p>
-    </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>Hello! I'm <strong>Naeem Hossen</strong>, an <strong>IT Executive at Agamir Shomoy</strong>, a news media organization, where I keep the digital desk running — from web infrastructure and publishing tools to the day-to-day tech that a newsroom depends on.</p>
-        <p>Alongside that, I work as a <strong>Digital Marketing Specialist and Web Developer</strong>, helping grow audiences through SEO and social strategy while building the pages and tools that support them. I'm also studying <strong>Computer Science Engineering</strong>, which keeps my technical foundation growing alongside the practical, on-the-job experience.</p>
-        <p>What ties all of it together is the same instinct: understand the goal, build something that works, measure what happens, and improve on it — whether that's a breaking-news page under load or a campaign's conversion rate.</p>
-      </div>
-      <div class="info-card reveal">
-        <div class="row"><span>Based in</span><span>Dhaka, BD</span></div>
-        <div class="row"><span>Current role</span><span>IT Executive</span></div>
-        <div class="row"><span>Organization</span><span>Agamir Shomoy</span></div>
-        <div class="row"><span>Studying</span><span>CS Engineering</span></div>
-        <div class="row"><span>Also does</span><span>Marketing &amp; Web Dev</span></div>
-        <div class="row"><span>Email</span><span>naeeminsight@gmail.com</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ═══ HERO ═══ -->
+<section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <div class="absolute top-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-1/4 left-0 w-64 h-64 bg-zinc-200/50 dark:bg-zinc-800/30 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow mono"><span class="dot"></span> experience</div>
-      <h2>Where I've worked</h2>
-      <p>A running log of the roles that shaped what I do — in the order they happened.</p>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item current reveal">
-        <div class="meta"><span class="badge">Current</span> IT Executive</div>
-        <h5>IT Executive</h5>
-        <span class="org">Agamir Shomoy — News Media</span>
-        <p>Manage the IT operations behind a live newsroom: system uptime, publishing infrastructure, and internal tooling, while supporting the digital and web needs of the editorial team.</p>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="meta">Ongoing</div>
-        <h5>Digital Marketing Specialist</h5>
-        <span class="org">Freelance / Independent</span>
-        <p>Run SEO and social-growth campaigns for clients — keyword research, content strategy, and performance reporting focused on measurable growth.</p>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="meta">Ongoing</div>
-        <h5>Web Developer</h5>
-        <span class="org">Freelance / Independent</span>
-        <p>Design and build responsive websites and landing pages using HTML, CSS, and JavaScript, often for the same clients I run marketing campaigns for.</p>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="meta">In progress</div>
-        <h5>B.Sc. in Computer Science Engineering</h5>
-        <span class="org">Uttara University</span>
-        <p>Building a formal foundation in algorithms, systems, and software engineering alongside full-time work.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow mono"><span class="dot"></span> skills</div>
-      <h2>My Expertise</h2>
-      <p>Three disciplines, one workflow — code that ships, systems that stay up, and campaigns that convert.</p>
-    </div>
-    <div class="skills-cols">
-      <div class="skill-col reveal">
-        <h4><i class="fas fa-code"></i> Technical</h4>
-        <div class="skill-item"><div class="top"><span>HTML &amp; CSS</span><span>90%</span></div><div class="bar-track"><div class="bar-fill" data-fill="90"></div></div></div>
-        <div class="skill-item"><div class="top"><span>JavaScript</span><span>78%</span></div><div class="bar-track"><div class="bar-fill" data-fill="78"></div></div></div>
-        <div class="skill-item"><div class="top"><span>IT Systems &amp; Support</span><span>84%</span></div><div class="bar-track"><div class="bar-fill" data-fill="84"></div></div></div>
-        <div class="skill-item"><div class="top"><span>Algorithms &amp; DSA</span><span>72%</span></div><div class="bar-track"><div class="bar-fill" data-fill="72"></div></div></div>
-      </div>
-      <div class="skill-col reveal">
-        <h4><i class="fas fa-chart-line"></i> Digital Marketing</h4>
-        <div class="skill-item"><div class="top"><span>SEO</span><span>88%</span></div><div class="bar-track"><div class="bar-fill" data-fill="88"></div></div></div>
-        <div class="skill-item"><div class="top"><span>Social Media Strategy</span><span>84%</span></div><div class="bar-track"><div class="bar-fill" data-fill="84"></div></div></div>
-        <div class="skill-item"><div class="top"><span>Content &amp; Copy</span><span>80%</span></div><div class="bar-track"><div class="bar-fill" data-fill="80"></div></div></div>
-        <div class="skill-item"><div class="top"><span>Analytics &amp; Reporting</span><span>76%</span></div><div class="bar-track"><div class="bar-fill" data-fill="76"></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow mono"><span class="dot"></span> process</div>
-      <h2>How I Work</h2>
-      <p>The same four-step loop, applied to a codebase or a campaign.</p>
-    </div>
-    <div class="process-grid">
-      <div class="process-card reveal">
-        <span class="tag mono">step/research</span>
-        <h5>Research</h5>
-        <p>Understand the goal, the audience, and the constraints before writing a line of code or copy.</p>
-      </div>
-      <div class="process-card reveal">
-        <span class="tag mono">step/build</span>
-        <h5>Build</h5>
-        <p>Ship a clean, working version — a feature, a page, or a campaign — fast enough to test.</p>
-      </div>
-      <div class="process-card reveal">
-        <span class="tag mono">step/measure</span>
-        <h5>Measure</h5>
-        <p>Track what actually happened using real data: performance, engagement, or conversions.</p>
-      </div>
-      <div class="process-card reveal">
-        <span class="tag mono">step/iterate</span>
-        <h5>Iterate</h5>
-        <p>Refine based on evidence, not guesses, and repeat the loop.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-card reveal">
       <div>
-        <div class="cmd mono"><span class="p">$</span> send-message --to naeem</div>
-        <h2>Let's work together.</h2>
-        <p>Open to freelance web development and digital marketing projects, plus collaborations that touch news-media technology.</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/naeeminsight/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.facebook.com/naeemhossen.me/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4">Available for freelance work</p>
+        <h1 class="reveal d1 font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-zinc-900 dark:text-white mb-6">
+          Hi, I'm <span class="text-accent">Naeem</span>
+        </h1>
+        <p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-md mb-10">
+          IT Executive at <strong class="font-medium text-zinc-700 dark:text-zinc-300">Agamir Shomoy</strong>, and a freelance <strong class="font-medium text-zinc-700 dark:text-zinc-300">Digital Marketing Specialist &amp; Web Developer</strong>. I keep systems running, grow audiences, and build the web tools that connect the two.
+        </p>
+        <div class="reveal d3 flex flex-wrap gap-4">
+          <a href="#work" class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
+            View my work
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Get in touch</a>
+        </div>
+        <div class="reveal d4 flex gap-8 mt-14 pt-8 border-t border-zinc-100 dark:border-zinc-900">
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">IT</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Executive, News Media</p></div>
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">SEO</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">&amp; Growth Marketing</p></div>
+          <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">CSE</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Student, in progress</p></div>
         </div>
       </div>
-      <div class="contact-list">
-        <a href="mailto:naeeminsight@gmail.com"><i class="fas fa-envelope"></i> naeeminsight@gmail.com</a>
-        <a href="tel:+8801307707245"><i class="fas fa-phone"></i> +88 01307707245</a>
-        <a href="#"><i class="fas fa-location-dot"></i> Dhaka, Bangladesh</a>
+
+      <div class="reveal d2 flex justify-center md:justify-end">
+        <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+          <div class="pf w-full h-full rounded-3xl">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80" alt="Naeem Hossen — placeholder photo, swap for your own" loading="eager">
+          </div>
+          <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Open to projects</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">What I do</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Services</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Web Development</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Responsive, clean websites and landing pages built with HTML, CSS and JavaScript — fast to load, easy to maintain, and built to convert.</p>
+      </article>
+
+      <article class="reveal d2 card-h group bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-zinc-800 dark:bg-zinc-700 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-white mb-3">Digital Marketing</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">SEO, social media strategy, and content that's measured, not guessed — keyword research, on-page fixes, and reporting tied to real growth.</p>
+      </article>
+
+      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-zinc-800 rounded-xl mb-6 group-hover:bg-accent/10 transition-colors">
+          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M5 8h14M5 8a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2v-9a2 2 0 00-2-2M5 8V6a2 2 0 012-2h10a2 2 0 012 2v2"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">IT Systems &amp; Support</h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Keeping day-to-day infrastructure and publishing tools running reliably — the practical, on-the-ground skill set behind a live newsroom.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK ═══ -->
+<section id="work" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+      <div>
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Portfolio</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Selected work</h2>
+      </div>
+      <p class="reveal d1 text-xs text-zinc-400 self-start sm:self-auto">Placeholders below — swap in your real projects</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <article class="card-h reveal d1 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent md:row-span-2">
+        <div class="pf w-full h-64 md:h-80">
+          <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80" alt="Newsroom digital desk" loading="lazy">
+        </div>
+        <div class="p-7">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">News Media</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">IT Ops</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Web</span>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-2">Agamir Shomoy — Digital Desk</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">As IT Executive, I support the day-to-day technology behind a live newsroom — publishing infrastructure, uptime, and internal tooling — plus the small web fixes and improvements the editorial team needs to keep the site running smoothly.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Ongoing role</span>
+        </div>
+      </article>
+
+      <article class="card-h reveal d2 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-48">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO growth campaign placeholder" loading="lazy">
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">SEO</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Marketing</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">SEO Growth Campaign</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Placeholder — describe a real SEO or social campaign here: the client, the goal, and the approach you took.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Add details →</span>
+        </div>
+      </article>
+
+      <article class="card-h reveal d3 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-48">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Business landing page placeholder" loading="lazy">
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Web Dev</span>
+            <span class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Landing page</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">Business Landing Page</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Placeholder — swap in a real client site: what they needed, what you built, and the tools you used.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Add details →</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal order-2 md:order-1">
+        <div class="pf w-full aspect-square max-w-sm mx-auto rounded-3xl">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=700&q=80" alt="Naeem Hossen" loading="lazy">
+        </div>
+      </div>
+
+      <div class="order-1 md:order-2">
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">About me</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white leading-tight mb-6">A bit about<br>who I am</h2>
+        <p class="reveal d2 text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+          I'm Naeem Hossen, an IT Executive at Agamir Shomoy, a news media organization, where I keep the digital desk running — web infrastructure, publishing tools, and the everyday technology a newsroom depends on.
+        </p>
+        <p class="reveal d3 text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8">
+          Alongside that, I work as a Digital Marketing Specialist and Web Developer, and I'm studying Computer Science Engineering. The instinct is the same across all of it: understand the goal, build something that works, measure what happens, and improve on it.
+        </p>
+        <div class="reveal d4">
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-3">Skills &amp; tools</p>
+          <div class="flex flex-wrap gap-2" role="list" aria-label="Skills">
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">HTML / CSS</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">JavaScript</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">SEO</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Social Media Strategy</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Google Analytics</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">IT Systems &amp; Support</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Algorithms &amp; DSA</span>
+            <span role="listitem" class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Content &amp; Copy</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Career</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Where I've worked</h2>
+    </div>
+
+    <div class="tl" style="--dotbg:transparent">
+      <div class="tl-item reveal d1">
+        <div class="flex items-center gap-3 mb-1.5">
+          <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white">IT Executive</h3>
+          <span class="text-xs bg-accent text-white px-2.5 py-0.5 rounded-full font-medium">Current</span>
+        </div>
+        <p class="text-sm text-accent font-medium mb-2">Agamir Shomoy — News Media</p>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xl">Manage the IT operations behind a live newsroom: system uptime, publishing infrastructure, and internal tooling, while supporting the editorial team's digital and web needs.</p>
+      </div>
+      <div class="tl-item reveal d2">
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">Digital Marketing Specialist</h3>
+        <p class="text-sm text-accent font-medium mb-2">Freelance / Independent</p>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xl">Run SEO and social-growth campaigns for clients — keyword research, content strategy, and performance reporting focused on measurable growth.</p>
+      </div>
+      <div class="tl-item reveal d3">
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">Web Developer</h3>
+        <p class="text-sm text-accent font-medium mb-2">Freelance / Independent</p>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xl">Design and build responsive websites and landing pages using HTML, CSS, and JavaScript, often for the same clients I run marketing campaigns for.</p>
+      </div>
+      <div class="tl-item reveal d4">
+        <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-1.5">B.Sc. in Computer Science Engineering</h3>
+        <p class="text-sm text-accent font-medium mb-2">University — in progress</p>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xl">Building a formal foundation in algorithms, systems, and software engineering alongside full-time work.</p>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>&copy; 2026 Naeem Hossen. All rights reserved.</p>
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="reviews" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 flex items-end justify-between flex-wrap gap-3">
+      <div>
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Social proof</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">What clients say</h2>
+      </div>
+      <p class="reveal d1 text-xs text-zinc-400">Placeholders — swap in real feedback once you have it</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <blockquote class="reveal d1 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+        <div class="flex gap-0.5 mb-5" aria-label="5 stars">
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Placeholder testimonial — replace with a real quote from a client once you have one. Keep it short and specific to what you delivered."</p>
+        <footer class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full shrink-0 bg-zinc-200 dark:bg-zinc-700"></div>
+          <div>
+            <p class="font-medium text-sm text-zinc-900 dark:text-white">Client Name</p>
+            <p class="text-xs text-zinc-500">Role, Company</p>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="reveal d2 bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-7 border border-zinc-800">
+        <div class="flex gap-0.5 mb-5" aria-label="5 stars">
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6 italic">"Placeholder testimonial — replace with a real quote once you have client feedback to share here."</p>
+        <footer class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full shrink-0 bg-zinc-700"></div>
+          <div>
+            <p class="font-medium text-sm text-white">Client Name</p>
+            <p class="text-xs text-zinc-500">Role, Company</p>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="reveal d3 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+        <div class="flex gap-0.5 mb-5" aria-label="5 stars">
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6 italic">"Placeholder testimonial — replace with a real quote from a client, ideally one that mentions something specific you did well."</p>
+        <footer class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full shrink-0 bg-zinc-200 dark:bg-zinc-700"></div>
+          <div>
+            <p class="font-medium text-sm text-zinc-900 dark:text-white">Client Name</p>
+            <p class="text-xs text-zinc-500">Role, Company</p>
+          </div>
+        </footer>
+      </blockquote>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BLOG ═══ -->
+<section id="blog" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+      <div>
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Thoughts</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">From the blog</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <article class="reveal d1 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-44">
+          <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80" alt="SEO basics for small business" loading="lazy">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Marketing</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">SEO basics every small business should know</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">A plain-language walkthrough of the fundamentals I check first on every new client site.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Coming soon</span>
+        </div>
+      </article>
+
+      <article class="reveal d2 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-44">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80" alt="Static HTML to component thinking" loading="lazy">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Dev</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">From static HTML to component-based thinking</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">Notes from learning how modern frontend patterns actually help, not just add complexity.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Coming soon</span>
+        </div>
+      </article>
+
+      <article class="reveal d3 card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+        <div class="pf w-full h-44">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=80" alt="Balancing IT job with freelancing" loading="lazy">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Career</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">Balancing a full-time IT role with freelance work</h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">How I split time between a newsroom job, client work, and a CSE degree without burning out.</p>
+          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400">Coming soon</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-16 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
+
+        <div>
+          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Get in touch</p>
+          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-5">Let's work<br>together</h2>
+          <p class="reveal d2 text-zinc-400 leading-relaxed mb-8">Open to freelance web development and digital marketing projects, plus collaborations that touch news-media technology. Short or long-term — let's talk.</p>
+
+          <div class="reveal d3 flex flex-col gap-4">
+            <a href="mailto:naeeminsight@gmail.com" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </span>
+              <span class="text-sm">naeeminsight@gmail.com</span>
+            </a>
+            <a href="tel:+8801307707245" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </span>
+              <span class="text-sm">+88 01307707245</span>
+            </a>
+            <a href="#" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </span>
+              <span class="text-sm">linkedin.com/in/naeem-hossen</span>
+            </a>
+            <a href="#" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-zinc-400 hover:text-white transition-colors">
+              <span class="w-9 h-9 flex items-center justify-center bg-zinc-800 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </span>
+              <span class="text-sm">github.com/naeem-hossen</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal d2">
+          <form action="#" method="POST" novalidate>
+            <div class="flex flex-col gap-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="fname" class="block text-xs font-medium text-zinc-400 mb-1.5">Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="fname" name="name" placeholder="Jane Smith" required autocomplete="name"
+                    class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors">
+                </div>
+                <div>
+                  <label for="femail" class="block text-xs font-medium text-zinc-400 mb-1.5">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="femail" name="email" placeholder="jane@company.com" required autocomplete="email"
+                    class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors">
+                </div>
+              </div>
+              <div>
+                <label for="fsubject" class="block text-xs font-medium text-zinc-400 mb-1.5">Subject</label>
+                <input type="text" id="fsubject" name="subject" placeholder="Project inquiry"
+                  class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors">
+              </div>
+              <div>
+                <label for="fmessage" class="block text-xs font-medium text-zinc-400 mb-1.5">Message <span aria-hidden="true">*</span></label>
+                <textarea id="fmessage" name="message" rows="4" placeholder="Tell me about your project..." required
+                  class="w-full bg-zinc-800 border border-zinc-700 text-white text-sm rounded-xl px-4 py-3 placeholder-zinc-600 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+              </div>
+              <button type="submit" class="shimmer w-full bg-accent text-white font-display font-bold text-sm py-3.5 rounded-xl hover:bg-accent-light transition-colors">
+                Send message →
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-zinc-100 dark:border-zinc-900">
+  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Naeem Hossen. All rights reserved.</p>
+    <p class="text-xs text-zinc-500">Built with
+      <a href="https://tailwindcss.com" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Tailwind CSS</a>
+      &amp;
+      <a href="https://alpinejs.dev" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Alpine.js</a>
+    </p>
+  </div>
 </footer>
 
 <script>
-// mobile nav
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
-navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+function app() {
+  return {
+    dark: false,
+    mm: false,
+    sc: false,
+    s: 'hero',
 
-// scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in');
-      io.unobserve(entry.target);
-    }
-  });
-}, {threshold: 0.15});
-revealEls.forEach(el => io.observe(el));
+    init() {
+      this.dark = localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
 
-// skill bars fill on view
-const bars = document.querySelectorAll('.bar-fill');
-const barIo = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.style.width = entry.target.dataset.fill + '%';
-      barIo.unobserve(entry.target);
+      window.addEventListener('scroll', () => {
+        this.sc = window.scrollY > 20;
+        this.updateSection();
+      }, { passive: true });
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      document.getElementById('yr').textContent = new Date().getFullYear();
+    },
+
+    updateSection() {
+      const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 60;
+      if (atBottom) { this.s = 'contact'; return; }
+      const ids = ['contact','blog','reviews','experience','about','work','services','hero'];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 130) { this.s = id; return; }
+      }
     }
-  });
-}, {threshold: 0.4});
-bars.forEach(b => barIo.observe(b));
+  }
+}
 </script>
+
 </body>
 </html>
