@@ -1088,6 +1088,30 @@ function app() {
 </noscript>
 <script>
 
+/* ═══ IMAGE WIPE-REVEAL (runs always, independent of other effects) ═══ */
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wipes = document.querySelectorAll('.pf-wipe');
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    // No motion / no IO support: just show the images immediately.
+    wipes.forEach(el => el.classList.add('in'));
+  } else {
+    const wipeIo = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        wipeIo.unobserve(entry.target);
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -20px 0px'});
+    wipes.forEach(el => wipeIo.observe(el));
+  }
+
+  // Safety net: whatever happens above, guarantee every thumbnail is visible
+  // within 1.5s no matter what (covers script errors, odd browsers, etc).
+  setTimeout(() => wipes.forEach(el => el.classList.add('in')), 1500);
+})();
+
 /* ═══ PREMIUM INTERACTION LAYER ═══ */
 (function(){
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1131,16 +1155,6 @@ function app() {
       card.addEventListener('pointerleave',()=>{card.style.transform=''});
     });
   }
-
-  /* Image wipe-reveal on project & blog thumbnails as they enter view */
-  const wipeIo=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting)return;
-      entry.target.classList.add('in');
-      wipeIo.unobserve(entry.target);
-    });
-  },{threshold:.2,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.pf-wipe').forEach(el=>wipeIo.observe(el));
 
   /* Magnetic pull on primary CTA buttons (desktop pointer only) */
   if(window.matchMedia('(pointer:fine)').matches){
