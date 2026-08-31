@@ -185,6 +185,11 @@ body::before{animation:grid-drift 24s linear infinite}
 .card-h::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(0,255,102,.09),transparent 55%);transition:opacity .35s ease}
 .card-h:hover::before{opacity:1}
 
+/* top share button */
+.share-top{position:relative;overflow:hidden}
+.share-top::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(0,255,102,.10) 50%,transparent 70%);transform:translateX(-120%);transition:transform .55s var(--ease-premium)}
+.share-top:hover::after{transform:translateX(120%)}
+
 /* buttons */
 .shimmer{box-shadow:0 8px 28px rgba(0,0,0,.18)}
 .shimmer:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 14px 38px rgba(0,255,102,.16)}
@@ -265,9 +270,14 @@ body::before{animation:grid-drift 24s linear infinite}
     </ul>
 
     <div class="flex items-center gap-3">
-      <button @click="copyLink()" class="hidden sm:inline-flex items-center gap-1.5 text-xs border border-accent/30 text-accent px-3 py-2 rounded font-body hover:bg-accent/10 transition-colors" title="Share Portfolio">
-        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-2M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-        share_link
+      <button @click="sharePortfolio()" class="share-top tap-fx inline-flex items-center justify-center gap-2 w-10 h-10 sm:w-auto sm:h-10 sm:px-3.5 rounded-xl border border-accent/35 bg-accent/[.04] text-accent hover:bg-accent/10 hover:border-accent/60 hover:shadow-[0_0_18px_rgba(0,255,102,.18)] transition-all" title="Share Portfolio" aria-label="Share Portfolio">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <path d="M8.7 10.7l6.6-3.9M8.7 13.3l6.6 3.9"></path>
+        </svg>
+        <span class="hidden sm:inline text-xs font-body font-medium">share</span>
       </button>
       <a href="#contact" class="magnet cta-ring hidden md:inline-flex items-center gap-2 shimmer bg-accent text-black text-sm font-bold px-5 py-2 rounded font-body">
         hire_me() <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -294,7 +304,7 @@ body::before{animation:grid-drift 24s linear infinite}
       <li><a href="#contact"    @click="mm=false" class="block text-emerald-200/80 hover:text-accent transition-colors">contact</a></li>
       <li class="pt-2 border-t border-accent/20 flex gap-3">
         <a href="#contact" @click="mm=false" class="flex-1 text-center shimmer bg-accent text-black font-bold text-sm px-5 py-2.5 rounded">hire_me() →</a>
-        <button @click="copyLink(); mm=false" class="px-4 py-2.5 border border-accent/30 text-accent text-sm rounded">share</button>
+
       </li>
     </ul>
   </div>
@@ -317,10 +327,7 @@ body::before{animation:grid-drift 24s linear infinite}
     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
     about
   </a>
-  <button @click="copyLink()" class="tap-fx flex flex-col items-center gap-1 text-[10px] text-emerald-200/60 px-2 py-1">
-    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-2M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-    share
-  </button>
+
 </nav>
 
 <main class="relative z-[2]">
@@ -969,13 +976,34 @@ function app() {
       setTimeout(() => { this.toastOpen = false; }, 3500);
     },
 
-    async copyLink() {
+    async sharePortfolio() {
+      const shareData = {
+        title: 'Naeem Hossen — Portfolio',
+        text: 'Check out Naeem Hossen’s portfolio — IT, Digital Marketing & Web Development.',
+        url: window.location.href
+      };
+
       try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+          return;
+        }
+
         await navigator.clipboard.writeText(window.location.href);
-        this.showToast('[ ✓ Link copied to clipboard! ]');
+        this.showToast('[ ✓ Portfolio link copied! ]');
       } catch (err) {
-        this.showToast('[ ✕ Copy failed — copy the URL manually. ]');
+        if (err?.name === 'AbortError') return;
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          this.showToast('[ ✓ Portfolio link copied! ]');
+        } catch (copyErr) {
+          this.showToast('[ ✕ Share failed — copy the URL manually. ]');
+        }
       }
+    },
+
+    async copyLink() {
+      return this.sharePortfolio();
     },
 
     async submitForm(e) {
