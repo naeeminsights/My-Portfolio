@@ -218,11 +218,139 @@ body::before{animation:grid-drift 24s linear infinite}
   .pf::after{display:none!important}
 }
 
+
+/* ═══════════════════════════════════════════
+   MODERN REFRESH LAYER — v2
+   ═══════════════════════════════════════════ */
+
+:root{
+  --stroke:rgba(0,255,102,.20);
+  --stroke-hi:rgba(0,255,102,.45);
+  --glass:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
+  --r-lg:20px;
+}
+
+/* ambient aurora behind everything */
+html::before{
+  content:'';position:fixed;left:-10%;right:-10%;top:-25%;height:80vh;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(55% 60% at 18% 0%, rgba(0,255,102,.11), transparent 70%),
+    radial-gradient(45% 55% at 82% 8%, rgba(0,229,255,.09), transparent 72%);
+  filter:blur(28px);
+}
+/* fine film grain — kills the flat "template" feel */
+html::after{
+  content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.032;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+/* ── typography ── */
+h1,h2,h3{letter-spacing:-.02em}
+.grad{
+  background:linear-gradient(103deg,#f2fff8 0%,#9dffc8 32%,#00ff66 62%,#00e5ff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.eyebrow{display:inline-flex;align-items:center;gap:.65rem}
+.eyebrow::before{content:'';width:30px;height:1px;background:linear-gradient(90deg,transparent,#00ff66);flex:none}
+
+/* ── glassier cards ── */
+.neon-border{
+  border:1px solid var(--stroke);
+  background-image:var(--glass);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 24px 48px -32px rgba(0,0,0,.95);
+}
+.card-h:hover.neon-border,.neon-border:hover{border-color:var(--stroke-hi)}
+.card-h{border-radius:var(--r-lg)}
+
+/* ── buttons ── */
+.shimmer.bg-accent{background-image:linear-gradient(135deg,#00ff66 0%,#38ffa0 55%,#00e5ff 130%)}
+.btn-ghost{
+  border:1px solid var(--stroke);background-image:var(--glass);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:border-color .2s,transform .2s,background-color .2s;
+}
+.btn-ghost:hover{border-color:var(--stroke-hi);transform:translateY(-2px)}
+
+/* ── filter chips ── */
+.chip{
+  border:1px solid var(--stroke);color:rgba(209,250,229,.72);
+  background:rgba(0,0,0,.35);backdrop-filter:blur(8px);
+  transition:all .2s cubic-bezier(.4,0,.2,1);
+  white-space:nowrap;
+}
+.chip:hover{border-color:var(--stroke-hi);color:#eafff2;transform:translateY(-1px)}
+.chip.on{
+  background:linear-gradient(135deg,#00ff66,#00e5ff);color:#04140a;border-color:transparent;
+  box-shadow:0 0 22px rgba(0,255,102,.32);font-weight:700;
+}
+.chip .cnt{opacity:.6;font-size:.68rem;margin-left:.35rem}
+
+/* ── blog cards ── */
+.pop-in{animation:premium-in .55s var(--ease-premium) both}
+.post-card{position:relative;overflow:hidden;border-radius:var(--r-lg);display:flex;flex-direction:column}
+.post-card .thumb{position:relative;overflow:hidden;background:#0a0f0b}
+.post-card .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease-premium),filter .5s ease}
+.post-card:hover .thumb img{transform:scale(1.06)}
+.post-card .thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(5,8,6,.92) 2%,rgba(5,8,6,.15) 55%,transparent 100%);
+}
+.badge{
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:rgba(0,255,102,.14);border:1px solid rgba(0,255,102,.38);color:#00ff66;
+}
+.meta-dot::before{content:'•';margin:0 .5rem;opacity:.45}
+
+/* featured post */
+.featured{position:relative;border-radius:26px;overflow:hidden}
+.featured .fimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s var(--ease-premium)}
+.featured:hover .fimg img{transform:scale(1.04)}
+
+/* ── article modal ── */
+.sheet{
+  background:linear-gradient(180deg,#0a0f0b 0%,#050806 60%);
+  border:1px solid var(--stroke-hi);
+  box-shadow:0 40px 120px -30px rgba(0,0,0,.95), 0 0 60px -20px rgba(0,255,102,.25);
+}
+.sheet::-webkit-scrollbar{width:5px}
+.article p{color:rgba(209,250,229,.72);line-height:1.85;font-size:.95rem}
+.article h4{
+  font-family:'Orbitron',sans-serif;color:#eafff2;font-weight:700;
+  font-size:1.02rem;margin-top:1.9rem;margin-bottom:.6rem;display:flex;gap:.55rem;align-items:baseline;
+}
+.article h4::before{content:'#';color:#00ff66;font-size:.9em}
+.article p + p{margin-top:1rem}
+.rule{height:1px;background:linear-gradient(90deg,rgba(0,255,102,.5),transparent)}
+
+/* ── marquee strip ── */
+.marq{display:flex;gap:3rem;width:max-content;animation:marq 32s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+.marq-wrap{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq-wrap:hover .marq{animation-play-state:paused}
+
+/* ── misc polish ── */
+::-webkit-scrollbar-thumb{background:linear-gradient(#00ff66,#00e5ff)}
+footer{background:linear-gradient(180deg,transparent,rgba(0,255,102,.04))}
+.dock{background:rgba(4,7,5,.86)}
+.tl-item::before{box-shadow:0 0 10px rgba(0,255,102,.85)}
+
+@media (prefers-reduced-motion:reduce){
+  .marq{animation:none!important}
+  .pop-in{animation:none!important}
+  html::before{filter:none}
+}
+@media (max-width:767px){
+  html::after{opacity:.02}
+  .article h4{font-size:.95rem}
+}
+
 </style>
 
 </head>
 
-<body class="bg-ink dark:bg-ink text-emerald-50 antialiased" x-data="{ modalOpen: false, activePost: {}, projectModalOpen: false, activeProject: {}, toastOpen: false, toastMsg: '' }">
+<body class="bg-ink dark:bg-ink text-emerald-50 antialiased" x-data="{ modalOpen: false, activePost: {}, projectModalOpen: false, activeProject: {}, toastOpen: false, toastMsg: '' }"
+      x-effect="if (modalOpen || projectModalOpen) { document.body.style.overflow = 'hidden' } else if (booted) { document.body.style.overflow = '' }">
 
 <!-- ═══ BOOT LOADER ═══ -->
 
@@ -275,7 +403,7 @@ body::before{animation:grid-drift 24s linear infinite}
     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-2M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
     share_link
   </button>
-  <a href="#contact" class="magnet cta-ring hidden md:inline-flex items-center gap-2 shimmer bg-accent text-black text-sm font-bold px-5 py-2 rounded font-body">
+  <a href="#contact" class="magnet cta-ring hidden md:inline-flex items-center gap-2 shimmer bg-accent text-black text-sm font-bold px-5 py-2 rounded-lg font-body">
     hire_me() <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
   </a>
   <button @click="mm=!mm" class="lg:hidden w-9 h-9 flex items-center justify-center rounded border border-accent/30 text-accent" :aria-expanded="mm" aria-label="Toggle menu">
@@ -352,11 +480,11 @@ body::before{animation:grid-drift 24s linear infinite}
       <span class="text-accent">&gt;</span> IT Executive at <strong class="text-emerald-50">Agamir Shomoy</strong>, and a freelance <strong class="text-emerald-50">Digital Marketing Specialist &amp; Web Developer</strong>. I keep systems running, grow audiences, and build the web tools that connect the two — with a security-minded, reliability-first approach.
     </p>
     <div class="reveal d3 flex flex-wrap gap-4">
-      <a href="#work" class="magnet cta-ring shimmer inline-flex items-center gap-2 bg-accent text-black font-bold px-7 py-3.5 rounded font-body text-sm">
+      <a href="#work" class="magnet cta-ring shimmer inline-flex items-center gap-2 bg-accent text-black font-bold px-7 py-3.5 rounded-lg font-body text-sm">
         view_work()
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
       </a>
-      <a href="assets/Naeem-Hossen-CV.pdf" download class="inline-flex items-center gap-2 border border-accent/40 text-accent font-bold px-7 py-3.5 rounded font-body text-sm hover:bg-accent/10 hover:-translate-y-0.5 transition-all">
+      <a href="assets/Naeem-Hossen-CV.pdf" download class="btn-ghost tap-fx inline-flex items-center gap-2 text-accent font-bold px-7 py-3.5 rounded-lg font-body text-sm">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
         download_cv()
       </a>
@@ -443,13 +571,21 @@ body::before{animation:grid-drift 24s linear infinite}
   </div>
 </section>
 
+<!-- ═══ TECH MARQUEE ═══ -->
+
+<section aria-label="Tools and technologies" class="py-8 border-y border-accent/10 bg-black/20">
+  <div class="marq-wrap">
+    <div class="marq"><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>HTML5</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>CSS3</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>JavaScript</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Tailwind CSS</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Alpine.js</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Git</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Linux</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Networking</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>SEO</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Google Analytics</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Search Console</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>WordPress</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Cloudflare</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Nextcloud</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Uptime Monitoring</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Content Strategy</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Meta Ads</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>DSA</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>HTML5</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>CSS3</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>JavaScript</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Tailwind CSS</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Alpine.js</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Git</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Linux</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Networking</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>SEO</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Google Analytics</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Search Console</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>WordPress</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Cloudflare</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Nextcloud</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Uptime Monitoring</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Content Strategy</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>Meta Ads</span><span class="flex items-center gap-3 text-sm text-emerald-200/45 font-body whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-accent/70"></span>DSA</span></div>
+  </div>
+</section>
+
 <!-- ═══ SERVICES ═══ -->
 
 <section id="services" class="py-24 bg-black/30 border-y border-accent/10">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14">
-      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// what_i_do</p>
-      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50">Services</h2>
+      <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// what_i_do</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad">Services</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-6">
 
@@ -487,8 +623,8 @@ body::before{animation:grid-drift 24s linear infinite}
 <section id="security" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14 max-w-2xl">
-      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// security_mindset</p>
-      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 mb-4">Security &amp; Reliability</h2>
+      <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// security_mindset</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad mb-4">Security &amp; Reliability</h2>
       <p class="reveal d1 text-emerald-200/60 font-body text-sm leading-relaxed">Working in a live newsroom means uptime and data hygiene aren't optional. These are the habits I bring to every system I touch.</p>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -536,8 +672,8 @@ body::before{animation:grid-drift 24s linear infinite}
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
       <div>
-        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// portfolio</p>
-        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50">Selected work</h2>
+        <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// portfolio</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad">Selected work</h2>
       </div>
       <p class="reveal d1 text-xs text-emerald-200/50 self-start sm:self-auto font-body">click any project for full details</p>
     </div>
@@ -632,8 +768,8 @@ body::before{animation:grid-drift 24s linear infinite}
   </div>
 
   <div class="order-1 md:order-2">
-    <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// whoami</p>
-    <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 leading-tight mb-6">A bit about<br>who I am</h2>
+    <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// whoami</p>
+    <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad leading-tight mb-6">A bit about<br>who I am</h2>
     <p class="reveal d2 text-emerald-200/60 leading-relaxed mb-4 font-body text-sm">
       <span class="text-accent">&gt;</span> I'm Naeem Hossen, an IT Executive at Agamir Shomoy, a news media organization, where I keep the digital desk running — web infrastructure, publishing tools, and the everyday technology a newsroom depends on.
     </p>
@@ -668,8 +804,8 @@ body::before{animation:grid-drift 24s linear infinite}
 <section id="experience" class="py-24 bg-black/30 border-y border-accent/10">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14">
-      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// career_log</p>
-      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50">Where I've worked</h2>
+      <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// career_log</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad">Where I've worked</h2>
     </div>
 
 <div class="tl" style="--dotbg:#050806">
@@ -707,8 +843,8 @@ body::before{animation:grid-drift 24s linear infinite}
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div>
-        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// trust_&amp;_proof</p>
-        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 mb-5">Proof over promises.</h2>
+        <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// trust_&amp;_proof</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad mb-5">Proof over promises.</h2>
         <p class="reveal d2 text-sm text-emerald-200/60 leading-relaxed font-body">
           I prefer showing real work, measurable outcomes, and verifiable experience instead of publishing generic or anonymous testimonials.
         </p>
@@ -734,86 +870,131 @@ body::before{animation:grid-drift 24s linear infinite}
 
 <!-- ═══ BLOG ═══ -->
 
-<section id="blog" class="py-24 bg-black/30 border-y border-accent/10">
+<section id="blog" class="py-24 bg-black/30 border-y border-accent/10 relative" x-data="{ cat: 'all' }">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
       <div>
-        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// insights_&amp;_articles</p>
-        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50">From the blog</h2>
+        <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// insights_&amp;_articles</p>
+        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad">From the blog</h2>
+        <p class="reveal d2 mt-4 text-sm text-emerald-200/60 font-body max-w-xl leading-relaxed">
+          <span class="text-accent">&gt;</span> Practical notes from the day job — newsroom infrastructure, front-end performance, SEO that survives an algorithm update, and the habits in between.
+          <span class="text-accent font-bold" x-text="posts.length + ' articles'"></span> and counting.
+        </p>
       </div>
-      <p class="reveal d1 text-xs text-emerald-200/50 font-body">click any article to read full details</p>
+      <p class="reveal d1 text-xs text-emerald-200/50 font-body shrink-0">click any article to read it in full</p>
     </div>
 
-<div class="grid md:grid-cols-3 gap-6">
-
-  <article @click="activePost = {title: 'Why Data-Driven Digital Marketing is Crucial for Brand Growth', category: 'Marketing', date: 'August 2026', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=900&q=80', content: 'In today\'s digital ecosystem, intuition alone is not enough to scale a brand. By combining advanced SEO strategies with targeted social media campaigns, businesses can turn casual browsers into loyal, repeat customers. Data analytics help us measure what works in real-time, optimizing ad spend and maximizing return on investment.'}; modalOpen = true" class="reveal d1 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
-    <div class="pf pf-wipe w-full h-44">
-      <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80" alt="Digital Marketing Strategy" loading="lazy">
+    <!-- category filter -->
+    <div class="reveal d2 flex flex-wrap gap-2.5 mb-10 font-body">
+      <template x-for="c in postCats()" :key="c">
+        <button @click="cat = c" class="chip tap-fx text-xs px-4 py-2 rounded-full" :class="cat === c ? 'on' : ''">
+          <span x-text="c === 'all' ? 'all_posts' : c.toLowerCase().replace(/ /g,'_')"></span><span class="cnt" x-text="postsBy(c).length"></span>
+        </button>
+      </template>
     </div>
-    <div class="p-6">
-      <div class="flex items-center gap-3 mb-3 font-body">
-        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">Marketing</span>
+
+    <!-- featured article -->
+    <article x-show="cat === 'all'" x-cloak
+      @click="activePost = posts[0]; modalOpen = true"
+      class="featured card-h neon-border cursor-pointer grid md:grid-cols-5 mb-6 group overflow-hidden">
+      <div class="fimg relative h-52 md:h-auto md:col-span-2 order-1 md:order-2 overflow-hidden">
+        <img :src="posts[0].img" :alt="posts[0].title" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#050806] via-transparent to-transparent"></div>
+        <span class="absolute top-4 left-4 z-10 badge text-[10px] font-body px-3 py-1.5 rounded-full tracking-[.2em] uppercase font-bold">featured</span>
       </div>
-      <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Why Data-Driven Digital Marketing is Crucial for Brand Growth</h3>
-      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">Discover how combining SEO strategies with targeted social media campaigns can transform casual visitors into loyal customers.</p>
-      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
-    </div>
-  </article>
-
-  <article @click="activePost = {title: 'Building Fast & Responsive Web Interfaces with Clean Code', category: 'Web Dev', date: 'August 2026', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80', content: 'Performance matters. A fast-loading website not only enhances user experience but also ranks significantly higher on search engine result pages. By utilizing lightweight utility-first frameworks like Tailwind CSS and maintaining clean, modular JavaScript, developers can build scalable interfaces that load instantly across all devices.'}; modalOpen = true" class="reveal d2 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
-    <div class="pf pf-wipe w-full h-44">
-      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80" alt="Web Development Tips" loading="lazy">
-    </div>
-    <div class="p-6">
-      <div class="flex items-center gap-3 mb-3 font-body">
-        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">Web Dev</span>
+      <div class="p-7 sm:p-9 md:col-span-3 order-2 md:order-1 flex flex-col justify-center">
+        <div class="flex items-center text-[11px] text-emerald-200/45 font-body mb-4">
+          <span class="text-accent font-bold" x-text="posts[0].cat"></span><span class="meta-dot"></span><span x-text="posts[0].date"></span><span class="meta-dot"></span><span x-text="posts[0].read"></span>
+        </div>
+        <h3 class="font-display font-bold text-2xl md:text-3xl leading-tight text-emerald-50 mb-4 group-hover:text-accent transition-colors" x-text="posts[0].title"></h3>
+        <p class="text-sm text-emerald-200/60 leading-relaxed font-body mb-6 max-w-lg" x-text="posts[0].excerpt"></p>
+        <span class="inline-flex items-center gap-2 text-sm font-bold text-accent font-body">read_full_article →</span>
       </div>
-      <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Building Fast &amp; Responsive Web Interfaces with Clean Code</h3>
-      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">A quick look into how modern CSS frameworks and clean structure help websites load faster and rank higher on search engines.</p>
-      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
-    </div>
-  </article>
+    </article>
 
-  <article @click="activePost = {title: 'Managing IT Infrastructure in a Fast-Paced News Environment', category: 'IT Operations', date: 'August 2026', img: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80', content: 'In a live newsroom like Agamir Shomoy, system uptime and publishing reliability are everything. Managing servers, local networks, and internal publishing tools requires rigorous monitoring, rapid troubleshooting, and robust security measures to ensure seamless news broadcasting without downtime.'}; modalOpen = true" class="reveal d3 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
-    <div class="pf pf-wipe w-full h-44">
-      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=80" alt="IT Infrastructure in Newsroom" loading="lazy">
+    <!-- article grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <template x-for="(p, i) in gridPosts(cat)" :key="p.id">
+        <article @click="activePost = p; modalOpen = true"
+          :style="`animation-delay:${Math.min(i,8) * 65}ms`"
+          class="pop-in post-card card-h neon-border cursor-pointer group">
+          <div class="thumb h-44 shrink-0">
+            <img :src="p.img" :alt="p.title" loading="lazy">
+            <span class="absolute bottom-3 left-4 z-10 badge text-[10px] font-body px-2.5 py-1 rounded-full font-bold tracking-wide" x-text="p.cat"></span>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center text-[11px] text-emerald-200/45 font-body mb-3">
+              <span x-text="p.date"></span><span class="meta-dot"></span><span x-text="p.read"></span>
+            </div>
+            <h3 class="font-display font-bold text-base leading-snug text-emerald-50 mb-2.5 group-hover:text-accent transition-colors" x-text="p.title"></h3>
+            <p class="text-[13px] text-emerald-200/60 leading-relaxed font-body mb-5 flex-1" x-text="p.excerpt"></p>
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold text-accent font-body">read_full_article →</span>
+          </div>
+        </article>
+      </template>
     </div>
-    <div class="p-6">
-      <div class="flex items-center gap-3 mb-3 font-body">
-        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">IT Operations</span>
-      </div>
-      <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Managing IT Infrastructure in a Fast-Paced News Environment</h3>
-      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">An inside look at keeping publishing servers stable, securing local networks, and supporting live media workflows efficiently.</p>
-      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
-    </div>
-  </article>
 
-</div>
+    <p x-show="gridPosts(cat).length === 0" x-cloak class="text-center text-sm text-emerald-200/40 font-body py-12">
+      <span class="text-accent">&gt;</span> no articles in this category yet.
+    </p>
 
   </div>
 </section>
 
+
 <!-- BLOG MODAL POPUP -->
 
-<div x-show="modalOpen" x-cloak class="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
+<div x-show="modalOpen" x-cloak class="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md"
      x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
      x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-  <div @click.outside="modalOpen = false" class="bg-black rounded-2xl max-w-2xl w-full p-8 relative neon-border shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-    <button @click="modalOpen = false" class="absolute top-6 right-6 w-9 h-9 flex items-center justify-center rounded-full bg-accent/10 border border-accent/30 text-accent hover:bg-accent hover:text-black transition-colors">
-      ✕
-    </button>
-    <img :src="activePost.img" alt="Blog cover" class="w-full h-64 object-cover rounded-xl mb-6">
-    <div class="flex items-center gap-3 mb-3 font-body">
-      <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1 rounded-full font-medium" x-text="activePost.category"></span>
-      <span class="text-xs text-emerald-200/50" x-text="activePost.date"></span>
+  <div @click.outside="modalOpen = false"
+       x-transition:enter="transition ease-out duration-300 delay-75" x-transition:enter-start="opacity-0 translate-y-6 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+       class="sheet rounded-3xl max-w-3xl w-full relative max-h-[92vh] overflow-y-auto overflow-x-hidden">
+
+    <div class="relative h-52 sm:h-72 shrink-0">
+      <img :src="activePost.img" alt="" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f0b] via-[#0a0f0b]/45 to-transparent"></div>
+      <button @click="modalOpen = false" aria-label="Close article"
+        class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 border border-accent/40 text-accent backdrop-blur-md hover:bg-accent hover:text-black transition-colors">✕</button>
+      <div class="absolute bottom-0 inset-x-0 p-6 sm:p-9">
+        <span class="badge text-[10px] font-body px-3 py-1.5 rounded-full font-bold tracking-widest uppercase" x-text="activePost.cat"></span>
+        <h2 class="font-display font-bold text-xl sm:text-3xl text-emerald-50 mt-4 leading-tight" x-text="activePost.title"></h2>
+      </div>
     </div>
-    <h2 class="font-display font-bold text-2xl md:text-3xl text-emerald-50 mb-4" x-text="activePost.title"></h2>
-    <p class="text-emerald-200/70 leading-relaxed text-base mb-8 font-body" x-text="activePost.content"></p>
-    <div class="flex justify-end gap-3">
-      <a href="#contact" @click="modalOpen = false" class="shimmer bg-accent text-black font-bold text-sm px-6 py-3 rounded-xl font-body">discuss_this() →</a>
+
+    <div class="p-6 sm:p-9">
+      <div class="flex flex-wrap items-center text-[11px] text-emerald-200/45 font-body mb-5">
+        <span class="text-accent">naeem_hossen</span><span class="meta-dot"></span><span x-text="activePost.date"></span><span class="meta-dot"></span><span x-text="activePost.read"></span>
+      </div>
+      <div class="rule mb-7"></div>
+
+      <div class="article font-body">
+        <template x-for="(b, i) in (activePost.body || [])" :key="i">
+          <div>
+            <h4 x-show="b.h" x-text="b.h"></h4>
+            <p x-text="b.p"></p>
+          </div>
+        </template>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-8">
+        <template x-for="t in (activePost.tags || [])" :key="t">
+          <span class="text-[11px] font-body bg-white/5 border border-accent/20 text-emerald-200/70 px-3 py-1 rounded-full" x-text="'#' + t.toLowerCase().replace(/ /g,'')"></span>
+        </template>
+      </div>
+
+      <div class="rule my-7"></div>
+
+      <div class="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+        <p class="text-xs text-emerald-200/50 font-body leading-relaxed max-w-xs">Working on something similar? I take on freelance web and growth projects alongside my full-time role.</p>
+        <a href="#contact" @click="modalOpen = false" class="shimmer bg-accent text-black font-bold text-sm px-6 py-3 rounded-xl font-body text-center shrink-0">discuss_this() →</a>
+      </div>
     </div>
+
   </div>
 </div>
+
 
 <!-- ═══ CONTACT ═══ -->
 
@@ -826,8 +1007,8 @@ body::before{animation:grid-drift 24s linear infinite}
   <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
 
     <div>
-      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// get_in_touch</p>
-      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 leading-tight mb-5">Let's work<br>together</h2>
+      <p class="reveal eyebrow text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// get_in_touch</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl grad leading-tight mb-5">Let's work<br>together</h2>
       <p class="reveal d2 text-emerald-200/60 leading-relaxed mb-8 font-body text-sm">Open to freelance web development and digital marketing projects, plus collaborations that touch news-media technology. Short or long-term — let's talk.</p>
 
       <div class="reveal d3 flex flex-col gap-4 font-body">
@@ -902,13 +1083,53 @@ body::before{animation:grid-drift 24s linear infinite}
 </main>
 
 <footer class="border-t border-accent/15 relative z-[2]">
-  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-body">
-    <p class="text-sm text-emerald-200/50">&copy; <span id="yr"></span> Naeem Hossen. All rights reserved.</p>
-    <p class="text-xs text-emerald-200/40">built with
-      <a href="https://tailwindcss.com" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Tailwind CSS</a>
-      &amp;
-      <a href="https://alpinejs.dev" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Alpine.js</a>
-    </p>
+  <div class="max-w-6xl mx-auto px-6 pt-14 pb-10">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <div class="lg:col-span-2">
+        <a href="#hero" class="font-display font-bold text-xl tracking-tight">
+          <span class="text-emerald-50">na</span><span class="text-accent">eem</span><span class="text-accent-light">_</span>
+        </a>
+        <p class="text-sm text-emerald-200/50 leading-relaxed font-body mt-4 max-w-sm">
+          IT Executive at Agamir Shomoy. Freelance digital marketing specialist and web developer, based in Dhaka, Bangladesh.
+        </p>
+        <div class="flex items-center gap-2 mt-5 text-xs font-body text-emerald-200/45">
+          <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span> available for freelance projects
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-body text-emerald-200/40 uppercase tracking-widest mb-4">// navigate</p>
+        <ul class="flex flex-col gap-2.5 text-sm font-body" role="list">
+          <li><a href="#services" class="text-emerald-200/60 hover:text-accent transition-colors">services</a></li>
+          <li><a href="#work" class="text-emerald-200/60 hover:text-accent transition-colors">selected work</a></li>
+          <li><a href="#blog" class="text-emerald-200/60 hover:text-accent transition-colors">blog</a></li>
+          <li><a href="#experience" class="text-emerald-200/60 hover:text-accent transition-colors">experience</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs font-body text-emerald-200/40 uppercase tracking-widest mb-4">// connect</p>
+        <ul class="flex flex-col gap-2.5 text-sm font-body" role="list">
+          <li><a href="mailto:naeeminsight@gmail.com" class="text-emerald-200/60 hover:text-accent transition-colors break-all">naeeminsight@gmail.com</a></li>
+          <li><a href="tel:+8801307707245" class="text-emerald-200/60 hover:text-accent transition-colors">+88 01307707245</a></li>
+          <li><a href="https://github.com/naeeminsights" target="_blank" rel="noopener noreferrer" class="text-emerald-200/60 hover:text-accent transition-colors">github</a></li>
+          <li><a href="https://www.facebook.com/naeemhossen.me/" target="_blank" rel="noopener noreferrer" class="text-emerald-200/60 hover:text-accent transition-colors">facebook</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="rule mb-6"></div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 font-body">
+      <p class="text-sm text-emerald-200/45">&copy; <span id="yr"></span> Naeem Hossen. All rights reserved.</p>
+      <p class="text-xs text-emerald-200/35">built with
+        <a href="https://tailwindcss.com" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Tailwind CSS</a>
+        &amp;
+        <a href="https://alpinejs.dev" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Alpine.js</a>
+      </p>
+    </div>
   </div>
 </footer>
 
@@ -953,6 +1174,167 @@ function app() {
       'establishing secure connection...',
       'access granted — welcome'
     ],
+
+    posts: [
+      {
+        id: "data-driven-marketing",
+        title: "Why Data-Driven Marketing Beats Gut Feeling Every Time",
+        cat: "Marketing",
+        date: "August 2026",
+        read: "6 min read",
+        img: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1200&q=80",
+        excerpt: "Instinct is a great place to start a campaign and a terrible place to end one. Here is the reporting loop I run for every client.",
+        tags: ["SEO", "Analytics", "Strategy"],
+        body: [
+          {p: "Almost every small business I work with starts marketing the same way: someone has a feeling about what customers want, a few posts go out, and the budget follows whatever felt busiest that week. It is not a stupid approach — instinct is genuinely useful for generating ideas. The problem is that instinct has no memory. It cannot tell you which of last quarter’s three campaigns actually paid for itself."},
+          {h: "Start with one number that matters", p: "Before touching a keyword tool or an ad account, I ask the client a blunt question: if this works, what number goes up? Not impressions — a number tied to money or to a decision. Booked calls. Qualified form fills. Repeat orders. Once that single metric is agreed on, every other decision gets easier, because anything that does not move it is a distraction dressed up as work."},
+          {h: "Instrument before you optimise", p: "You cannot improve what you never recorded. That means a clean analytics setup, conversion events that fire on the actions that matter, Search Console connected, and UTM tags on every campaign link so traffic does not vanish into direct. This part is unglamorous and it takes an afternoon. Skipping it costs months, because you end up arguing about opinions instead of reading a chart."},
+          {h: "Small tests, honest reporting", p: "I prefer a handful of small, reversible experiments over one big redesign. Change the page title on ten pages, not two hundred. Run one offer against another for two weeks. Then report the losers as loudly as the winners — a campaign that failed cheaply is a genuine result, because it stops you spending more on the same idea next quarter."},
+          {h: "What the loop looks like in practice", p: "Measure, form a hypothesis, ship one change, wait long enough for the data to be real, then keep or kill it. That is the whole method. It is not clever and it does not need expensive tooling. It just needs someone willing to look at what actually happened rather than what was supposed to happen."}
+        ]
+      },
+      {
+        id: "clean-frontend",
+        title: "Building Fast, Responsive Interfaces With Clean Code",
+        cat: "Web Dev",
+        date: "August 2026",
+        read: "7 min read",
+        img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80",
+        excerpt: "Speed is a design feature. A look at the structural habits that keep front-end builds fast a year after launch, not just on launch day.",
+        tags: ["Tailwind", "Performance", "CSS"],
+        body: [
+          {p: "Most slow websites did not start slow. They started clean, then collected a chat widget, three font families, a carousel library used once, and an analytics stack nobody audits. Performance is rarely a single dramatic mistake — it is an accumulation of small, individually reasonable decisions."},
+          {h: "Ship less, not clever", p: "The fastest asset is the one you never send. Before reaching for a library, I ask whether twenty lines of vanilla JavaScript would do the job. Utility-first CSS helps here because it reuses the same classes across the page instead of growing a new stylesheet block for every component, so the CSS file stops scaling with the size of the site."},
+          {h: "Images are usually the real problem", p: "On most business sites, images account for the majority of page weight. Serve modern formats, set explicit width and height so the layout does not jump while they load, lazy-load anything below the fold, and load the hero image eagerly so the largest element paints early. Doing only this often halves load time without touching a line of application code."},
+          {h: "Structure that survives handover", p: "Clean code is mostly about the next person. Consistent naming, components that do one thing, no magic numbers scattered through the stylesheet, and comments that explain why rather than what. If a client’s in-house developer can add a section six months later without calling me, the build was good."},
+          {h: "Test on the device your users actually own", p: "It is easy to feel proud of a site on a fast laptop and a fibre connection. Throttle the network, open it on a mid-range Android phone, and the honest picture appears. That is the version most visitors in Bangladesh will experience, and that is the version worth optimising for."}
+        ]
+      },
+      {
+        id: "newsroom-it",
+        title: "Managing IT Infrastructure in a Fast-Paced Newsroom",
+        cat: "IT Operations",
+        date: "August 2026",
+        read: "6 min read",
+        img: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1200&q=80",
+        excerpt: "In a live newsroom, downtime is not an inconvenience — it is a missed story. Notes from keeping a publishing desk online.",
+        tags: ["Uptime", "Servers", "Newsroom"],
+        body: [
+          {p: "A newsroom does not run on a predictable schedule. Traffic is flat for hours and then a story breaks and everything happens at once — editors publishing, images uploading, readers arriving in a wave. Infrastructure that looks perfectly healthy on a quiet Tuesday is tested properly about four times a month, always without warning."},
+          {h: "Know what normal looks like", p: "Monitoring is not useful unless you know the baseline. I want to know the usual response time, the usual disk growth per week, the usual memory profile at peak. Alerts built on top of a known baseline are actionable; alerts built on guesses just train everyone to ignore notifications."},
+          {h: "Fail loudly, never silently", p: "The most dangerous failure is the one nobody notices — a scheduled publish that quietly did not run, a backup job that has been erroring for two weeks, a cache that stopped clearing. Anything automated needs a heartbeat, and anything with a heartbeat needs someone who actually receives the alert."},
+          {h: "Support the people, not just the machines", p: "A large share of newsroom IT work is not servers at all. It is an editor whose upload keeps failing on deadline, a reporter locked out of an account, a formatting problem in the CMS. Solving those calmly and fast matters as much as uptime, because the newsroom’s trust in the systems is built on those small interactions."},
+          {h: "Write it down while it is fresh", p: "After every incident I record what broke, what the symptom looked like from the editor’s side, and what fixed it. Six months later that note turns a forty-minute investigation into a three-minute fix. Documentation written during the calm after an incident is worth ten times the documentation written during a planning meeting."}
+        ]
+      },
+      {
+        id: "technical-seo",
+        title: "A Technical SEO Checklist That Actually Moves Rankings",
+        cat: "SEO",
+        date: "July 2026",
+        read: "8 min read",
+        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+        excerpt: "Skip the 200-point audit template. These are the technical fixes that produce visible movement on real client sites.",
+        tags: ["Technical SEO", "Indexing", "Audit"],
+        body: [
+          {p: "Technical SEO audits have a habit of becoming enormous documents that nobody implements. I would rather deliver eight fixes that get shipped than eighty that get filed. These are the ones that repeatedly earn their place."},
+          {h: "Make sure the page can be indexed at all", p: "It sounds obvious, yet a surprising number of ranking problems are simply a stray noindex tag, a blocked path in robots.txt, or a canonical tag pointing at the wrong URL after a migration. Check indexing status first — everything else is wasted effort if search engines are being told to stay away."},
+          {h: "One page per intent", p: "When three pages target the same query, they compete with each other and none of them wins clearly. Consolidating them into one strong page, with redirects from the old URLs, usually produces a faster gain than writing anything new."},
+          {h: "Fix the internal linking", p: "Internal links tell search engines which pages you consider important, and they are entirely within your control. Pages sitting five clicks from the homepage with no contextual links pointing at them are being quietly deprioritised by your own site structure."},
+          {h: "Titles and headings written for humans", p: "A title tag is a promise about what the page contains. Descriptive, specific, front-loaded with the actual subject — that is the whole trick. Keyword stuffing has been counterproductive for years, but vague titles are just as costly because nobody clicks them."},
+          {h: "Then measure over months, not days", p: "Technical changes rarely show results instantly. I take a baseline in Search Console, ship the fixes, and compare a full month against the previous one. Anything shorter is mostly noise, and reacting to noise is how good changes get reverted."}
+        ]
+      },
+      {
+        id: "core-web-vitals",
+        title: "Core Web Vitals in Plain Language: LCP, INP and CLS",
+        cat: "Web Dev",
+        date: "July 2026",
+        read: "6 min read",
+        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+        excerpt: "Three metrics, three very human questions: did it load, did it respond, and did it stay still while I was reading?",
+        tags: ["Performance", "UX", "Metrics"],
+        body: [
+          {p: "Core Web Vitals sound like a specialist topic, but each metric is really just a formalised version of a complaint a normal visitor would make out loud. Once you translate them, the fixes become obvious."},
+          {h: "LCP — did the page load?", p: "Largest Contentful Paint measures how long the biggest visible element takes to appear, usually the hero image or headline. Slow LCP is nearly always a heavy hero image, a render-blocking stylesheet, or a slow server response. Compress the image, preload it, and stop blocking the render with fonts you could load asynchronously."},
+          {h: "INP — did it respond when I tapped?", p: "Interaction to Next Paint measures the delay between a tap and something visibly happening. Poor scores usually come from long JavaScript tasks hogging the main thread. Breaking work into smaller chunks and removing scripts that are not earning their weight fixes most cases."},
+          {h: "CLS — did it stay still?", p: "Cumulative Layout Shift is the frustrating one: you go to tap a link, an ad or image loads above it, and the page jumps. The cure is boring and reliable — reserve space for every image, ad slot and embed before it loads by setting dimensions."},
+          {h: "Use field data, not just lab scores", p: "A perfect score in a testing tool on a fast connection says little about a user on a crowded mobile network. Real-user data over the past month is the number that reflects the experience people are actually having, and it is the number search engines care about."}
+        ]
+      },
+      {
+        id: "security-habits",
+        title: "Small Security Habits That Prevent Big Incidents",
+        cat: "Security",
+        date: "June 2026",
+        read: "6 min read",
+        img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80",
+        excerpt: "Most breaches at small organisations are not sophisticated. They are the predictable result of shared logins and forgotten access.",
+        tags: ["Access Control", "2FA", "Hygiene"],
+        body: [
+          {p: "Security at a small organisation rarely fails in the dramatic way films suggest. It fails because six people share one admin password, because a former employee’s account was never disabled, or because a plugin has not been updated since it was installed."},
+          {h: "One account per person, always", p: "Shared logins destroy accountability. When something changes and nobody can say who changed it, you have lost both the ability to fix the process and the ability to trust the audit trail. Individual accounts with appropriate roles cost nothing and solve this permanently."},
+          {h: "Two-factor on everything that touches publishing or money", p: "Email, hosting, domain registrar, the CMS, ad accounts, banking. A password manager plus 2FA on those accounts eliminates the overwhelming majority of realistic attacks against a small team, and it takes an afternoon to roll out."},
+          {h: "Off-board people the same day", p: "Access should be removed when someone leaves, not when someone remembers. Keeping a simple written list of every system a role has access to turns that from a memory exercise into a five-minute checklist."},
+          {h: "Update on a schedule you actually keep", p: "A monthly patching window that happens is far better than a weekly one that gets skipped. Put it in the calendar, test on a staging copy first where possible, and keep a note of what changed so a regression can be traced quickly."}
+        ]
+      },
+      {
+        id: "backups-restore",
+        title: "Your Backup Is Useless Until You Have Restored From It",
+        cat: "IT Operations",
+        date: "June 2026",
+        read: "5 min read",
+        img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
+        excerpt: "An untested backup is a belief, not a safeguard. How to turn one into something you can actually rely on at 2am.",
+        tags: ["Backups", "Recovery", "Reliability"],
+        body: [
+          {p: "Everyone has backups. Far fewer people have ever restored one. The gap between those two states is where most genuinely painful data-loss stories live, and it only becomes visible on the worst possible day."},
+          {h: "Three copies, two media, one off-site", p: "The old rule survives because it keeps working. Copies on the same server as the original are convenient and worthless against hardware failure, ransomware, or an accidental delete that syncs everywhere within seconds."},
+          {h: "Decide how much you can afford to lose", p: "Two questions set your whole strategy: how much data can you lose, and how long can you be down? Hourly snapshots and nightly dumps answer very different versions of those questions, and there is no point paying for one when you needed the other."},
+          {h: "Rehearse the restore", p: "Once a quarter, restore into a scratch environment and confirm the site actually runs — not just that the archive extracts. Time it. That number is your real recovery time, and it is usually longer than anyone assumed."},
+          {h: "Write the runbook before you need it", p: "At 2am nobody wants to reconstruct a restore procedure from memory. A short document with exact commands, credential locations and the order of operations turns a crisis into a checklist."}
+        ]
+      },
+      {
+        id: "social-content-planning",
+        title: "How I Plan a Month of Social Content in One Sitting",
+        cat: "Marketing",
+        date: "May 2026",
+        read: "5 min read",
+        img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80",
+        excerpt: "Consistency beats brilliance on social. A repeatable batching system that removes the daily what-do-I-post-today panic.",
+        tags: ["Social Media", "Content", "Workflow"],
+        body: [
+          {p: "The main reason small-business social accounts go quiet is not lack of ideas. It is that posting is treated as a daily decision, and daily decisions lose to urgent work every single time. Batching moves the decision to once a month, where it is much easier to protect."},
+          {h: "Four buckets, rotated", p: "I plan against four content types: teach something useful, show real work, answer a question customers actually ask, and one human post about the people behind the business. Rotating those keeps the feed varied without needing a new creative concept every day."},
+          {h: "Mine your own inbox", p: "The best content ideas are already sitting in customer emails and DMs. Every question a client asks twice is a post. This is why accounts run by the person doing the work usually outperform accounts run by someone guessing from outside."},
+          {h: "Write in one block, publish on a schedule", p: "One focused session to draft, one to prepare visuals, then schedule everything. It is a different kind of thinking from writing under time pressure, and the quality difference is obvious in the finished posts."},
+          {h: "Review monthly, adjust slowly", p: "At month end I look at which posts drove profile visits and messages, not just likes. Two or three consistent patterns emerge within a quarter, and those patterns become next quarter’s plan."}
+        ]
+      },
+      {
+        id: "support-to-systems",
+        title: "From Support Tickets to Systems Thinking",
+        cat: "Career",
+        date: "May 2026",
+        read: "5 min read",
+        img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+        excerpt: "What fixing the same problem for the fifth time teaches you about the difference between working hard and working upstream.",
+        tags: ["Career", "IT Support", "Growth"],
+        body: [
+          {p: "Support work teaches you something no course does: which parts of a system break in practice rather than in theory. You learn it by fixing the same issue repeatedly, for different people, until the pattern becomes impossible to ignore."},
+          {h: "The fifth ticket is a design problem", p: "One person struggling with a workflow is a support request. Five people struggling with the same workflow is a design flaw. Recognising the difference is the point where the job stops being reactive and starts being engineering."},
+          {h: "Fix upstream when you can", p: "Better defaults, a clearer form, a one-page guide, an automated check — these remove whole categories of ticket permanently. It is slower than answering the ticket in front of you and it compounds in a way that answering tickets never does."},
+          {h: "Translation is a real skill", p: "Being able to explain a technical constraint to an editor on deadline, without condescension and without jargon, makes you far more useful than raw technical ability alone. Most of the friction between technical and non-technical teams is a translation failure, not a competence failure."},
+          {h: "Study the fundamentals alongside the work", p: "Studying computer science while doing operations work has been useful in both directions: theory explains why the practical fix works, and the practical work makes the theory concrete. Neither one alone would have taught me as much."}
+        ]
+      }
+    ],
+
+    postCats() { return ['all', ...new Set(this.posts.map(p => p.cat))]; },
+    postsBy(c) { return c === 'all' ? this.posts : this.posts.filter(p => p.cat === c); },
+    gridPosts(c) { const l = this.postsBy(c); return c === 'all' ? l.slice(1) : l; },
 
     init() {
       document.body.style.overflow = 'hidden';
@@ -1204,6 +1586,30 @@ btn.style.transform='';
 });
 });
 }
+})();
+</script>
+
+
+<script>
+/* ═══ IMAGE FALLBACK — if a remote photo fails, draw a themed placeholder ═══ */
+(function(){
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function placeholder(label){
+    var s = "<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'>";
+    s += "<rect width='800' height='450' fill='#070c09'/><g stroke='rgba(0,255,102,.16)' stroke-width='1'>";
+    for(var x=0;x<=800;x+=40) s += "<line x1='"+x+"' y1='0' x2='"+x+"' y2='450'/>";
+    for(var y=0;y<=450;y+=40) s += "<line x1='0' y1='"+y+"' x2='800' y2='"+y+"'/>";
+    s += "</g><circle cx='400' cy='190' r='58' fill='none' stroke='#00ff66' stroke-width='2' opacity='.55'/>";
+    s += "<text x='400' y='202' font-family='monospace' font-size='34' fill='#00ff66' text-anchor='middle'>&lt;/&gt;</text>";
+    s += "<text x='400' y='300' font-family='monospace' font-size='19' fill='rgba(209,250,229,.6)' text-anchor='middle'>"+esc(label).slice(0,46)+"</text></svg>";
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(s);
+  }
+  document.addEventListener('error', function(e){
+    var el = e.target;
+    if (!el || el.tagName !== 'IMG' || el.dataset.fbk) return;
+    el.dataset.fbk = '1';
+    el.src = placeholder(el.getAttribute('alt') || 'naeem_hossen');
+  }, true);
 })();
 </script>
 
