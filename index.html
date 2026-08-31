@@ -17,7 +17,9 @@
 <title>Naeem Hossen — IT Executive, Digital Marketer &amp; Web Developer</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -185,11 +187,6 @@ body::before{animation:grid-drift 24s linear infinite}
 .card-h::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(0,255,102,.09),transparent 55%);transition:opacity .35s ease}
 .card-h:hover::before{opacity:1}
 
-/* top share button */
-.share-top{position:relative;overflow:hidden}
-.share-top::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(0,255,102,.10) 50%,transparent 70%);transform:translateX(-120%);transition:transform .55s var(--ease-premium)}
-.share-top:hover::after{transform:translateX(120%)}
-
 /* buttons */
 .shimmer{box-shadow:0 8px 28px rgba(0,0,0,.18)}
 .shimmer:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 14px 38px rgba(0,255,102,.16)}
@@ -222,11 +219,13 @@ body::before{animation:grid-drift 24s linear infinite}
 }
 
 </style>
+
 </head>
 
 <body class="bg-ink dark:bg-ink text-emerald-50 antialiased" x-data="{ modalOpen: false, activePost: {}, projectModalOpen: false, activeProject: {}, toastOpen: false, toastMsg: '' }">
 
 <!-- ═══ BOOT LOADER ═══ -->
+
 <div x-show="!booted" x-transition:leave="transition ease-in duration-500" x-transition:leave-end="opacity-0"
      class="fixed inset-0 z-[100] bg-black flex items-center justify-center px-6">
   <div class="font-body text-accent text-sm sm:text-base space-y-2.5 max-w-xl w-full">
@@ -242,6 +241,7 @@ body::before{animation:grid-drift 24s linear infinite}
 <div class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-accent to-accent-light z-[60] transition-[width] duration-150 ease-out" :style="`width:${progress}%`" aria-hidden="true"></div>
 
 <!-- ═══ TOAST NOTIFICATION ═══ -->
+
 <div x-show="toastOpen" x-cloak
      x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
      x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
@@ -251,42 +251,39 @@ body::before{animation:grid-drift 24s linear infinite}
 </div>
 
 <!-- ═══ NAV ═══ -->
+
 <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
   :class="sc?'bg-black/85 backdrop-blur-md border-b border-accent/20':''">
   <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
 
-    <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
-      <span class="text-emerald-50">na</span><span class="text-accent">eem</span><span class="text-accent-light animate-pulse">_</span>
-    </a>
+<a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
+  <span class="text-emerald-50">na</span><span class="text-accent">eem</span><span class="text-accent-light animate-pulse">_</span>
+</a>
 
-    <ul class="hidden lg:flex items-center gap-7 text-sm font-body" role="list">
-      <li><a href="#services"   class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='services'?'on !text-accent':''">services</a></li>
-      <li><a href="#security"   class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='security'?'on !text-accent':''">security</a></li>
-      <li><a href="#work"       class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='work'?'on !text-accent':''">work</a></li>
-      <li><a href="#about"      class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='about'?'on !text-accent':''">about</a></li>
-      <li><a href="#experience" class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='experience'?'on !text-accent':''">experience</a></li>
-      <li><a href="#blog"       class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='blog'?'on !text-accent':''">blog</a></li>
-      <li><a href="#contact"    class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='contact'?'on !text-accent':''">contact</a></li>
-    </ul>
+<ul class="hidden lg:flex items-center gap-7 text-sm font-body" role="list">
+  <li><a href="#services"   class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='services'?'on !text-accent':''">services</a></li>
+  <li><a href="#security"   class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='security'?'on !text-accent':''">security</a></li>
+  <li><a href="#work"       class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='work'?'on !text-accent':''">work</a></li>
+  <li><a href="#about"      class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='about'?'on !text-accent':''">about</a></li>
+  <li><a href="#experience" class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='experience'?'on !text-accent':''">experience</a></li>
+  <li><a href="#blog"       class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='blog'?'on !text-accent':''">blog</a></li>
+  <li><a href="#contact"    class="nl text-emerald-200/70 hover:text-accent transition-colors" :class="s==='contact'?'on !text-accent':''">contact</a></li>
+</ul>
 
-    <div class="flex items-center gap-3">
-      <button @click="sharePortfolio()" class="share-top tap-fx inline-flex items-center justify-center gap-2 w-10 h-10 sm:w-auto sm:h-10 sm:px-3.5 rounded-xl border border-accent/35 bg-accent/[.04] text-accent hover:bg-accent/10 hover:border-accent/60 hover:shadow-[0_0_18px_rgba(0,255,102,.18)] transition-all" title="Share Portfolio" aria-label="Share Portfolio">
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
-          <circle cx="18" cy="5" r="3"></circle>
-          <circle cx="6" cy="12" r="3"></circle>
-          <circle cx="18" cy="19" r="3"></circle>
-          <path d="M8.7 10.7l6.6-3.9M8.7 13.3l6.6 3.9"></path>
-        </svg>
-        <span class="hidden sm:inline text-xs font-body font-medium">share</span>
-      </button>
-      <a href="#contact" class="magnet cta-ring hidden md:inline-flex items-center gap-2 shimmer bg-accent text-black text-sm font-bold px-5 py-2 rounded font-body">
-        hire_me() <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
-      <button @click="mm=!mm" class="lg:hidden w-9 h-9 flex items-center justify-center rounded border border-accent/30 text-accent" :aria-expanded="mm" aria-label="Toggle menu">
-        <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg x-show="mm"  class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
+<div class="flex items-center gap-3">
+  <button @click="copyLink()" class="hidden sm:inline-flex items-center gap-1.5 text-xs border border-accent/30 text-accent px-3 py-2 rounded font-body hover:bg-accent/10 transition-colors" title="Share Portfolio">
+    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-2M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+    share_link
+  </button>
+  <a href="#contact" class="magnet cta-ring hidden md:inline-flex items-center gap-2 shimmer bg-accent text-black text-sm font-bold px-5 py-2 rounded font-body">
+    hire_me() <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+  </a>
+  <button @click="mm=!mm" class="lg:hidden w-9 h-9 flex items-center justify-center rounded border border-accent/30 text-accent" :aria-expanded="mm" aria-label="Toggle menu">
+    <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <svg x-show="mm"  class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+</div>
+
   </nav>
 
   <div x-show="mm" x-cloak
@@ -304,13 +301,14 @@ body::before{animation:grid-drift 24s linear infinite}
       <li><a href="#contact"    @click="mm=false" class="block text-emerald-200/80 hover:text-accent transition-colors">contact</a></li>
       <li class="pt-2 border-t border-accent/20 flex gap-3">
         <a href="#contact" @click="mm=false" class="flex-1 text-center shimmer bg-accent text-black font-bold text-sm px-5 py-2.5 rounded">hire_me() →</a>
-
+        <button @click="copyLink(); mm=false" class="px-4 py-2.5 border border-accent/30 text-accent text-sm rounded">share</button>
       </li>
     </ul>
   </div>
 </header>
 
 <!-- ═══ MOBILE BOTTOM DOCK ═══ -->
+
 <nav aria-label="Quick navigation" class="dock lg:hidden fixed bottom-0 inset-x-0 z-50 bg-black/80 border-t border-accent/20 flex items-center justify-around px-2 py-2.5 font-body">
   <a href="#hero" class="tap-fx flex flex-col items-center gap-1 text-[10px] text-emerald-200/60 px-2 py-1" :class="s==='hero'?'on':''">
     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
@@ -327,12 +325,16 @@ body::before{animation:grid-drift 24s linear infinite}
     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
     about
   </a>
-
+  <button @click="copyLink()" class="tap-fx flex flex-col items-center gap-1 text-[10px] text-emerald-200/60 px-2 py-1">
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-2M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+    share
+  </button>
 </nav>
 
 <main class="relative z-[2]">
 
 <!-- ═══ HERO ═══ -->
+
 <section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden" @mousemove="onHeroMove($event)">
   <canvas id="matrix-canvas" x-ref="matrixCanvas" aria-hidden="true"></canvas>
   <div class="absolute inset-0 pointer-events-none transition-[background] duration-200" :style="`background: radial-gradient(560px circle at ${heroX}% ${heroY}%, rgba(0,255,102,.10), transparent 62%)`" aria-hidden="true"></div>
@@ -341,48 +343,50 @@ body::before{animation:grid-drift 24s linear infinite}
   <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
     <div class="grid md:grid-cols-2 gap-12 items-center">
 
-      <div>
-        <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4 font-body">[ status: available_for_freelance ]</p>
-        <h1 class="reveal d1 font-display font-black text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-emerald-50 mb-6">
-          Hi, I'm<br><span class="glitch text-accent" data-text="NAEEM">NAEEM</span>
-        </h1>
-        <p class="reveal d2 text-base md:text-lg text-emerald-200/70 font-body leading-relaxed max-w-md mb-8">
-          <span class="text-accent">&gt;</span> IT Executive at <strong class="text-emerald-50">Agamir Shomoy</strong>, and a freelance <strong class="text-emerald-50">Digital Marketing Specialist &amp; Web Developer</strong>. I keep systems running, grow audiences, and build the web tools that connect the two — with a security-minded, reliability-first approach.
-        </p>
-        <div class="reveal d3 flex flex-wrap gap-4">
-          <a href="#work" class="magnet cta-ring shimmer inline-flex items-center gap-2 bg-accent text-black font-bold px-7 py-3.5 rounded font-body text-sm">
-            view_work()
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </a>
-          <a href="assets/Naeem-Hossen-CV.pdf" download class="inline-flex items-center gap-2 border border-accent/40 text-accent font-bold px-7 py-3.5 rounded font-body text-sm hover:bg-accent/10 hover:-translate-y-0.5 transition-all">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            download_cv()
-          </a>
-        </div>
-        <div class="reveal d4 flex flex-wrap gap-x-8 gap-y-4 mt-14 pt-8 border-t border-accent/20 font-body">
-          <div><p class="font-display font-bold text-2xl text-accent">IT_OPS</p><p class="text-xs text-emerald-200/60 mt-1">Executive, News Media</p></div>
-          <div><p class="font-display font-bold text-2xl text-accent">SEO++</p><p class="text-xs text-emerald-200/60 mt-1">Growth Marketing</p></div>
-          <div><p class="font-display font-bold text-2xl text-accent">CSE</p><p class="text-xs text-emerald-200/60 mt-1">Student, in progress</p></div>
-        </div>
-      </div>
-
-      <div class="reveal d2 flex justify-center md:justify-end">
-        <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 float-photo">
-          <div class="absolute -inset-3 rounded-2xl bg-gradient-to-tr from-accent via-accent-light to-transparent opacity-50 blur-md pointer-events-none" aria-hidden="true"></div>
-          <div class="tilt-wrap relative w-full h-full" @mousemove="onPhotoMove($event)" @mouseleave="photoRX=0;photoRY=0">
-            <div class="tilt-inner pf w-full h-full rounded-2xl neon-border shadow-2xl" :style="`transform: rotateX(${photoRX}deg) rotateY(${photoRY}deg) scale(1.01)`">
-              <img src="naeem.jpg" alt="Naeem Hossen" loading="eager">
-            </div>
-          </div>
-          <div class="absolute -bottom-4 -left-4 bg-accent text-black font-display font-bold text-sm px-4 py-2.5 rounded shadow-lg font-body">[ open_to_projects ]</div>
-        </div>
-      </div>
-
+  <div>
+    <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4 font-body">[ status: available_for_freelance ]</p>
+    <h1 class="reveal d1 font-display font-black text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-emerald-50 mb-6">
+      Hi, I'm<br><span class="glitch text-accent" data-text="NAEEM">NAEEM</span>
+    </h1>
+    <p class="reveal d2 text-base md:text-lg text-emerald-200/70 font-body leading-relaxed max-w-md mb-8">
+      <span class="text-accent">&gt;</span> IT Executive at <strong class="text-emerald-50">Agamir Shomoy</strong>, and a freelance <strong class="text-emerald-50">Digital Marketing Specialist &amp; Web Developer</strong>. I keep systems running, grow audiences, and build the web tools that connect the two — with a security-minded, reliability-first approach.
+    </p>
+    <div class="reveal d3 flex flex-wrap gap-4">
+      <a href="#work" class="magnet cta-ring shimmer inline-flex items-center gap-2 bg-accent text-black font-bold px-7 py-3.5 rounded font-body text-sm">
+        view_work()
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </a>
+      <a href="assets/Naeem-Hossen-CV.pdf" download class="inline-flex items-center gap-2 border border-accent/40 text-accent font-bold px-7 py-3.5 rounded font-body text-sm hover:bg-accent/10 hover:-translate-y-0.5 transition-all">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        download_cv()
+      </a>
     </div>
+    <div class="reveal d4 flex flex-wrap gap-x-8 gap-y-4 mt-14 pt-8 border-t border-accent/20 font-body">
+      <div><p class="font-display font-bold text-2xl text-accent">IT_OPS</p><p class="text-xs text-emerald-200/60 mt-1">Executive, News Media</p></div>
+      <div><p class="font-display font-bold text-2xl text-accent">SEO++</p><p class="text-xs text-emerald-200/60 mt-1">Growth Marketing</p></div>
+      <div><p class="font-display font-bold text-2xl text-accent">CSE</p><p class="text-xs text-emerald-200/60 mt-1">Student, in progress</p></div>
+    </div>
+  </div>
+
+  <div class="reveal d2 flex justify-center md:justify-end">
+    <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 float-photo">
+      <div class="absolute -inset-3 rounded-2xl bg-gradient-to-tr from-accent via-accent-light to-transparent opacity-50 blur-md pointer-events-none" aria-hidden="true"></div>
+      <div class="tilt-wrap relative w-full h-full" @mousemove="onPhotoMove($event)" @mouseleave="photoRX=0;photoRY=0">
+        <div class="tilt-inner pf w-full h-full rounded-2xl neon-border shadow-2xl" :style="`transform: rotateX(${photoRX}deg) rotateY(${photoRY}deg) scale(1.01)`">
+          <img src="naeem.jpg" alt="Naeem Hossen" loading="eager">
+        </div>
+      </div>
+      <div class="absolute -bottom-4 -left-4 bg-accent text-black font-display font-bold text-sm px-4 py-2.5 rounded shadow-lg font-body">[ open_to_projects ]</div>
+    </div>
+  </div>
+
+</div>
+
   </div>
 </section>
 
 <!-- ═══ SYSTEM STATUS & LIVE TERMINAL STREAM ═══ -->
+
 <section aria-label="Status strip" class="border-y border-accent/15 bg-black/40 overflow-hidden">
   <div class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4 font-body text-xs text-emerald-200/70">
     <div class="flex flex-wrap items-center gap-x-8 gap-y-2">
@@ -397,47 +401,50 @@ body::before{animation:grid-drift 24s linear infinite}
 </section>
 
 <!-- ═══ HIGHLIGHTS ═══ -->
+
 <section aria-label="Highlights" class="pt-16 pb-20">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
 
-      <div class="reveal d1 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-1">Reliable Systems</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Newsroom infrastructure that stays up when it matters most.</p>
-      </div>
-
-      <div class="reveal d2 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-1">Data-Driven Growth</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">SEO and campaigns measured by real numbers, not guesses.</p>
-      </div>
-
-      <div class="reveal d3 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-1">Clean Code</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Fast, responsive, maintainable front-end builds.</p>
-      </div>
-
-      <div class="reveal d4 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422A12.083 12.083 0 0121 12c0 2.998-1.117 5.735-2.958 7.815M12 14L5.84 10.578A12.083 12.083 0 003 12c0 2.998 1.117 5.735 2.958 7.815M12 14v7"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-1">Always Learning</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Deepening CS fundamentals through an ongoing CSE degree.</p>
-      </div>
-
+  <div class="reveal d1 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
     </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-1">Reliable Systems</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Newsroom infrastructure that stays up when it matters most.</p>
+  </div>
+
+  <div class="reveal d2 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+    </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-1">Data-Driven Growth</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">SEO and campaigns measured by real numbers, not guesses.</p>
+  </div>
+
+  <div class="reveal d3 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+    </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-1">Clean Code</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Fast, responsive, maintainable front-end builds.</p>
+  </div>
+
+  <div class="reveal d4 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422A12.083 12.083 0 0121 12c0 2.998-1.117 5.735-2.958 7.815M12 14L5.84 10.578A12.083 12.083 0 003 12c0 2.998 1.117 5.735 2.958 7.815M12 14v7"/></svg>
+    </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-1">Always Learning</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Deepening CS fundamentals through an ongoing CSE degree.</p>
+  </div>
+
+</div>
+
   </div>
 </section>
 
 <!-- ═══ SERVICES ═══ -->
+
 <section id="services" class="py-24 bg-black/30 border-y border-accent/10">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14">
@@ -446,35 +453,37 @@ body::before{animation:grid-drift 24s linear infinite}
     </div>
     <div class="grid md:grid-cols-3 gap-6">
 
-      <article class="reveal d1 card-h group bg-black/40 neon-border rounded-2xl p-8">
-        <div class="w-12 h-12 flex items-center justify-center bg-accent/10 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
-          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-emerald-50 mb-3">Web Development</h3>
-        <p class="text-sm text-emerald-200/60 leading-relaxed font-body">Responsive, clean websites and landing pages built with HTML, CSS and JavaScript — fast to load, easy to maintain, and built to convert.</p>
-      </article>
-
-      <article class="reveal d2 card-h group bg-accent/[.06] neon-border rounded-2xl p-8">
-        <div class="w-12 h-12 flex items-center justify-center bg-accent/15 rounded-xl mb-6 group-hover:bg-accent/25 transition-colors">
-          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-emerald-50 mb-3">Digital Marketing</h3>
-        <p class="text-sm text-emerald-200/70 leading-relaxed font-body">SEO, social media strategy, and content that's measured, not guessed — keyword research, on-page fixes, and reporting tied to real growth.</p>
-      </article>
-
-      <article class="reveal d3 card-h group bg-black/40 neon-border rounded-2xl p-8">
-        <div class="w-12 h-12 flex items-center justify-center bg-accent/10 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
-          <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M5 8h14M5 8a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2v-9a2 2 0 00-2-2M5 8V6a2 2 0 012-2h10a2 2 0 012 2v2"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-emerald-50 mb-3">IT Systems &amp; Support</h3>
-        <p class="text-sm text-emerald-200/60 leading-relaxed font-body">Keeping day-to-day infrastructure and publishing tools running reliably — the practical, on-the-ground skill set behind a live newsroom.</p>
-      </article>
-
+  <article class="reveal d1 card-h group bg-black/40 neon-border rounded-2xl p-8">
+    <div class="w-12 h-12 flex items-center justify-center bg-accent/10 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
+      <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
     </div>
+    <h3 class="font-display font-bold text-xl text-emerald-50 mb-3">Web Development</h3>
+    <p class="text-sm text-emerald-200/60 leading-relaxed font-body">Responsive, clean websites and landing pages built with HTML, CSS and JavaScript — fast to load, easy to maintain, and built to convert.</p>
+  </article>
+
+  <article class="reveal d2 card-h group bg-accent/[.06] neon-border rounded-2xl p-8">
+    <div class="w-12 h-12 flex items-center justify-center bg-accent/15 rounded-xl mb-6 group-hover:bg-accent/25 transition-colors">
+      <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>
+    </div>
+    <h3 class="font-display font-bold text-xl text-emerald-50 mb-3">Digital Marketing</h3>
+    <p class="text-sm text-emerald-200/70 leading-relaxed font-body">SEO, social media strategy, and content that's measured, not guessed — keyword research, on-page fixes, and reporting tied to real growth.</p>
+  </article>
+
+  <article class="reveal d3 card-h group bg-black/40 neon-border rounded-2xl p-8">
+    <div class="w-12 h-12 flex items-center justify-center bg-accent/10 rounded-xl mb-6 group-hover:bg-accent/20 transition-colors">
+      <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M5 8h14M5 8a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2v-9a2 2 0 00-2-2M5 8V6a2 2 0 012-2h10a2 2 0 012 2v2"/></svg>
+    </div>
+    <h3 class="font-display font-bold text-xl text-emerald-50 mb-3">IT Systems &amp; Support</h3>
+    <p class="text-sm text-emerald-200/60 leading-relaxed font-body">Keeping day-to-day infrastructure and publishing tools running reliably — the practical, on-the-ground skill set behind a live newsroom.</p>
+  </article>
+
+</div>
+
   </div>
 </section>
 
 <!-- ═══ SECURITY & RELIABILITY ═══ -->
+
 <section id="security" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14 max-w-2xl">
@@ -484,43 +493,45 @@ body::before{animation:grid-drift 24s linear infinite}
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <div class="reveal d1 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-2">Uptime Monitoring</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Watching newsroom systems around the clock so a publish never fails silently.</p>
-      </div>
-
-      <div class="reveal d2 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-2">Access &amp; Data Hygiene</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Keeping accounts, backups, and publishing tools tidy and access properly scoped.</p>
-      </div>
-
-      <div class="reveal d3 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-2">Incident Response</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Calm, methodical troubleshooting when something breaks in a live environment.</p>
-      </div>
-
-      <div class="reveal d4 card-h bg-black/40 neon-border rounded-2xl p-6">
-        <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
-          <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-        </div>
-        <p class="font-display font-bold text-sm text-emerald-50 mb-2">Continuous Hardening</p>
-        <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Small, steady improvements to infrastructure rather than one-off fixes.</p>
-      </div>
-
+  <div class="reveal d1 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
     </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-2">Uptime Monitoring</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Watching newsroom systems around the clock so a publish never fails silently.</p>
+  </div>
+
+  <div class="reveal d2 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+    </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-2">Access &amp; Data Hygiene</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Keeping accounts, backups, and publishing tools tidy and access properly scoped.</p>
+  </div>
+
+  <div class="reveal d3 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-2">Incident Response</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Calm, methodical troubleshooting when something breaks in a live environment.</p>
+  </div>
+
+  <div class="reveal d4 card-h bg-black/40 neon-border rounded-2xl p-6">
+    <div class="w-10 h-10 flex items-center justify-center bg-accent/10 rounded-lg mb-4">
+      <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+    </div>
+    <p class="font-display font-bold text-sm text-emerald-50 mb-2">Continuous Hardening</p>
+    <p class="text-xs text-emerald-200/60 leading-relaxed font-body">Small, steady improvements to infrastructure rather than one-off fixes.</p>
+  </div>
+
+</div>
+
   </div>
 </section>
 
 <!-- ═══ WORK ═══ -->
+
 <section id="work" class="py-24 bg-black/30 border-y border-accent/10">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
@@ -531,59 +542,61 @@ body::before{animation:grid-drift 24s linear infinite}
       <p class="reveal d1 text-xs text-emerald-200/50 self-start sm:self-auto font-body">click any project for full details</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
+<div class="grid md:grid-cols-2 gap-6">
 
-      <article @click="activeProject = {title: 'Agamir Shomoy — Digital Desk', cat: 'News Media & IT Ops', img: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80', desc: 'Managed full IT operations, server stability, local networking, and internal publishing workflows for a major news media organization in Dhaka.'}; projectModalOpen = true" class="card-h reveal d1 group rounded-2xl overflow-hidden bg-black/40 neon-border md:row-span-2 cursor-pointer">
-        <div class="pf pf-wipe w-full h-64 md:h-80">
-          <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80" alt="Newsroom digital desk" loading="lazy">
-        </div>
-        <div class="p-7">
-          <div class="flex flex-wrap gap-2 mb-4 font-body">
-            <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1 rounded-full">News Media</span>
-            <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">IT Ops</span>
-            <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">Web</span>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-emerald-50 mb-2">Agamir Shomoy — Digital Desk</h3>
-          <p class="text-sm text-emerald-200/60 leading-relaxed mb-5 font-body">As IT Executive, I support the day-to-day technology behind a live newsroom — publishing infrastructure, uptime, and internal tooling...</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">view_project_details →</span>
-        </div>
-      </article>
-
-      <article @click="activeProject = {title: 'SEO Growth Campaign', cat: 'Search Engine Optimization', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80', desc: 'Executed comprehensive keyword audits, technical on-page fixes, and analytics tracking to skyrocket organic visibility.'}; projectModalOpen = true" class="card-h reveal d2 group rounded-2xl overflow-hidden bg-black/40 neon-border cursor-pointer">
-        <div class="pf pf-wipe w-full h-48">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO growth campaign" loading="lazy">
-        </div>
-        <div class="p-6">
-          <div class="flex flex-wrap gap-2 mb-3 font-body">
-            <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1 rounded-full">SEO</span>
-            <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">Marketing</span>
-          </div>
-          <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">SEO Growth Campaign</h3>
-          <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">Targeted keyword research, on-page optimization, and analytics tracking to improve organic visibility.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">view_project_details →</span>
-        </div>
-      </article>
-
-      <article @click="activeProject = {title: 'Business Landing Page Build', cat: 'Web Development', img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80', desc: 'Designed and developed high-converting, lightning-fast responsive landing pages using Tailwind CSS and Alpine.js.'}; projectModalOpen = true" class="card-h reveal d3 group rounded-2xl overflow-hidden bg-black/40 neon-border cursor-pointer">
-        <div class="pf pf-wipe w-full h-48">
-          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Business landing page" loading="lazy">
-        </div>
-        <div class="p-6">
-          <div class="flex flex-wrap gap-2 mb-3 font-body">
-            <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1 rounded-full">Web Dev</span>
-            <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">Landing page</span>
-          </div>
-          <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">Business Landing Page</h3>
-          <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">Clean, lightning-fast, and mobile-responsive business landing pages built with modern Tailwind CSS layouts.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">view_project_details →</span>
-        </div>
-      </article>
-
+  <article @click="activeProject = {title: 'Agamir Shomoy — Digital Desk', cat: 'News Media & IT Ops', img: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80', desc: 'Managed full IT operations, server stability, local networking, and internal publishing workflows for a major news media organization in Dhaka.'}; projectModalOpen = true" class="card-h reveal d1 group rounded-2xl overflow-hidden bg-black/40 neon-border md:row-span-2 cursor-pointer">
+    <div class="pf pf-wipe w-full h-64 md:h-80">
+      <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80" alt="Newsroom digital desk" loading="lazy">
     </div>
+    <div class="p-7">
+      <div class="flex flex-wrap gap-2 mb-4 font-body">
+        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1 rounded-full">News Media</span>
+        <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">IT Ops</span>
+        <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">Web</span>
+      </div>
+      <h3 class="font-display font-bold text-2xl text-emerald-50 mb-2">Agamir Shomoy — Digital Desk</h3>
+      <p class="text-sm text-emerald-200/60 leading-relaxed mb-5 font-body">As IT Executive, I support the day-to-day technology behind a live newsroom — publishing infrastructure, uptime, and internal tooling...</p>
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">view_project_details →</span>
+    </div>
+  </article>
+
+  <article @click="activeProject = {title: 'SEO Growth Campaign', cat: 'Search Engine Optimization', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80', desc: 'Executed comprehensive keyword audits, technical on-page fixes, and analytics tracking to skyrocket organic visibility.'}; projectModalOpen = true" class="card-h reveal d2 group rounded-2xl overflow-hidden bg-black/40 neon-border cursor-pointer">
+    <div class="pf pf-wipe w-full h-48">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO growth campaign" loading="lazy">
+    </div>
+    <div class="p-6">
+      <div class="flex flex-wrap gap-2 mb-3 font-body">
+        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1 rounded-full">SEO</span>
+        <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">Marketing</span>
+      </div>
+      <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">SEO Growth Campaign</h3>
+      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">Targeted keyword research, on-page optimization, and analytics tracking to improve organic visibility.</p>
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">view_project_details →</span>
+    </div>
+  </article>
+
+  <article @click="activeProject = {title: 'Business Landing Page Build', cat: 'Web Development', img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80', desc: 'Designed and developed high-converting, lightning-fast responsive landing pages using Tailwind CSS and Alpine.js.'}; projectModalOpen = true" class="card-h reveal d3 group rounded-2xl overflow-hidden bg-black/40 neon-border cursor-pointer">
+    <div class="pf pf-wipe w-full h-48">
+      <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Business landing page" loading="lazy">
+    </div>
+    <div class="p-6">
+      <div class="flex flex-wrap gap-2 mb-3 font-body">
+        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-3 py-1 rounded-full">Web Dev</span>
+        <span class="text-xs bg-white/5 text-emerald-200/70 px-3 py-1 rounded-full">Landing page</span>
+      </div>
+      <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">Business Landing Page</h3>
+      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">Clean, lightning-fast, and mobile-responsive business landing pages built with modern Tailwind CSS layouts.</p>
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">view_project_details →</span>
+    </div>
+  </article>
+
+</div>
+
   </div>
 </section>
 
 <!-- PROJECT MODAL POPUP -->
+
 <div x-show="projectModalOpen" x-cloak class="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
      x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
      x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -604,51 +617,54 @@ body::before{animation:grid-drift 24s linear infinite}
 </div>
 
 <!-- ═══ ABOUT ═══ -->
+
 <section id="about" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-16 items-center">
 
-      <div class="reveal order-2 md:order-1">
-        <div class="relative w-full max-w-sm mx-auto">
-          <div class="absolute -inset-2 rounded-2xl bg-gradient-to-br from-accent/40 to-transparent blur-md pointer-events-none" aria-hidden="true"></div>
-          <div class="pf relative w-full aspect-square rounded-2xl neon-border shadow-xl transition-transform duration-300 hover:scale-[1.02]">
-            <img src="naeem.jpg" alt="Naeem Hossen" loading="lazy">
-          </div>
-        </div>
+  <div class="reveal order-2 md:order-1">
+    <div class="relative w-full max-w-sm mx-auto">
+      <div class="absolute -inset-2 rounded-2xl bg-gradient-to-br from-accent/40 to-transparent blur-md pointer-events-none" aria-hidden="true"></div>
+      <div class="pf relative w-full aspect-square rounded-2xl neon-border shadow-xl transition-transform duration-300 hover:scale-[1.02]">
+        <img src="naeem.jpg" alt="Naeem Hossen" loading="lazy">
       </div>
-
-      <div class="order-1 md:order-2">
-        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// whoami</p>
-        <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 leading-tight mb-6">A bit about<br>who I am</h2>
-        <p class="reveal d2 text-emerald-200/60 leading-relaxed mb-4 font-body text-sm">
-          <span class="text-accent">&gt;</span> I'm Naeem Hossen, an IT Executive at Agamir Shomoy, a news media organization, where I keep the digital desk running — web infrastructure, publishing tools, and the everyday technology a newsroom depends on.
-        </p>
-        <p class="reveal d3 text-emerald-200/60 leading-relaxed mb-4 font-body text-sm">
-          <span class="text-accent">&gt;</span> Alongside that, I work as a Digital Marketing Specialist and Web Developer, and I'm studying Computer Science Engineering. The instinct is the same across all of it: understand the goal, build something that works, measure what happens, and improve on it.
-        </p>
-        <p class="reveal d3 text-emerald-200/60 leading-relaxed mb-8 font-body text-sm">
-          <span class="text-accent">&gt;</span> I'm based in Dhaka, Bangladesh, and currently open to freelance projects alongside my full-time role — especially work where web development and marketing meet.
-        </p>
-        <div class="reveal d4">
-          <p class="text-xs font-medium text-emerald-200/50 uppercase tracking-widest mb-3 font-body">// skills_&amp;_tools</p>
-          <div class="flex flex-wrap gap-2 font-body" role="list" aria-label="Skills">
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">HTML / CSS</span>
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">JavaScript</span>
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">SEO</span>
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Social Media Strategy</span>
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Google Analytics</span>
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">IT Systems &amp; Support</span>
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Algorithms &amp; DSA</span>
-            <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Content &amp; Copy</span>
-          </div>
-        </div>
-      </div>
-
     </div>
+  </div>
+
+  <div class="order-1 md:order-2">
+    <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// whoami</p>
+    <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 leading-tight mb-6">A bit about<br>who I am</h2>
+    <p class="reveal d2 text-emerald-200/60 leading-relaxed mb-4 font-body text-sm">
+      <span class="text-accent">&gt;</span> I'm Naeem Hossen, an IT Executive at Agamir Shomoy, a news media organization, where I keep the digital desk running — web infrastructure, publishing tools, and the everyday technology a newsroom depends on.
+    </p>
+    <p class="reveal d3 text-emerald-200/60 leading-relaxed mb-4 font-body text-sm">
+      <span class="text-accent">&gt;</span> Alongside that, I work as a Digital Marketing Specialist and Web Developer, and I'm studying Computer Science Engineering. The instinct is the same across all of it: understand the goal, build something that works, measure what happens, and improve on it.
+    </p>
+    <p class="reveal d3 text-emerald-200/60 leading-relaxed mb-8 font-body text-sm">
+      <span class="text-accent">&gt;</span> I'm based in Dhaka, Bangladesh, and currently open to freelance projects alongside my full-time role — especially work where web development and marketing meet.
+    </p>
+    <div class="reveal d4">
+      <p class="text-xs font-medium text-emerald-200/50 uppercase tracking-widest mb-3 font-body">// skills_&amp;_tools</p>
+      <div class="flex flex-wrap gap-2 font-body" role="list" aria-label="Skills">
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">HTML / CSS</span>
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">JavaScript</span>
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">SEO</span>
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Social Media Strategy</span>
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Google Analytics</span>
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">IT Systems &amp; Support</span>
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Algorithms &amp; DSA</span>
+        <span role="listitem" class="stag text-sm bg-black/40 border border-accent/25 text-emerald-200/80 px-3.5 py-1.5 rounded-full">Content &amp; Copy</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
   </div>
 </section>
 
 <!-- ═══ EXPERIENCE ═══ -->
+
 <section id="experience" class="py-24 bg-black/30 border-y border-accent/10">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14">
@@ -656,35 +672,37 @@ body::before{animation:grid-drift 24s linear infinite}
       <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50">Where I've worked</h2>
     </div>
 
-    <div class="tl" style="--dotbg:#050806">
-      <div class="tl-item reveal d1">
-        <div class="flex items-center gap-3 mb-1.5">
-          <h3 class="font-display font-bold text-xl text-emerald-50">IT Executive</h3>
-          <span class="text-xs bg-accent text-black px-2.5 py-0.5 rounded-full font-bold font-body">CURRENT</span>
-        </div>
-        <p class="text-sm text-accent font-medium mb-2 font-body">Agamir Shomoy — News Media</p>
-        <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Manage the IT operations behind a live newsroom: system uptime, publishing infrastructure, and internal tooling, while supporting the editorial team's digital and web needs.</p>
-      </div>
-      <div class="tl-item reveal d2">
-        <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">Digital Marketing Specialist</h3>
-        <p class="text-sm text-accent font-medium mb-2 font-body">Freelance / Independent</p>
-        <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Run SEO and social-growth campaigns for clients — keyword research, content strategy, and performance reporting focused on measurable growth.</p>
-      </div>
-      <div class="tl-item reveal d3">
-        <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">Web Developer</h3>
-        <p class="text-sm text-accent font-medium mb-2 font-body">Freelance / Independent</p>
-        <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Design and build responsive websites and landing pages using HTML, CSS, and JavaScript, often for the same clients I run marketing campaigns for.</p>
-      </div>
-      <div class="tl-item reveal d4">
-        <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">B.Sc. in Computer Science Engineering</h3>
-        <p class="text-sm text-accent font-medium mb-2 font-body">University — in progress</p>
-        <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Building a formal foundation in algorithms, systems, and software engineering alongside full-time work.</p>
-      </div>
+<div class="tl" style="--dotbg:#050806">
+  <div class="tl-item reveal d1">
+    <div class="flex items-center gap-3 mb-1.5">
+      <h3 class="font-display font-bold text-xl text-emerald-50">IT Executive</h3>
+      <span class="text-xs bg-accent text-black px-2.5 py-0.5 rounded-full font-bold font-body">CURRENT</span>
     </div>
+    <p class="text-sm text-accent font-medium mb-2 font-body">Agamir Shomoy — News Media</p>
+    <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Manage the IT operations behind a live newsroom: system uptime, publishing infrastructure, and internal tooling, while supporting the editorial team's digital and web needs.</p>
+  </div>
+  <div class="tl-item reveal d2">
+    <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">Digital Marketing Specialist</h3>
+    <p class="text-sm text-accent font-medium mb-2 font-body">Freelance / Independent</p>
+    <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Run SEO and social-growth campaigns for clients — keyword research, content strategy, and performance reporting focused on measurable growth.</p>
+  </div>
+  <div class="tl-item reveal d3">
+    <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">Web Developer</h3>
+    <p class="text-sm text-accent font-medium mb-2 font-body">Freelance / Independent</p>
+    <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Design and build responsive websites and landing pages using HTML, CSS, and JavaScript, often for the same clients I run marketing campaigns for.</p>
+  </div>
+  <div class="tl-item reveal d4">
+    <h3 class="font-display font-bold text-xl text-emerald-50 mb-1.5">B.Sc. in Computer Science Engineering</h3>
+    <p class="text-sm text-accent font-medium mb-2 font-body">University — in progress</p>
+    <p class="text-sm text-emerald-200/60 leading-relaxed max-w-xl font-body">Building a formal foundation in algorithms, systems, and software engineering alongside full-time work.</p>
+  </div>
+</div>
+
   </div>
 </section>
 
 <!-- ═══ TRUST / SOCIAL PROOF ═══ -->
+
 <section id="reviews" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-10 items-center">
@@ -715,6 +733,7 @@ body::before{animation:grid-drift 24s linear infinite}
 </section>
 
 <!-- ═══ BLOG ═══ -->
+
 <section id="blog" class="py-24 bg-black/30 border-y border-accent/10">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
@@ -725,55 +744,57 @@ body::before{animation:grid-drift 24s linear infinite}
       <p class="reveal d1 text-xs text-emerald-200/50 font-body">click any article to read full details</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+<div class="grid md:grid-cols-3 gap-6">
 
-      <article @click="activePost = {title: 'Why Data-Driven Digital Marketing is Crucial for Brand Growth', category: 'Marketing', date: 'August 2026', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=900&q=80', content: 'In today\'s digital ecosystem, intuition alone is not enough to scale a brand. By combining advanced SEO strategies with targeted social media campaigns, businesses can turn casual browsers into loyal, repeat customers. Data analytics help us measure what works in real-time, optimizing ad spend and maximizing return on investment.'}; modalOpen = true" class="reveal d1 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
-        <div class="pf pf-wipe w-full h-44">
-          <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80" alt="Digital Marketing Strategy" loading="lazy">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3 mb-3 font-body">
-            <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">Marketing</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Why Data-Driven Digital Marketing is Crucial for Brand Growth</h3>
-          <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">Discover how combining SEO strategies with targeted social media campaigns can transform casual visitors into loyal customers.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
-        </div>
-      </article>
-
-      <article @click="activePost = {title: 'Building Fast & Responsive Web Interfaces with Clean Code', category: 'Web Dev', date: 'August 2026', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80', content: 'Performance matters. A fast-loading website not only enhances user experience but also ranks significantly higher on search engine result pages. By utilizing lightweight utility-first frameworks like Tailwind CSS and maintaining clean, modular JavaScript, developers can build scalable interfaces that load instantly across all devices.'}; modalOpen = true" class="reveal d2 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
-        <div class="pf pf-wipe w-full h-44">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80" alt="Web Development Tips" loading="lazy">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3 mb-3 font-body">
-            <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">Web Dev</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Building Fast &amp; Responsive Web Interfaces with Clean Code</h3>
-          <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">A quick look into how modern CSS frameworks and clean structure help websites load faster and rank higher on search engines.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
-        </div>
-      </article>
-
-      <article @click="activePost = {title: 'Managing IT Infrastructure in a Fast-Paced News Environment', category: 'IT Operations', date: 'August 2026', img: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80', content: 'In a live newsroom like Agamir Shomoy, system uptime and publishing reliability are everything. Managing servers, local networks, and internal publishing tools requires rigorous monitoring, rapid troubleshooting, and robust security measures to ensure seamless news broadcasting without downtime.'}; modalOpen = true" class="reveal d3 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
-        <div class="pf pf-wipe w-full h-44">
-          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=80" alt="IT Infrastructure in Newsroom" loading="lazy">
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3 mb-3 font-body">
-            <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">IT Operations</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Managing IT Infrastructure in a Fast-Paced News Environment</h3>
-          <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">An inside look at keeping publishing servers stable, securing local networks, and supporting live media workflows efficiently.</p>
-          <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
-        </div>
-      </article>
-
+  <article @click="activePost = {title: 'Why Data-Driven Digital Marketing is Crucial for Brand Growth', category: 'Marketing', date: 'August 2026', img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=900&q=80', content: 'In today\'s digital ecosystem, intuition alone is not enough to scale a brand. By combining advanced SEO strategies with targeted social media campaigns, businesses can turn casual browsers into loyal, repeat customers. Data analytics help us measure what works in real-time, optimizing ad spend and maximizing return on investment.'}; modalOpen = true" class="reveal d1 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
+    <div class="pf pf-wipe w-full h-44">
+      <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=700&q=80" alt="Digital Marketing Strategy" loading="lazy">
     </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-3 font-body">
+        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">Marketing</span>
+      </div>
+      <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Why Data-Driven Digital Marketing is Crucial for Brand Growth</h3>
+      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">Discover how combining SEO strategies with targeted social media campaigns can transform casual visitors into loyal customers.</p>
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
+    </div>
+  </article>
+
+  <article @click="activePost = {title: 'Building Fast & Responsive Web Interfaces with Clean Code', category: 'Web Dev', date: 'August 2026', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80', content: 'Performance matters. A fast-loading website not only enhances user experience but also ranks significantly higher on search engine result pages. By utilizing lightweight utility-first frameworks like Tailwind CSS and maintaining clean, modular JavaScript, developers can build scalable interfaces that load instantly across all devices.'}; modalOpen = true" class="reveal d2 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
+    <div class="pf pf-wipe w-full h-44">
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80" alt="Web Development Tips" loading="lazy">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-3 font-body">
+        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">Web Dev</span>
+      </div>
+      <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Building Fast &amp; Responsive Web Interfaces with Clean Code</h3>
+      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">A quick look into how modern CSS frameworks and clean structure help websites load faster and rank higher on search engines.</p>
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
+    </div>
+  </article>
+
+  <article @click="activePost = {title: 'Managing IT Infrastructure in a Fast-Paced News Environment', category: 'IT Operations', date: 'August 2026', img: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80', content: 'In a live newsroom like Agamir Shomoy, system uptime and publishing reliability are everything. Managing servers, local networks, and internal publishing tools requires rigorous monitoring, rapid troubleshooting, and robust security measures to ensure seamless news broadcasting without downtime.'}; modalOpen = true" class="reveal d3 card-h group bg-black/40 neon-border rounded-2xl overflow-hidden cursor-pointer">
+    <div class="pf pf-wipe w-full h-44">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&q=80" alt="IT Infrastructure in Newsroom" loading="lazy">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-3 font-body">
+        <span class="text-xs bg-accent/10 text-accent border border-accent/30 px-2.5 py-1 rounded-full">IT Operations</span>
+      </div>
+      <h3 class="font-display font-bold text-lg text-emerald-50 mb-2 group-hover:text-accent transition-colors">Managing IT Infrastructure in a Fast-Paced News Environment</h3>
+      <p class="text-sm text-emerald-200/60 leading-relaxed mb-4 font-body">An inside look at keeping publishing servers stable, securing local networks, and supporting live media workflows efficiently.</p>
+      <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent font-body">read_full_article →</span>
+    </div>
+  </article>
+
+</div>
+
   </div>
 </section>
 
 <!-- BLOG MODAL POPUP -->
+
 <div x-show="modalOpen" x-cloak class="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
      x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
      x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -795,84 +816,86 @@ body::before{animation:grid-drift 24s linear infinite}
 </div>
 
 <!-- ═══ CONTACT ═══ -->
+
 <section id="contact" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="bg-black/50 neon-border rounded-3xl p-10 md:p-16 relative overflow-hidden shadow-xl">
       <div class="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none drift" aria-hidden="true"></div>
       <div class="absolute bottom-0 left-0 w-40 h-40 bg-accent-light/10 rounded-full blur-2xl pointer-events-none drift-slow" aria-hidden="true"></div>
 
-      <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
+  <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
 
-        <div>
-          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// get_in_touch</p>
-          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 leading-tight mb-5">Let's work<br>together</h2>
-          <p class="reveal d2 text-emerald-200/60 leading-relaxed mb-8 font-body text-sm">Open to freelance web development and digital marketing projects, plus collaborations that touch news-media technology. Short or long-term — let's talk.</p>
+    <div>
+      <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3 font-body">// get_in_touch</p>
+      <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-emerald-50 leading-tight mb-5">Let's work<br>together</h2>
+      <p class="reveal d2 text-emerald-200/60 leading-relaxed mb-8 font-body text-sm">Open to freelance web development and digital marketing projects, plus collaborations that touch news-media technology. Short or long-term — let's talk.</p>
 
-          <div class="reveal d3 flex flex-col gap-4 font-body">
-            <a href="mailto:naeeminsight@gmail.com" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
-              <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              </span>
-              <span class="text-sm">naeeminsight@gmail.com</span>
-            </a>
-            <a href="tel:+8801307707245" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
-              <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              </span>
-              <span class="text-sm">+88 01307707245</span>
-            </a>
-            <a href="https://www.facebook.com/naeemhossen.me/" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
-              <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </span>
-              <span class="text-sm">Naeem Insight (Facebook)</span>
-            </a>
-            <a href="https://github.com/naeeminsights" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
-              <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              </span>
-              <span class="text-sm">github.com/naeeminsights</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="reveal d2">
-          <form @submit.prevent="submitForm($event)" class="font-body">
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-            <div class="flex flex-col gap-4">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="fname" class="block text-xs font-medium text-emerald-200/60 mb-1.5">name <span aria-hidden="true">*</span></label>
-                  <input type="text" id="fname" name="name" placeholder="Jane Smith" required autocomplete="name"
-                    class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors">
-                </div>
-                <div>
-                  <label for="femail" class="block text-xs font-medium text-emerald-200/60 mb-1.5">email <span aria-hidden="true">*</span></label>
-                  <input type="email" id="femail" name="email" placeholder="jane@company.com" required autocomplete="email"
-                    class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors">
-                </div>
-              </div>
-              <div>
-                <label for="fsubject" class="block text-xs font-medium text-emerald-200/60 mb-1.5">subject</label>
-                <input type="text" id="fsubject" name="subject" placeholder="Project inquiry"
-                  class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors">
-              </div>
-              <!-- Honeypot: keep empty; helps reduce simple bot spam -->
-              <input type="text" name="botcheck" tabindex="-1" autocomplete="off" class="absolute left-[-9999px] opacity-0" aria-hidden="true">
-              <div>
-                <label for="fmessage" class="block text-xs font-medium text-emerald-200/60 mb-1.5">message <span aria-hidden="true">*</span></label>
-                <textarea id="fmessage" name="message" rows="4" placeholder="Tell me about your project..." required
-                  class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
-              </div>
-              <button type="submit" class="shimmer w-full bg-accent text-black font-display font-bold text-sm py-3.5 rounded-xl">
-                send_message() →
-              </button>
-            </div>
-          </form>
-        </div>
-
+      <div class="reveal d3 flex flex-col gap-4 font-body">
+        <a href="mailto:naeeminsight@gmail.com" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
+          <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </span>
+          <span class="text-sm">naeeminsight@gmail.com</span>
+        </a>
+        <a href="tel:+8801307707245" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
+          <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </span>
+          <span class="text-sm">+88 01307707245</span>
+        </a>
+        <a href="https://www.facebook.com/naeemhossen.me/" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
+          <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </span>
+          <span class="text-sm">Naeem Insight (Facebook)</span>
+        </a>
+        <a href="https://github.com/naeeminsights" rel="noopener noreferrer" target="_blank" class="group flex items-center gap-3 text-emerald-200/60 hover:text-accent transition-colors">
+          <span class="w-9 h-9 flex items-center justify-center bg-accent/10 border border-accent/25 rounded-lg group-hover:bg-accent/20 transition-colors shrink-0">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </span>
+          <span class="text-sm">github.com/naeeminsights</span>
+        </a>
       </div>
     </div>
+
+    <div class="reveal d2">
+      <form @submit.prevent="submitForm($event)" class="font-body">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <div class="flex flex-col gap-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="fname" class="block text-xs font-medium text-emerald-200/60 mb-1.5">name <span aria-hidden="true">*</span></label>
+              <input type="text" id="fname" name="name" placeholder="Jane Smith" required autocomplete="name"
+                class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors">
+            </div>
+            <div>
+              <label for="femail" class="block text-xs font-medium text-emerald-200/60 mb-1.5">email <span aria-hidden="true">*</span></label>
+              <input type="email" id="femail" name="email" placeholder="jane@company.com" required autocomplete="email"
+                class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors">
+            </div>
+          </div>
+          <div>
+            <label for="fsubject" class="block text-xs font-medium text-emerald-200/60 mb-1.5">subject</label>
+            <input type="text" id="fsubject" name="subject" placeholder="Project inquiry"
+              class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors">
+          </div>
+          <!-- Honeypot: keep empty; helps reduce simple bot spam -->
+          <input type="text" name="botcheck" tabindex="-1" autocomplete="off" class="absolute left-[-9999px] opacity-0" aria-hidden="true">
+          <div>
+            <label for="fmessage" class="block text-xs font-medium text-emerald-200/60 mb-1.5">message <span aria-hidden="true">*</span></label>
+            <textarea id="fmessage" name="message" rows="4" placeholder="Tell me about your project..." required
+              class="w-full bg-black/60 border border-accent/25 text-emerald-50 text-sm rounded-xl px-4 py-3 placeholder-emerald-200/30 focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" class="shimmer w-full bg-accent text-black font-display font-bold text-sm py-3.5 rounded-xl">
+            send_message() →
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
   </div>
 </section>
 
@@ -890,13 +913,13 @@ body::before{animation:grid-drift 24s linear infinite}
 </footer>
 
 <button
-  x-show="sc && booted" x-cloak
-  x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-  x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2"
-  @click="window.scrollTo({top:0,behavior:'smooth'})"
-  class="fixed top-20 right-6 z-50 w-11 h-11 rounded-full bg-accent text-black shadow-lg flex items-center justify-center hover:translate-y-[-2px] transition-all"
-  aria-label="Back to top">
-  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+x-show="sc && booted" x-cloak
+x-transition="transition ease-out duration-200" x-transition="opacity-0 translate-y-2" x-transition="opacity-100 translate-y-0"
+x-transition="transition ease-in duration-150" x-transition="opacity-100 translate-y-0" x-transition="opacity-0 translate-y-2"
+@click="window.scrollTo({top:0,behavior:'smooth'})"
+class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-accent text-black shadow-lg flex items-center justify-center hover:-translate-y-0.5 transition-all"
+aria-label="Back to top">
+<svg class="w-4 h-4 -translate-y-px" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
 </button>
 
 <!-- SETUP BEFORE PUBLISHING:
@@ -906,6 +929,7 @@ body::before{animation:grid-drift 24s linear infinite}
   4. Replace demo project text/images with your real work and URLs
   5. Add only verified testimonials; never use placeholder client reviews
 -->
+
 <script>
 function app() {
   return {
@@ -976,34 +1000,13 @@ function app() {
       setTimeout(() => { this.toastOpen = false; }, 3500);
     },
 
-    async sharePortfolio() {
-      const shareData = {
-        title: 'Naeem Hossen — Portfolio',
-        text: 'Check out Naeem Hossen’s portfolio — IT, Digital Marketing & Web Development.',
-        url: window.location.href
-      };
-
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-          return;
-        }
-
-        await navigator.clipboard.writeText(window.location.href);
-        this.showToast('[ ✓ Portfolio link copied! ]');
-      } catch (err) {
-        if (err?.name === 'AbortError') return;
-        try {
-          await navigator.clipboard.writeText(window.location.href);
-          this.showToast('[ ✓ Portfolio link copied! ]');
-        } catch (copyErr) {
-          this.showToast('[ ✕ Share failed — copy the URL manually. ]');
-        }
-      }
-    },
-
     async copyLink() {
-      return this.sharePortfolio();
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        this.showToast('[ ✓ Link copied to clipboard! ]');
+      } catch (err) {
+        this.showToast('[ ✕ Copy failed — copy the URL manually. ]');
+      }
     },
 
     async submitForm(e) {
@@ -1118,90 +1121,91 @@ function app() {
 
 /* ═══ IMAGE WIPE-REVEAL (runs always, independent of other effects) ═══ */
 (function(){
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const wipes = document.querySelectorAll('.pf-wipe');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const wipes = document.querySelectorAll('.pf-wipe');
 
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    // No motion / no IO support: just show the images immediately.
-    wipes.forEach(el => el.classList.add('in'));
-  } else {
-    const wipeIo = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('in');
-        wipeIo.unobserve(entry.target);
-      });
-    }, {threshold:.15, rootMargin:'0px 0px -20px 0px'});
-    wipes.forEach(el => wipeIo.observe(el));
-  }
+if (reduceMotion || !('IntersectionObserver' in window)) {
+// No motion / no IO support: just show the images immediately.
+wipes.forEach(el => el.classList.add('in'));
+} else {
+const wipeIo = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (!entry.isIntersecting) return;
+entry.target.classList.add('in');
+wipeIo.unobserve(entry.target);
+});
+}, {threshold:.15, rootMargin:'0px 0px -20px 0px'});
+wipes.forEach(el => wipeIo.observe(el));
+}
 
-  // Safety net: whatever happens above, guarantee every thumbnail is visible
-  // within 1.5s no matter what (covers script errors, odd browsers, etc).
-  setTimeout(() => wipes.forEach(el => el.classList.add('in')), 1500);
+// Safety net: whatever happens above, guarantee every thumbnail is visible
+// within 1.5s no matter what (covers script errors, odd browsers, etc).
+setTimeout(() => wipes.forEach(el => el.classList.add('in')), 1500);
 })();
 
 /* ═══ PREMIUM INTERACTION LAYER ═══ */
 (function(){
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) return;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce) return;
 
-  /* Pointer spotlight for desktop */
-  const glow=document.createElement('div');
-  glow.className='cursor-glow';
-  document.body.appendChild(glow);
-  let gx=window.innerWidth/2, gy=window.innerHeight/2, tx=gx, ty=gy;
-  window.addEventListener('pointermove',e=>{
-    tx=e.clientX; ty=e.clientY; glow.classList.add('on');
-    const card=e.target.closest('.card-h');
-    if(card){const r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');}
-  },{passive:true});
-  window.addEventListener('pointerleave',()=>glow.classList.remove('on'),{passive:true});
-  function animateGlow(){gx+=(tx-gx)*.12;gy+=(ty-gy)*.12;glow.style.transform=`translate3d(${gx}px,${gy}px,0) translate(-50%,-50%)`;requestAnimationFrame(animateGlow)}
-  animateGlow();
+/* Pointer spotlight for desktop */
+const glow=document.createElement('div');
+glow.className='cursor-glow';
+document.body.appendChild(glow);
+let gx=window.innerWidth/2, gy=window.innerHeight/2, tx=gx, ty=gy;
+window.addEventListener('pointermove',e=>{
+tx=e.clientX; ty=e.clientY; glow.classList.add('on');
+const card=e.target.closest('.card-h');
+if(card){const r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');}
+},{passive:true});
+window.addEventListener('pointerleave',()=>glow.classList.remove('on'),{passive:true});
+function animateGlow(){gx+=(tx-gx)*.12;gy+=(ty-gy)*.12;glow.style.transform=`translate3d(${gx}px,${gy}px,0) translate(-50%,-50%)`;requestAnimationFrame(animateGlow)}
+animateGlow();
 
-  /* Stagger repeated cards as they enter the viewport */
-  const groups=['.card-h','.stag','.tl-item'];
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting)return;
-      const parent=entry.target.parentElement;
-      if(parent){
-        [...parent.children].filter(el=>el.matches('.card-h,.stag,.tl-item')).forEach((el,i)=>el.style.transitionDelay=(Math.min(i,5)*70)+'ms');
-      }
-      io.unobserve(entry.target);
-    });
-  },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll(groups.join(',')).forEach(el=>io.observe(el));
+/* Stagger repeated cards as they enter the viewport */
+const groups=['.card-h','.stag','.tl-item'];
+const io=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(!entry.isIntersecting)return;
+const parent=entry.target.parentElement;
+if(parent){
+[...parent.children].filter(el=>el.matches('.card-h,.stag,.tl-item')).forEach((el,i)=>el.style.transitionDelay=(Math.min(i,5)*70)+'ms');
+}
+io.unobserve(entry.target);
+});
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll(groups.join(',')).forEach(el=>io.observe(el));
 
-  /* Small tilt only on desktop project/cards */
-  if(window.matchMedia('(min-width:1024px)').matches){
-    document.querySelectorAll('.card-h').forEach(card=>{
-      card.addEventListener('pointermove',e=>{
-        const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-        card.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-y*1.5).toFixed(2)}deg) rotateY(${(x*1.5).toFixed(2)}deg)`;
-      });
-      card.addEventListener('pointerleave',()=>{card.style.transform=''});
-    });
-  }
+/* Small tilt only on desktop project/cards */
+if(window.matchMedia('(min-width:1024px)').matches){
+document.querySelectorAll('.card-h').forEach(card=>{
+card.addEventListener('pointermove',e=>{
+const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+card.style.transform=`translateY(-6px) perspective(900px) rotateX(${(-y*1.5).toFixed(2)}deg) rotateY(${(x*1.5).toFixed(2)}deg)`;
+});
+card.addEventListener('pointerleave',()=>{card.style.transform=''});
+});
+}
 
-  /* Magnetic pull on primary CTA buttons (desktop pointer only) */
-  if(window.matchMedia('(pointer:fine)').matches){
-    document.querySelectorAll('.magnet').forEach(btn=>{
-      let raf=null;
-      btn.addEventListener('pointermove',e=>{
-        const r=btn.getBoundingClientRect();
-        const mx=(e.clientX-r.left-r.width/2)*.28;
-        const my=(e.clientY-r.top-r.height/2)*.35;
-        if(raf)cancelAnimationFrame(raf);
-        raf=requestAnimationFrame(()=>{btn.style.transform=`translate(${mx}px,${my}px)`;});
-      });
-      btn.addEventListener('pointerleave',()=>{
-        if(raf)cancelAnimationFrame(raf);
-        btn.style.transform='';
-      });
-    });
-  }
+/* Magnetic pull on primary CTA buttons (desktop pointer only) */
+if(window.matchMedia('(pointer:fine)').matches){
+document.querySelectorAll('.magnet').forEach(btn=>{
+let raf=null;
+btn.addEventListener('pointermove',e=>{
+const r=btn.getBoundingClientRect();
+const mx=(e.clientX-r.left-r.width/2)*.28;
+const my=(e.clientY-r.top-r.height/2)*.35;
+if(raf)cancelAnimationFrame(raf);
+raf=requestAnimationFrame(()=>{btn.style.transform=`translate(${mx}px,${my}px)`;});
+});
+btn.addEventListener('pointerleave',()=>{
+if(raf)cancelAnimationFrame(raf);
+btn.style.transform='';
+});
+});
+}
 })();
 </script>
+
 </body>
 </html>
