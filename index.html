@@ -4,16 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2563eb">
-<meta name="description" content="Naeem Hossen — IT Executive at Agamir Shomoy, Digital Marketing Specialist &amp; Web Developer.">
-<meta name="keywords" content="Naeem Hossen, IT Executive, Digital Marketing Specialist, Web Developer, SEO, IT Support, portfolio">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://your-domain.com/">
+
+<!-- SEO Optimization for Naeem Hossen & Naeem Insight -->
+<meta name="description" content="Naeem Hossen (Naeem Insight) — IT Executive at Agamir Shomoy, Digital Marketing Specialist & Web Developer in Dhaka, Bangladesh.">
+<meta name="keywords" content="Naeem Hossen, Naeem Insight, IT Executive, Digital Marketing Specialist, Web Developer, SEO Expert Bangladesh, IT Support, portfolio">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://naeeminsight.com/">
 <meta name="author" content="Naeem Hossen">
-<meta property="og:title" content="Naeem Hossen — IT Executive &amp; Web Developer">
-<meta property="og:description" content="Systems, security-minded reliability, and growth — in one profile.">
+
+<!-- Open Graph / Social Media Meta Tags -->
+<meta property="og:site_name" content="Naeem Insight">
+<meta property="og:title" content="Naeem Hossen | Naeem Insight — IT Executive & Web Developer">
+<meta property="og:description" content="Systems, security-minded reliability, and growth — in one profile by Naeem Hossen.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://naeeminsight.com/">
+<meta property="og:image" content="https://naeeminsight.com/naeem.jpg">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23090d16'/%3E%3Ctext x='50' y='69' font-size='58' font-family='sans-serif' font-weight='bold' fill='%233b82f6' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
-<title>Naeem Hossen — IT Executive, Digital Marketer &amp; Web Developer</title>
+<title>Naeem Hossen (Naeem Insight) — IT Executive & Web Developer</title>
+
+<!-- JSON-LD Structured Data for Google Search Knowledge Graph -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://naeeminsight.com/#person",
+      "name": "Naeem Hossen",
+      "alternateName": "Naeem Insight",
+      "url": "https://naeeminsight.com/",
+      "image": "https://naeeminsight.com/naeem.jpg",
+      "jobTitle": "IT Executive & Digital Marketing Specialist",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Agamir Shomoy"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dhaka",
+        "addressCountry": "Bangladesh"
+      },
+      "sameAs": [
+        "https://www.facebook.com/naeemhossen.me/",
+        "https://github.com/naeeminsights"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://naeeminsight.com/#website",
+      "url": "https://naeeminsight.com/",
+      "name": "Naeem Insight",
+      "publisher": {
+        "@id": "https://naeeminsight.com/#person"
+      }
+    }
+  ]
+}
+</script>
 
 <!-- Tailwind & Alpine JS -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -45,13 +93,13 @@ body::before{
   background-size:40px 40px;
 }
 
-/* Scrollbar */
+/* Scrollbar Selection */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#090d16}
 ::-webkit-scrollbar-thumb{background:#334155;border-radius:99px}
 ::selection{background:#3b82f6;color:#fff}
 
-/* Animations */
+/* Smooth Reveal Animations */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
@@ -84,7 +132,7 @@ body::before{
 @keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .float-photo{animation:float-y 5s ease-in-out infinite}
 
-/* Blog Article Rich Text Styling */
+/* Modal Article Elements */
 .sheet{background:linear-gradient(180deg,#0f172a 0%,#090d16 60%);border:1px solid rgba(59,130,246,0.3);box-shadow:0 40px 120px -30px rgba(0,0,0,.95)}
 .article p{color:#94a3b8;line-height:1.85;font-size:.95rem;margin-bottom:1.25rem;}
 .article h4{font-family:'Plus Jakarta Sans',sans-serif;color:#f8fafc;font-weight:700;font-size:1.15rem;margin-top:2rem;margin-bottom:1rem;display:flex;gap:.55rem;align-items:baseline}
@@ -138,7 +186,7 @@ body::before{
 <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300" :class="sc?'bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80':''">
   <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
     <a href="#hero" class="font-display font-bold text-xl tracking-tight text-white flex items-center gap-1">
-      naeem<span class="text-blue-500">.</span>hossen<span class="text-blue-400 animate-pulse">_</span>
+      naeem<span class="text-blue-500">.</span>insight<span class="text-blue-400 animate-pulse">_</span>
     </a>
 
     <ul class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300 font-mono" role="list">
@@ -238,11 +286,12 @@ body::before{
                 <span class="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]"></span>
                 <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
               </div>
-              <span class="text-[11px] font-mono text-slate-400 tracking-wider font-semibold">~/Naeem Insight</span>
+              <span class="text-[11px] font-mono text-slate-400 tracking-wider font-semibold">~/naeem_insight/naeem.jpg</span>
               <span class="w-4"></span>
             </div>
             <div class="relative flex-1 overflow-hidden bg-slate-900">
-              <img src="naeem.jpg" alt="Naeem Hossen" class="w-full h-full object-cover filter contrast-[1.05] saturate-[1.05] group-hover:scale-105 transition-transform duration-700 ease-out">
+              <img src="naeem.jpg" alt="Naeem Hossen - Naeem Insight" class="w-full h-full object-cover filter contrast-[1.05] saturate-[1.05] group-hover:scale-105 transition-transform duration-700 ease-out">
+              <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay pointer-events-none"></div>
             </div>
           </div>
 
@@ -328,7 +377,7 @@ body::before{
       </div>
       <div class="card-h rounded-2xl p-8 border-blue-500/30 bg-blue-900/10 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent pointer-events-none"></div>
-        <h3 class="font-display font-bold text-xl text-white mb-3 relative z-10">Digital Marketing</h3>
+        <h3 class="font-display font-bold text-xl text-white mb-3 relative z-10">Digital Marketing &amp; SEO</h3>
         <p class="text-sm text-slate-300 leading-relaxed font-mono relative z-10">SEO, social media strategy, and content that's measured, not guessed — keyword research, on-page fixes, and reporting tied to real growth.</p>
       </div>
       <div class="card-h rounded-2xl p-8">
@@ -383,7 +432,7 @@ body::before{
       <article @click="activeProject = {title: 'Agamir Shomoy — Digital Desk', cat: 'News Media & IT Ops', img: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80', desc: 'Managed full IT operations, server stability, local networking, and internal publishing workflows for a major news media organization in Dhaka. Responsible for uptime monitoring, ensuring the editorial team experiences zero disruption during high-traffic breaking news events.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group md:row-span-2 flex flex-col">
         <div class="w-full h-64 md:flex-1 overflow-hidden bg-slate-900 relative">
           <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay z-10 pointer-events-none transition-opacity group-hover:opacity-0"></div>
-          <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80" alt="Newsroom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+          <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80" alt="Newsroom IT Setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
         </div>
         <div class="p-7">
           <div class="flex gap-2 mb-4 font-mono">
@@ -399,7 +448,7 @@ body::before{
       <article @click="activeProject = {title: 'SEO Growth Campaign', cat: 'Search Engine Optimization', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80', desc: 'Executed comprehensive keyword audits, technical on-page fixes, and analytics tracking to skyrocket organic visibility. Fixed critical indexing errors and optimized the site architecture, resulting in a consistent increase in qualified organic traffic over a 6-month period.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group">
         <div class="w-full h-48 overflow-hidden bg-slate-900 relative">
           <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay z-10 pointer-events-none transition-opacity group-hover:opacity-0"></div>
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO Marketing Analytics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
         </div>
         <div class="p-6">
           <div class="flex gap-2 mb-3 font-mono">
@@ -415,7 +464,7 @@ body::before{
       <article @click="activeProject = {title: 'Business Landing Page Build', cat: 'Web Development', img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80', desc: 'Designed and developed high-converting, lightning-fast responsive landing pages using modern frontend tools like Tailwind CSS and Alpine.js. Optimized assets and removed heavy dependencies to ensure top scores in Google Core Web Vitals.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group">
         <div class="w-full h-48 overflow-hidden bg-slate-900 relative">
           <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay z-10 pointer-events-none transition-opacity group-hover:opacity-0"></div>
-          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Landing page" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Web Development Landing Page" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
         </div>
         <div class="p-6">
           <div class="flex gap-2 mb-3 font-mono">
@@ -432,11 +481,11 @@ body::before{
 
 <!-- PROJECT MODAL -->
 <div x-show="projectModalOpen" x-cloak class="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md"
-     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
   <div @click.outside="projectModalOpen = false" class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
     <button @click="projectModalOpen = false" class="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors">&times;</button>
-    <img :src="activeProject.img" alt="Cover" class="w-full h-64 object-cover rounded-xl mb-6">
+    <img :src="activeProject.img" alt="Project Thumbnail" class="w-full h-64 object-cover rounded-xl mb-6">
     <span class="text-xs badge px-3 py-1 rounded-full inline-block mb-3 font-mono" x-text="activeProject.cat"></span>
     <h2 class="font-display font-bold text-2xl text-white mb-3" x-text="activeProject.title"></h2>
     <p class="text-slate-300 text-sm font-mono leading-relaxed mb-6" x-text="activeProject.desc"></p>
@@ -452,22 +501,19 @@ body::before{
       <!-- ABOUT IMAGE (Modern Corporate Offset Frame - naeem2.jpg) -->
       <div class="order-2 lg:order-1 flex justify-center">
         <div class="relative w-72 h-72 sm:w-80 sm:h-80 group">
-          <!-- Offset Background Frame -->
-          <div class="absolute inset-0 bg-slate-800 rounded-2xl border border-slate-700 transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+          <div class="absolute inset-0 bg-blue-900/30 rounded-2xl border border-blue-500/20 transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 shadow-2xl"></div>
           
-          <!-- Main Image Card -->
           <div class="relative w-full h-full rounded-2xl overflow-hidden border border-slate-600 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-slate-900 z-10 transition-transform duration-500 group-hover:-translate-y-2">
             <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"></div>
-            <img src="naeem2.jpg" alt="Naeem Hossen" class="w-full h-full object-cover">
+            <img src="naeem2.jpg" alt="Naeem Hossen - IT Executive" class="w-full h-full object-cover">
           </div>
           
-          <!-- Elegant Corporate Badge -->
           <div class="absolute -bottom-4 -left-4 sm:-left-6 bg-slate-900 border border-blue-500/40 text-slate-300 font-mono text-xs px-5 py-3 rounded-xl shadow-2xl z-20 flex items-center gap-3 transition-transform duration-500 group-hover:-translate-y-2">
             <span class="relative flex h-2.5 w-2.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
             </span>
-            <span class="font-semibold text-white">System Admin</span>
+            <span class="font-semibold text-white">Naeem Insight</span>
           </div>
         </div>
       </div>
@@ -477,7 +523,7 @@ body::before{
         <p class="text-xs font-mono text-blue-400 uppercase tracking-widest mb-2">// whoami</p>
         <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6">A bit about who I am</h2>
         <p class="text-slate-400 text-sm font-mono leading-relaxed mb-4">
-          <span class="text-blue-500">&gt;</span> I'm Naeem Hossen, an IT Executive at Agamir Shomoy, a news media organization, where I keep the digital desk running — web infrastructure, publishing tools, and everyday technology.
+          <span class="text-blue-500">&gt;</span> I'm <strong>Naeem Hossen</strong> (also known online as <strong>Naeem Insight</strong>), an IT Executive at Agamir Shomoy. I keep the digital desk running — web infrastructure, publishing tools, and everyday technology.
         </p>
         <p class="text-slate-400 text-sm font-mono leading-relaxed mb-4">
           <span class="text-blue-500">&gt;</span> Alongside that, I work as a Digital Marketing Specialist and Web Developer, and I'm studying Computer Science Engineering.
@@ -492,7 +538,6 @@ body::before{
           <span class="stag chip px-3.5 py-1.5 rounded-full">Social Media Strategy</span>
           <span class="stag chip px-3.5 py-1.5 rounded-full">Google Analytics</span>
           <span class="stag chip px-3.5 py-1.5 rounded-full">IT Systems &amp; Support</span>
-          <span class="stag chip px-3.5 py-1.5 rounded-full">Algorithms &amp; DSA</span>
         </div>
       </div>
     </div>
@@ -518,7 +563,7 @@ body::before{
       </div>
       <div class="tl-item">
         <h3 class="font-display font-bold text-lg text-white mb-1">Digital Marketing Specialist</h3>
-        <p class="text-xs text-blue-400 font-mono mb-2">Freelance / Independent</p>
+        <p class="text-xs text-blue-400 font-mono mb-2">Freelance / Naeem Insight</p>
         <p class="text-sm text-slate-400 font-mono leading-relaxed max-w-xl">Run SEO and social-growth campaigns for clients — keyword research, content strategy, and performance reporting.</p>
       </div>
       <div class="tl-item">
@@ -563,7 +608,7 @@ body::before{
 </section>
 
 <!-- BLOG -->
-<section id="blog" class="py-24" x-data="{ cat: 'all' }">
+<section id="blog" class="py-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
       <div>
@@ -630,11 +675,11 @@ body::before{
 
 <!-- BLOG MODAL (Rich Text Enabled) -->
 <div x-show="modalOpen" x-cloak class="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 bg-slate-950/90 backdrop-blur-md"
-     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
   <div @click.outside="modalOpen = false" class="sheet rounded-3xl max-w-3xl w-full relative max-h-[92vh] overflow-y-auto">
     <div class="relative h-52 sm:h-72">
-      <img :src="activePost.img" alt="" class="w-full h-full object-cover">
+      <img :src="activePost.img" alt="Blog Feature" class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-gradient-to-t from-[#090d16] via-[#090d16]/50 to-transparent"></div>
       <button @click="modalOpen = false" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-slate-900/80 border border-slate-700 text-slate-400 hover:text-white transition-colors">&times;</button>
       <div class="absolute bottom-0 inset-x-0 p-6 sm:p-9">
@@ -644,11 +689,11 @@ body::before{
     </div>
     <div class="p-6 sm:p-9">
       <div class="flex flex-wrap items-center text-[11px] font-mono text-slate-400 mb-5">
-        <span class="text-blue-400 font-bold">naeem_hossen</span><span class="meta-dot"></span><span x-text="activePost.date"></span><span class="meta-dot"></span><span x-text="activePost.read"></span>
+        <span class="text-blue-400 font-bold">naeem_insight</span><span class="meta-dot"></span><span x-text="activePost.date"></span><span class="meta-dot"></span><span x-text="activePost.read"></span>
       </div>
       <div class="rule mb-7"></div>
       
-      <!-- Rich Text Article Body -->
+      <!-- Rich Text Article Body via x-html -->
       <div class="article font-mono text-[13px] sm:text-sm">
         <template x-for="(b, i) in (activePost.body || [])" :key="i">
           <div class="mb-4">
@@ -732,7 +777,7 @@ body::before{
   <div class="max-w-6xl mx-auto px-6 pt-14 pb-10">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
       <div class="lg:col-span-2">
-        <a href="#hero" class="font-display font-bold text-xl text-white">naeem<span class="text-blue-500">.</span>hossen</a>
+        <a href="#hero" class="font-display font-bold text-xl text-white">naeem<span class="text-blue-500">.</span>insight</a>
         <p class="text-slate-400 leading-relaxed mt-4 max-w-sm">IT Executive at Agamir Shomoy. Freelance digital marketing specialist and web developer, based in Dhaka, Bangladesh.</p>
       </div>
       <div>
@@ -756,7 +801,7 @@ body::before{
     </div>
     <div class="rule mb-6"></div>
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
-      <p>&copy; <span id="yr"></span> Naeem Hossen. All rights reserved.</p>
+      <p>&copy; <span id="yr"></span> Naeem Hossen (Naeem Insight). All rights reserved.</p>
       <p>Built with Tailwind CSS &amp; Alpine.js</p>
     </div>
   </div>
@@ -783,8 +828,13 @@ function app() {
     toastOpen: false,
     toastMsg: '',
     terminalLog: 'Initializing secure connection...',
+    cat: 'all',
+    modalOpen: false,
+    activePost: {},
+    projectModalOpen: false,
+    activeProject: {},
     bootLines: [
-      'booting naeem_portfolio.exe',
+      'booting naeem_insight.exe',
       'loading modules: web-dev, digital-marketing, it-security',
       'establishing secure connection...',
       'access granted — welcome'
@@ -865,9 +915,9 @@ function app() {
         tags: ["Performance", "UX", "Metrics"],
         body: [
           {p: "Core Web Vitals sound like an overly complex specialist topic, but each metric is really just a formalised version of a complaint a normal visitor would make out loud while using your website. Once you translate them, the fixes become obvious."},
-          {h: "LCP — did the page load?", p: "<strong>Largest Contentful Paint (LCP)</strong> measures how long the biggest visible element takes to appear, usually the hero image or the main `H1` headline. Slow LCP is nearly always caused by a heavy hero image, a render-blocking CSS stylesheet, or a slow server response. <br><br><strong>The Fix:</strong> Compress the image to WebP, preload it in the `<head>`, and stop blocking the render with heavy Google fonts you could load asynchronously using `font-display: swap`."},
+          {h: "LCP — did the page load?", p: "<strong>Largest Contentful Paint (LCP)</strong> measures how long the biggest visible element takes to appear, usually the hero image or the main headline. Slow LCP is nearly always caused by a heavy hero image, a render-blocking CSS stylesheet, or a slow server response. <br><br><strong>The Fix:</strong> Compress the image to WebP, preload it in the `<head>`, and stop blocking the render with heavy Google fonts you could load asynchronously using `font-display: swap`."},
           {h: "INP — did it respond when I tapped?", p: "<strong>Interaction to Next Paint (INP)</strong> measures the delay between a tap or click and something visibly happening on screen. Poor scores usually come from long JavaScript tasks hogging the browser's main thread. Breaking work into smaller chunks and removing third-party tracking scripts that are not earning their weight fixes most cases."},
-          {h: "CLS — did it stay still?", p: "<strong>Cumulative Layout Shift (CLS)</strong> is the frustrating one: you go to tap a link, an ad or image loads above it, and the page jumps, making you click the wrong thing. The cure is boring and reliable — reserve space for every image, ad slot, and iframe before it loads by explicitly setting `width` and `height` attributes."}
+          {h: "CLS — did it stay still?", p: "<strong>Cumulative Layout Shift (CLS)</strong> is the frustrating one: you go to tap a link, an ad or image loads above it, and the page jumps, making you click the wrong thing. The cure is boring and reliable — reserve space for every image, ad slot, and iframe before it loads by explicitly setting <code>width</code> and <code>height</code> attributes."}
         ]
       },
       {
@@ -938,14 +988,14 @@ function app() {
     postsBy(c) { return c === 'all' ? this.posts : this.posts.filter(p => p.cat === c); },
     gridPosts(c) { const l = this.postsBy(c); return c === 'all' ? l.slice(1) : l; },
     init() {
-      document.body.style.overflow = 'hidden';
+      // On load initialization
       let i = 0;
       const iv = setInterval(() => {
         i++;
         this.bootIndex = i;
         if (i >= this.bootLines.length) {
           clearInterval(iv);
-          setTimeout(() => { this.booted = true; document.body.style.overflow = ''; }, 600);
+          setTimeout(() => { this.booted = true; }, 600);
         }
       }, 400);
 
