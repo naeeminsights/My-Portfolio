@@ -45,13 +45,13 @@ body::before{
   background-size:40px 40px;
 }
 
-/* Scrollbar Selection */
+/* Scrollbar */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:#090d16}
 ::-webkit-scrollbar-thumb{background:#334155;border-radius:99px}
 ::selection{background:#3b82f6;color:#fff}
 
-/* Smooth Reveal Animations */
+/* Animations */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
@@ -84,11 +84,14 @@ body::before{
 @keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .float-photo{animation:float-y 5s ease-in-out infinite}
 
-/* Modal Article Elements */
+/* Blog Article Rich Text Styling */
 .sheet{background:linear-gradient(180deg,#0f172a 0%,#090d16 60%);border:1px solid rgba(59,130,246,0.3);box-shadow:0 40px 120px -30px rgba(0,0,0,.95)}
-.article p{color:#94a3b8;line-height:1.85;font-size:.95rem}
-.article h4{font-family:'Plus Jakarta Sans',sans-serif;color:#f8fafc;font-weight:700;font-size:1.05rem;margin-top:1.9rem;margin-bottom:.6rem;display:flex;gap:.55rem;align-items:baseline}
-.article h4::before{content:'#';color:#3b82f6}
+.article p{color:#94a3b8;line-height:1.85;font-size:.95rem;margin-bottom:1.25rem;}
+.article h4{font-family:'Plus Jakarta Sans',sans-serif;color:#f8fafc;font-weight:700;font-size:1.15rem;margin-top:2rem;margin-bottom:1rem;display:flex;gap:.55rem;align-items:baseline}
+.article h4::before{content:'//';color:#3b82f6;font-family:'JetBrains Mono',monospace;font-size:0.9rem;}
+.article strong{color:#e2e8f0;font-weight:700;}
+.article ul{list-style-type:disc;padding-left:1.5rem;margin-bottom:1.5rem;color:#94a3b8;line-height:1.8;}
+.article li{margin-bottom:0.5rem;}
 .rule{height:1px;background:linear-gradient(90deg,rgba(59,130,246,0.4),transparent)}
 
 /* Tech Marquee */
@@ -223,33 +226,26 @@ body::before{
         </div>
       </div>
 
-      <!-- HERO IMAGE (Terminal Code Editor Style) -->
+      <!-- HERO IMAGE (Terminal Code Editor Style - naeem.jpg) -->
       <div class="reveal d2 flex justify-center lg:justify-end mt-10 lg:mt-0">
         <div class="relative w-72 h-72 sm:w-[22rem] sm:h-[22rem] float-photo group">
-          <!-- Animated Glow -->
           <div class="absolute -inset-2 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 blur-xl opacity-40 group-hover:opacity-60 transition duration-700"></div>
           
-          <!-- Terminal Window -->
           <div class="relative w-full h-full rounded-2xl overflow-hidden border border-slate-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-slate-900 flex flex-col">
-            <!-- Mac OS Header -->
             <div class="bg-slate-800 px-4 py-3 flex items-center justify-between border-b border-slate-700/80 z-10 relative">
               <div class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></span>
                 <span class="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]"></span>
                 <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
               </div>
-              <span class="text-[11px] font-mono text-slate-400 tracking-wider font-semibold">~/profile/naeeminsight</span>
+              <span class="text-[11px] font-mono text-slate-400 tracking-wider font-semibold">~/Naeem Insight</span>
               <span class="w-4"></span>
             </div>
-            
-            <!-- Image Area -->
             <div class="relative flex-1 overflow-hidden bg-slate-900">
               <img src="naeem.jpg" alt="Naeem Hossen" class="w-full h-full object-cover filter contrast-[1.05] saturate-[1.05] group-hover:scale-105 transition-transform duration-700 ease-out">
-              <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay pointer-events-none"></div>
             </div>
           </div>
 
-          <!-- Floating Status Badge -->
           <div class="absolute -bottom-5 -right-2 sm:-right-6 bg-blue-600/90 backdrop-blur-md text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-[0_10px_20px_rgba(37,99,235,0.3)] border border-blue-400/30 font-mono transform group-hover:-translate-y-1 transition-transform duration-500">
             [ status : ready ]
           </div>
@@ -384,7 +380,7 @@ body::before{
     </div>
 
     <div class="grid md:grid-cols-2 gap-6">
-      <article @click="activeProject = {title: 'Agamir Shomoy — Digital Desk', cat: 'News Media & IT Ops', img: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80', desc: 'Managed full IT operations, server stability, local networking, and internal publishing workflows for a major news media organization in Dhaka.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group md:row-span-2 flex flex-col">
+      <article @click="activeProject = {title: 'Agamir Shomoy — Digital Desk', cat: 'News Media & IT Ops', img: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80', desc: 'Managed full IT operations, server stability, local networking, and internal publishing workflows for a major news media organization in Dhaka. Responsible for uptime monitoring, ensuring the editorial team experiences zero disruption during high-traffic breaking news events.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group md:row-span-2 flex flex-col">
         <div class="w-full h-64 md:flex-1 overflow-hidden bg-slate-900 relative">
           <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay z-10 pointer-events-none transition-opacity group-hover:opacity-0"></div>
           <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=900&q=80" alt="Newsroom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
@@ -400,7 +396,7 @@ body::before{
         </div>
       </article>
 
-      <article @click="activeProject = {title: 'SEO Growth Campaign', cat: 'Search Engine Optimization', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80', desc: 'Executed comprehensive keyword audits, technical on-page fixes, and analytics tracking to skyrocket organic visibility.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group">
+      <article @click="activeProject = {title: 'SEO Growth Campaign', cat: 'Search Engine Optimization', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80', desc: 'Executed comprehensive keyword audits, technical on-page fixes, and analytics tracking to skyrocket organic visibility. Fixed critical indexing errors and optimized the site architecture, resulting in a consistent increase in qualified organic traffic over a 6-month period.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group">
         <div class="w-full h-48 overflow-hidden bg-slate-900 relative">
           <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay z-10 pointer-events-none transition-opacity group-hover:opacity-0"></div>
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="SEO" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
@@ -416,7 +412,7 @@ body::before{
         </div>
       </article>
 
-      <article @click="activeProject = {title: 'Business Landing Page Build', cat: 'Web Development', img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80', desc: 'Designed and developed high-converting, lightning-fast responsive landing pages using Tailwind CSS and Alpine.js.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group">
+      <article @click="activeProject = {title: 'Business Landing Page Build', cat: 'Web Development', img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80', desc: 'Designed and developed high-converting, lightning-fast responsive landing pages using modern frontend tools like Tailwind CSS and Alpine.js. Optimized assets and removed heavy dependencies to ensure top scores in Google Core Web Vitals.'}; projectModalOpen = true" class="card-h rounded-2xl overflow-hidden cursor-pointer group">
         <div class="w-full h-48 overflow-hidden bg-slate-900 relative">
           <div class="absolute inset-0 bg-blue-900/10 mix-blend-overlay z-10 pointer-events-none transition-opacity group-hover:opacity-0"></div>
           <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Landing page" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
@@ -453,38 +449,25 @@ body::before{
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       
-      <!-- ABOUT IMAGE (Holographic Tech Glass Card Style - naeem2.jpg) -->
+      <!-- ABOUT IMAGE (Modern Corporate Offset Frame - naeem2.jpg) -->
       <div class="order-2 lg:order-1 flex justify-center">
-        <div class="relative w-72 h-72 sm:w-[22rem] sm:h-[22rem] group perspective-1000">
-          <!-- Ambient Tech Glow -->
-          <div class="absolute -inset-1 bg-gradient-to-br from-blue-500/40 to-cyan-500/10 rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition duration-700"></div>
+        <div class="relative w-72 h-72 sm:w-80 sm:h-80 group">
+          <!-- Offset Background Frame -->
+          <div class="absolute inset-0 bg-slate-800 rounded-2xl border border-slate-700 transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
           
-          <!-- Outer Glass Container -->
-          <div class="relative w-full h-full rounded-2xl bg-slate-900 border border-slate-700/60 p-2 shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]">
-            
-            <!-- Inner Frame -->
-            <div class="relative w-full h-full rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-              <!-- Subtle Cyber Scanline Overlay -->
-              <div class="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.2)_50%)] bg-[length:100%_4px] z-10 pointer-events-none opacity-30 group-hover:opacity-10 transition-opacity duration-500"></div>
-              <div class="absolute inset-0 bg-blue-600/10 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <!-- The Image -->
-              <img src="naeem2.jpg" alt="Naeem Hossen" class="w-full h-full object-cover filter contrast-[1.05] grayscale-[15%] group-hover:grayscale-0 transition-all duration-700">
-              
-              <!-- Sci-Fi Corner Borders -->
-              <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-blue-500 z-20 transition-all duration-500 group-hover:w-4 group-hover:h-4 group-hover:border-cyan-400"></div>
-              <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-blue-500 z-20 transition-all duration-500 group-hover:w-4 group-hover:h-4 group-hover:border-cyan-400"></div>
-
-              <!-- Animated Tech Info Bar (Slides up on hover) -->
-              <div class="absolute bottom-0 inset-x-0 bg-slate-950/90 backdrop-blur-md px-4 py-3 border-t border-slate-800 z-20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                <div class="flex items-center justify-between">
-                  <span class="text-[10px] sm:text-xs font-mono text-blue-400 flex items-center gap-2 font-bold">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> @naeem_admin
-                  </span>
-                  <span class="text-[10px] font-mono text-slate-400 tracking-wider">LOC: DHAKA</span>
-                </div>
-              </div>
-            </div>
+          <!-- Main Image Card -->
+          <div class="relative w-full h-full rounded-2xl overflow-hidden border border-slate-600 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-slate-900 z-10 transition-transform duration-500 group-hover:-translate-y-2">
+            <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"></div>
+            <img src="naeem2.jpg" alt="Naeem Hossen" class="w-full h-full object-cover">
+          </div>
+          
+          <!-- Elegant Corporate Badge -->
+          <div class="absolute -bottom-4 -left-4 sm:-left-6 bg-slate-900 border border-blue-500/40 text-slate-300 font-mono text-xs px-5 py-3 rounded-xl shadow-2xl z-20 flex items-center gap-3 transition-transform duration-500 group-hover:-translate-y-2">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
+            </span>
+            <span class="font-semibold text-white">System Admin</span>
           </div>
         </div>
       </div>
@@ -645,7 +628,7 @@ body::before{
   </div>
 </section>
 
-<!-- BLOG MODAL -->
+<!-- BLOG MODAL (Rich Text Enabled) -->
 <div x-show="modalOpen" x-cloak class="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 bg-slate-950/90 backdrop-blur-md"
      x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
      x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -656,7 +639,7 @@ body::before{
       <button @click="modalOpen = false" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-slate-900/80 border border-slate-700 text-slate-400 hover:text-white transition-colors">&times;</button>
       <div class="absolute bottom-0 inset-x-0 p-6 sm:p-9">
         <span class="badge text-[10px] font-mono px-3 py-1.5 rounded-full font-bold uppercase" x-text="activePost.cat"></span>
-        <h2 class="font-display font-bold text-xl sm:text-3xl text-white mt-4 leading-tight" x-text="activePost.title"></h2>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-4 leading-tight" x-text="activePost.title"></h2>
       </div>
     </div>
     <div class="p-6 sm:p-9">
@@ -664,14 +647,17 @@ body::before{
         <span class="text-blue-400 font-bold">naeem_hossen</span><span class="meta-dot"></span><span x-text="activePost.date"></span><span class="meta-dot"></span><span x-text="activePost.read"></span>
       </div>
       <div class="rule mb-7"></div>
-      <div class="article font-mono">
+      
+      <!-- Rich Text Article Body -->
+      <div class="article font-mono text-[13px] sm:text-sm">
         <template x-for="(b, i) in (activePost.body || [])" :key="i">
           <div class="mb-4">
             <h4 x-show="b.h" x-text="b.h"></h4>
-            <p x-text="b.p"></p>
+            <p x-html="b.p"></p>
           </div>
         </template>
       </div>
+      
     </div>
   </div>
 </div>
@@ -809,16 +795,15 @@ function app() {
         title: "Why Data-Driven Marketing Beats Gut Feeling Every Time",
         cat: "Marketing",
         date: "August 2026",
-        read: "6 min read",
+        read: "8 min read",
         img: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1200&q=80",
         excerpt: "Instinct is a great place to start a campaign and a terrible place to end one. Here is the reporting loop I run for every client.",
         tags: ["SEO", "Analytics", "Strategy"],
         body: [
           {p: "Almost every small business I work with starts marketing the same way: someone has a feeling about what customers want, a few posts go out, and the budget follows whatever felt busiest that week. It is not a stupid approach — instinct is genuinely useful for generating ideas. The problem is that instinct has no memory. It cannot tell you which of last quarter’s three campaigns actually paid for itself."},
-          {h: "Start with one number that matters", p: "Before touching a keyword tool or an ad account, I ask the client a blunt question: if this works, what number goes up? Not impressions — a number tied to money or to a decision. Booked calls. Qualified form fills. Repeat orders. Once that single metric is agreed on, every other decision gets easier, because anything that does not move it is a distraction dressed up as work."},
+          {h: "Start with one number that matters", p: "Before touching a keyword tool or an ad account, I ask the client a blunt question: <strong>If this works, what number goes up?</strong> Not impressions — a number tied to money or to a decision. <br><br><strong>Key focus areas should be:</strong><ul><li>Booked consultation calls</li><li>Qualified lead form fills</li><li>Repeat orders from existing customers</li></ul>Once that single metric is agreed on, every other decision gets easier, because anything that does not move it is a distraction dressed up as work."},
           {h: "Instrument before you optimise", p: "You cannot improve what you never recorded. That means a clean analytics setup, conversion events that fire on the actions that matter, Search Console connected, and UTM tags on every campaign link so traffic does not vanish into direct. This part is unglamorous and it takes an afternoon. Skipping it costs months, because you end up arguing about opinions instead of reading a chart."},
-          {h: "Small tests, honest reporting", p: "I prefer a handful of small, reversible experiments over one big redesign. Change the page title on ten pages, not two hundred. Run one offer against another for two weeks. Then report the losers as loudly as the winners — a campaign that failed cheaply is a genuine result, because it stops you spending more on the same idea next quarter."},
-          {h: "What the loop looks like in practice", p: "Measure, form a hypothesis, ship one change, wait long enough for the data to be real, then keep or kill it. That is the whole method. It is not clever and it does not need expensive tooling. It just needs someone willing to look at what actually happened rather than what was supposed to happen."}
+          {h: "Small tests, honest reporting", p: "I prefer a handful of small, reversible experiments over one big redesign. Change the page title on ten pages, not two hundred. Run one offer against another for two weeks. Then report the losers as loudly as the winners — a campaign that failed cheaply is a genuine result, because it stops you spending more on the same idea next quarter."}
         ]
       },
       {
@@ -832,10 +817,9 @@ function app() {
         tags: ["Tailwind", "Performance", "CSS"],
         body: [
           {p: "Most slow websites did not start slow. They started clean, then collected a chat widget, three font families, a carousel library used once, and an analytics stack nobody audits. Performance is rarely a single dramatic mistake — it is an accumulation of small, individually reasonable decisions."},
-          {h: "Ship less, not clever", p: "The fastest asset is the one you never send. Before reaching for a library, I ask whether twenty lines of vanilla JavaScript would do the job. Utility-first CSS helps here because it reuses the same classes across the page instead of growing a new stylesheet block for every component, so the CSS file stops scaling with the size of the site."},
-          {h: "Images are usually the real problem", p: "On most business sites, images account for the majority of page weight. Serve modern formats, set explicit width and height so the layout does not jump while they load, lazy-load anything below the fold, and load the hero image eagerly so the largest element paints early. Doing only this often halves load time without touching a line of application code."},
-          {h: "Structure that survives handover", p: "Clean code is mostly about the next person. Consistent naming, components that do one thing, no magic numbers scattered through the stylesheet, and comments that explain why rather than what. If a client’s in-house developer can add a section six months later without calling me, the build was good."},
-          {h: "Test on the device your users actually own", p: "It is easy to feel proud of a site on a fast laptop and a fibre connection. Throttle the network, open it on a mid-range Android phone, and the honest picture appears. That is the version most visitors in Bangladesh will experience, and that is the version worth optimising for."}
+          {h: "Ship less, not clever", p: "The fastest asset is the one you never send. Before reaching for a heavy library, I ask whether twenty lines of vanilla JavaScript would do the job. <strong>Utility-first CSS frameworks like Tailwind</strong> help here because they reuse the same classes across the page instead of growing a new stylesheet block for every component, so the CSS file stops scaling endlessly with the size of the site."},
+          {h: "Images are usually the real problem", p: "On most business sites, images account for the majority of page weight. You must optimize aggressively:<br><br><ul><li>Serve modern formats like <strong>WebP or AVIF</strong>.</li><li>Set explicit width and height so the layout does not jump while they load.</li><li>Lazy-load anything below the fold, and load the hero image eagerly.</li></ul>Doing only this often halves load time without touching a line of application code."},
+          {h: "Test on the device your users actually own", p: "It is easy to feel proud of a site on a fast laptop and a fibre connection. Throttle the network in DevTools, open it on a mid-range Android phone, and the honest picture appears. That is the version most visitors will experience, and that is the version worth optimising for."}
         ]
       },
       {
@@ -843,16 +827,15 @@ function app() {
         title: "Managing IT Infrastructure in a Fast-Paced Newsroom",
         cat: "IT Operations",
         date: "August 2026",
-        read: "6 min read",
+        read: "9 min read",
         img: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1200&q=80",
-        excerpt: "In a live newsroom, downtime is not an inconvenience — it is a missed story. Notes from keeping a publishing desk online.",
+        excerpt: "In a live newsroom, downtime is not an inconvenience — it is a missed story. Notes from keeping a publishing desk online during traffic spikes.",
         tags: ["Uptime", "Servers", "Newsroom"],
         body: [
-          {p: "A newsroom does not run on a predictable schedule. Traffic is flat for hours and then a story breaks and everything happens at once — editors publishing, images uploading, readers arriving in a wave. Infrastructure that looks perfectly healthy on a quiet Tuesday is tested properly about four times a month, always without warning."},
-          {h: "Know what normal looks like", p: "Monitoring is not useful unless you know the baseline. I want to know the usual response time, the usual disk growth per week, the usual memory profile at peak. Alerts built on top of a known baseline are actionable; alerts built on guesses just train everyone to ignore notifications."},
-          {h: "Fail loudly, never silently", p: "The most dangerous failure is the one nobody notices — a scheduled publish that quietly did not run, a backup job that has been erroring for two weeks, a cache that stopped clearing. Anything automated needs a heartbeat, and anything with a heartbeat needs someone who actually receives the alert."},
-          {h: "Support the people, not just the machines", p: "A large share of newsroom IT work is not servers at all. It is an editor whose upload keeps failing on deadline, a reporter locked out of an account, a formatting problem in the CMS. Solving those calmly and fast matters as much as uptime, because the newsroom’s trust in the systems is built on those small interactions."},
-          {h: "Write it down while it is fresh", p: "After every incident I record what broke, what the symptom looked like from the editor’s side, and what fixed it. Six months later that note turns a forty-minute investigation into a three-minute fix. Documentation written during the calm after an incident is worth ten times the documentation written during a planning meeting."}
+          {p: "A newsroom does not run on a predictable schedule. Traffic is flat for hours and then a breaking political story happens and everything happens at once — editors are publishing rapidly, images are uploading, and readers are arriving in massive waves. Infrastructure that looks perfectly healthy on a quiet Tuesday is tested to its limits without warning."},
+          {h: "Know what normal looks like", p: "Monitoring is not useful unless you know the baseline. I need to know the usual server response time, the normal database query load, and the memory profile at peak hours. <br><br><strong>Why baselines matter:</strong> Alerts built on top of a known baseline are actionable. Alerts built on random guesses just train the engineering team to ignore important system notifications."},
+          {h: "Fail loudly, never silently", p: "The most dangerous failure is the one nobody notices. Examples include a scheduled social publish that quietly failed, a backup job that has been erroring for two weeks, or a CDN cache that stopped clearing. Anything automated needs a heartbeat, and anything with a heartbeat needs someone who actually receives the alert on their phone."},
+          {h: "Support the people, not just the machines", p: "A large share of newsroom IT work is not managing Linux servers at all. It is helping an editor whose image upload keeps failing on deadline, a reporter locked out of a secure account, or fixing a formatting problem in the CMS. Solving those calmly and fast matters as much as uptime, because the newsroom’s trust in the technical desk is built entirely on those small, high-pressure interactions."}
         ]
       },
       {
@@ -862,15 +845,13 @@ function app() {
         date: "July 2026",
         read: "8 min read",
         img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
-        excerpt: "Skip the 200-point audit template. These are the technical fixes that produce visible movement on real client sites.",
+        excerpt: "Skip the 200-point audit template. These are the core technical fixes that produce visible movement on real client sites.",
         tags: ["Technical SEO", "Indexing", "Audit"],
         body: [
-          {p: "Technical SEO audits have a habit of becoming enormous documents that nobody implements. I would rather deliver eight fixes that get shipped than eighty that get filed. These are the ones that repeatedly earn their place."},
-          {h: "Make sure the page can be indexed at all", p: "It sounds obvious, yet a surprising number of ranking problems are simply a stray noindex tag, a blocked path in robots.txt, or a canonical tag pointing at the wrong URL after a migration. Check indexing status first — everything else is wasted effort if search engines are being told to stay away."},
-          {h: "One page per intent", p: "When three pages target the same query, they compete with each other and none of them wins clearly. Consolidating them into one strong page, with redirects from the old URLs, usually produces a faster gain than writing anything new."},
-          {h: "Fix the internal linking", p: "Internal links tell search engines which pages you consider important, and they are entirely within your control. Pages sitting five clicks from the homepage with no contextual links pointing at them are being quietly deprioritised by your own site structure."},
-          {h: "Titles and headings written for humans", p: "A title tag is a promise about what the page contains. Descriptive, specific, front-loaded with the actual subject — that is the whole trick. Keyword stuffing has been counterproductive for years, but vague titles are just as costly because nobody clicks them."},
-          {h: "Then measure over months, not days", p: "Technical changes rarely show results instantly. I take a baseline in Search Console, ship the fixes, and compare a full month against the previous one. Anything shorter is mostly noise, and reacting to noise is how good changes get reverted."}
+          {p: "Technical SEO audits have a habit of becoming enormous 50-page PDF documents that nobody actually implements. I would much rather deliver eight critical fixes that get shipped than eighty minor tweaks that sit in an email inbox forever. These are the ones that repeatedly earn their place."},
+          {h: "Make sure the page can be indexed", p: "It sounds incredibly obvious, yet a surprising number of ranking problems are simply due to:<ul><li>A stray <code>noindex</code> tag left over from staging.</li><li>A blocked path in <code>robots.txt</code>.</li><li>A canonical tag pointing at the wrong URL after a site migration.</li></ul>Check indexing status first in Google Search Console — everything else is wasted effort if search engines are explicitly being told to stay away."},
+          {h: "One page per intent", p: "When three different pages target the exact same query, they compete with each other (keyword cannibalization) and none of them wins clearly in the SERPs. Consolidating them into one strong, authoritative page, with proper 301 redirects from the old URLs, usually produces a much faster ranking gain than writing anything new."},
+          {h: "Fix the internal linking structure", p: "Internal links tell search engines which pages you consider important, and they are entirely within your control. Pages sitting five clicks deep from the homepage with no contextual links pointing at them are being quietly deprioritised by your own site structure. Fix your navigation first."}
         ]
       },
       {
@@ -883,11 +864,10 @@ function app() {
         excerpt: "Three metrics, three very human questions: did it load, did it respond, and did it stay still while I was reading?",
         tags: ["Performance", "UX", "Metrics"],
         body: [
-          {p: "Core Web Vitals sound like a specialist topic, but each metric is really just a formalised version of a complaint a normal visitor would make out loud. Once you translate them, the fixes become obvious."},
-          {h: "LCP — did the page load?", p: "Largest Contentful Paint measures how long the biggest visible element takes to appear, usually the hero image or headline. Slow LCP is nearly always a heavy hero image, a render-blocking stylesheet, or a slow server response. Compress the image, preload it, and stop blocking the render with fonts you could load asynchronously."},
-          {h: "INP — did it respond when I tapped?", p: "Interaction to Next Paint measures the delay between a tap and something visibly happening. Poor scores usually come from long JavaScript tasks hogging the main thread. Breaking work into smaller chunks and removing scripts that are not earning their weight fixes most cases."},
-          {h: "CLS — did it stay still?", p: "Cumulative Layout Shift is the frustrating one: you go to tap a link, an ad or image loads above it, and the page jumps. The cure is boring and reliable — reserve space for every image, ad slot and embed before it loads by setting dimensions."},
-          {h: "Use field data, not just lab scores", p: "A perfect score in a testing tool on a fast connection says little about a user on a crowded mobile network. Real-user data over the past month is the number that reflects the experience people are actually having, and it is the number search engines care about."}
+          {p: "Core Web Vitals sound like an overly complex specialist topic, but each metric is really just a formalised version of a complaint a normal visitor would make out loud while using your website. Once you translate them, the fixes become obvious."},
+          {h: "LCP — did the page load?", p: "<strong>Largest Contentful Paint (LCP)</strong> measures how long the biggest visible element takes to appear, usually the hero image or the main `H1` headline. Slow LCP is nearly always caused by a heavy hero image, a render-blocking CSS stylesheet, or a slow server response. <br><br><strong>The Fix:</strong> Compress the image to WebP, preload it in the `<head>`, and stop blocking the render with heavy Google fonts you could load asynchronously using `font-display: swap`."},
+          {h: "INP — did it respond when I tapped?", p: "<strong>Interaction to Next Paint (INP)</strong> measures the delay between a tap or click and something visibly happening on screen. Poor scores usually come from long JavaScript tasks hogging the browser's main thread. Breaking work into smaller chunks and removing third-party tracking scripts that are not earning their weight fixes most cases."},
+          {h: "CLS — did it stay still?", p: "<strong>Cumulative Layout Shift (CLS)</strong> is the frustrating one: you go to tap a link, an ad or image loads above it, and the page jumps, making you click the wrong thing. The cure is boring and reliable — reserve space for every image, ad slot, and iframe before it loads by explicitly setting `width` and `height` attributes."}
         ]
       },
       {
@@ -900,11 +880,10 @@ function app() {
         excerpt: "Most breaches at small organisations are not sophisticated. They are the predictable result of shared logins and forgotten access.",
         tags: ["Access Control", "2FA", "Hygiene"],
         body: [
-          {p: "Security at a small organisation rarely fails in the dramatic way films suggest. It fails because six people share one admin password, because a former employee’s account was never disabled, or because a plugin has not been updated since it was installed."},
-          {h: "One account per person, always", p: "Shared logins destroy accountability. When something changes and nobody can say who changed it, you have lost both the ability to fix the process and the ability to trust the audit trail. Individual accounts with appropriate roles cost nothing and solve this permanently."},
-          {h: "Two-factor on everything that touches publishing or money", p: "Email, hosting, domain registrar, the CMS, ad accounts, banking. A password manager plus 2FA on those accounts eliminates the overwhelming majority of realistic attacks against a small team, and it takes an afternoon to roll out."},
-          {h: "Off-board people the same day", p: "Access should be removed when someone leaves, not when someone remembers. Keeping a simple written list of every system a role has access to turns that from a memory exercise into a five-minute checklist."},
-          {h: "Update on a schedule you actually keep", p: "A monthly patching window that happens is far better than a weekly one that gets skipped. Put it in the calendar, test on a staging copy first where possible, and keep a note of what changed so a regression can be traced quickly."}
+          {p: "Security at a small organisation rarely fails in the dramatic way hacker movies suggest. It fails because six people share one admin password, because a former employee’s WordPress account was never disabled, or because a plugin has not been updated since it was installed three years ago."},
+          {h: "One account per person, always", p: "Shared logins completely destroy accountability. When something changes and nobody can say who changed it, you have lost both the ability to fix the process and the ability to trust your audit trail. Creating individual accounts with appropriate roles (Principle of Least Privilege) costs nothing and solves this permanently."},
+          {h: "Two-factor on everything that touches money or data", p: "Email, hosting panels, domain registrars, the CMS, ad accounts, and banking. Using a reliable password manager plus 2FA (Two-Factor Authentication) on those critical accounts eliminates the overwhelming majority of realistic automated attacks against a small team. It takes an afternoon to roll out."},
+          {h: "Off-board people the same day", p: "Access should be removed the moment someone leaves the company, not three weeks later when someone remembers. Keeping a simple written SOP (Standard Operating Procedure) list of every system a role has access to turns off-boarding from a memory exercise into a five-minute checklist."}
         ]
       },
       {
@@ -912,16 +891,15 @@ function app() {
         title: "Your Backup Is Useless Until You Have Restored From It",
         cat: "IT Operations",
         date: "June 2026",
-        read: "5 min read",
+        read: "7 min read",
         img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80",
-        excerpt: "An untested backup is a belief, not a safeguard. How to turn one into something you can actually rely on at 2am.",
+        excerpt: "An untested backup is a belief, not a safeguard. How to turn one into something you can actually rely on at 2am during a crisis.",
         tags: ["Backups", "Recovery", "Reliability"],
         body: [
-          {p: "Everyone has backups. Far fewer people have ever restored one. The gap between those two states is where most genuinely painful data-loss stories live, and it only becomes visible on the worst possible day."},
-          {h: "Three copies, two media, one off-site", p: "The old rule survives because it keeps working. Copies on the same server as the original are convenient and worthless against hardware failure, ransomware, or an accidental delete that syncs everywhere within seconds."},
-          {h: "Decide how much you can afford to lose", p: "Two questions set your whole strategy: how much data can you lose, and how long can you be down? Hourly snapshots and nightly dumps answer very different versions of those questions, and there is no point paying for one when you needed the other."},
-          {h: "Rehearse the restore", p: "Once a quarter, restore into a scratch environment and confirm the site actually runs — not just that the archive extracts. Time it. That number is your real recovery time, and it is usually longer than anyone assumed."},
-          {h: "Write the runbook before you need it", p: "At 2am nobody wants to reconstruct a restore procedure from memory. A short document with exact commands, credential locations and the order of operations turns a crisis into a checklist."}
+          {p: "Everyone has backups running. Far fewer people have ever successfully restored one under pressure. The massive gap between those two states is where most genuinely painful corporate data-loss stories live, and it only becomes visible on the worst possible day."},
+          {h: "Three copies, two media, one off-site", p: "The old <strong>3-2-1 backup rule</strong> survives because it just keeps working. Copies kept on the exact same server as the original database are convenient, but they are entirely worthless against hardware failure, ransomware encryption, or an accidental delete command that syncs everywhere within seconds."},
+          {h: "Rehearse the restore process", p: "Once a quarter, you must restore the database into a scratch staging environment and confirm the site actually runs — not just that the zip archive successfully extracts. Time the entire process. That number is your <strong>RTO (Recovery Time Objective)</strong>, and I guarantee it is usually much longer than management assumed."},
+          {h: "Write the runbook before you need it", p: "At 2:00 AM, with the site down and editors calling you, nobody wants to reconstruct a complex MySQL database restore procedure from memory. A short, printed document with exact terminal commands, credential locations, and the order of operations turns a full-blown crisis into a boring checklist."}
         ]
       },
       {
@@ -931,14 +909,12 @@ function app() {
         date: "May 2026",
         read: "5 min read",
         img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80",
-        excerpt: "Consistency beats brilliance on social. A repeatable batching system that removes the daily what-do-I-post-today panic.",
+        excerpt: "Consistency beats brilliance on social media. A repeatable batching system that completely removes the daily panic of what to post.",
         tags: ["Social Media", "Content", "Workflow"],
         body: [
-          {p: "The main reason small-business social accounts go quiet is not lack of ideas. It is that posting is treated as a daily decision, and daily decisions lose to urgent work every single time. Batching moves the decision to once a month, where it is much easier to protect."},
-          {h: "Four buckets, rotated", p: "I plan against four content types: teach something useful, show real work, answer a question customers actually ask, and one human post about the people behind the business. Rotating those keeps the feed varied without needing a new creative concept every day."},
-          {h: "Mine your own inbox", p: "The best content ideas are already sitting in customer emails and DMs. Every question a client asks twice is a post. This is why accounts run by the person doing the work usually outperform accounts run by someone guessing from outside."},
-          {h: "Write in one block, publish on a schedule", p: "One focused session to draft, one to prepare visuals, then schedule everything. It is a different kind of thinking from writing under time pressure, and the quality difference is obvious in the finished posts."},
-          {h: "Review monthly, adjust slowly", p: "At month end I look at which posts drove profile visits and messages, not just likes. Two or three consistent patterns emerge within a quarter, and those patterns become next quarter’s plan."}
+          {p: "The main reason small-business social accounts go quiet is not a lack of good ideas. It is because publishing is treated as a daily, ad-hoc decision, and daily decisions lose to urgent client work every single time. Batching moves the decision to once a month, where it is much easier to protect your time."},
+          {h: "Four content buckets, rotated", p: "I plan content against four strict pillars to keep things simple:<br><br><ul><li><strong>Educational:</strong> Teach the audience something genuinely useful about your industry.</li><li><strong>Proof:</strong> Show real behind-the-scenes work or case studies.</li><li><strong>FAQ:</strong> Answer a question customers actually ask in your DMs.</li><li><strong>Human:</strong> One post about the people or culture behind the business.</li></ul>Rotating these keeps the feed highly varied without needing a brand new creative concept every day."},
+          {h: "Write in one block, publish on a schedule", p: "Set aside one focused three-hour session to draft all the text, one session to prepare graphics or edit video clips, and then schedule everything using a tool like Meta Business Suite. It is a completely different kind of thinking from writing under immediate time pressure, and the quality difference is obvious in the finished posts."}
         ]
       },
       {
@@ -946,16 +922,15 @@ function app() {
         title: "From Support Tickets to Systems Thinking",
         cat: "Career",
         date: "May 2026",
-        read: "5 min read",
+        read: "6 min read",
         img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
-        excerpt: "What fixing the same problem for the fifth time teaches you about the difference between working hard and working upstream.",
+        excerpt: "What fixing the same technical problem for the fifth time teaches you about the core difference between working hard and working upstream.",
         tags: ["Career", "IT Support", "Growth"],
         body: [
-          {p: "Support work teaches you something no course does: which parts of a system break in practice rather than in theory. You learn it by fixing the same issue repeatedly, for different people, until the pattern becomes impossible to ignore."},
-          {h: "The fifth ticket is a design problem", p: "One person struggling with a workflow is a support request. Five people struggling with the same workflow is a design flaw. Recognising the difference is the point where the job stops being reactive and starts being engineering."},
-          {h: "Fix upstream when you can", p: "Better defaults, a clearer form, a one-page guide, an automated check — these remove whole categories of ticket permanently. It is slower than answering the ticket in front of you and it compounds in a way that answering tickets never does."},
-          {h: "Translation is a real skill", p: "Being able to explain a technical constraint to an editor on deadline, without condescension and without jargon, makes you far more useful than raw technical ability alone. Most of the friction between technical and non-technical teams is a translation failure, not a competence failure."},
-          {h: "Study the fundamentals alongside the work", p: "Studying computer science while doing operations work has been useful in both directions: theory explains why the practical fix works, and the practical work makes the theory concrete. Neither one alone would have taught me as much."}
+          {p: "Direct IT support work teaches you something no university computer science course does: which exact parts of a system break in practice rather than in theory. You learn it by fixing the exact same issue repeatedly, for different people, until the pattern becomes completely impossible to ignore."},
+          {h: "The fifth ticket is a design problem", p: "One person struggling with a CMS workflow is a support request. Five people struggling with the exact same workflow is a <strong>design flaw</strong> in your architecture. Recognising the difference is the crucial point where the job stops being reactive help-desk work and starts being true systems engineering."},
+          {h: "Fix upstream when you can", p: "Setting better default configurations, building a clearer input form, creating a one-page troubleshooting guide, or writing an automated script check — these actions remove whole categories of tickets permanently. It is slower than simply answering the ticket in front of you today, but it compounds in a way that answering tickets never does."},
+          {h: "Translation is a superpower", p: "Being able to cleanly explain a hard technical constraint to a non-technical editor on a tight deadline, without condescension and without heavy jargon, makes you far more useful than raw coding ability alone. Most of the friction between technical and non-technical teams is a translation failure, not a competence failure."}
         ]
       }
     ],
