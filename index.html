@@ -30,7 +30,6 @@
 <link rel="preload" as="image" href="naeem.jpg" fetchpriority="high">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23070C15'/%3E%3Ctext x='50' y='70' font-size='60' font-family='sans-serif' font-weight='bold' fill='%233B82F6' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 
-<!-- Updated Schema Markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -125,7 +124,16 @@ h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
 .tag{font-size:.75rem;padding:.3rem .75rem;border-radius:999px;border:1px solid #334155;color:#94A3B8;background:rgba(15,23,42,.4)}
 .eyebrow{font-size:.8rem;font-weight:600;color:#60A5FA;margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:0.05em}
 .eyebrow::before{content:'';width:24px;height:2px;background:linear-gradient(90deg,#60A5FA,#3B82F6);border-radius:2px}
-.txt-grad{background:linear-gradient(120deg,#60A5FA,#34D399);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Updated Premium Text Gradient for Name */
+.txt-grad {
+  background: linear-gradient(100deg, #F8FAFC 0%, #38BDF8 40%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+}
+
 .tl{position:relative;padding-left:2rem}
 .tl::before{content:'';position:absolute;left:.35rem;top:.5rem;bottom:.5rem;width:2px;background:linear-gradient(#3B82F6,transparent)}
 .tl-i{position:relative;padding-bottom:2.2rem}
@@ -137,6 +145,32 @@ h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
 .field::placeholder{color:#64748B}.field:focus{outline:none;border-color:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,.15)}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:#334155;border-radius:99px}::-webkit-scrollbar-thumb:hover{background:#475569}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-in>*{opacity:1;transform:none}}
+
+/* Digital & Minimal About Image Style */
+.digital-img-wrapper {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(59,130,246,0.4) 0%, rgba(15,23,42,0) 100%);
+}
+.digital-img-inner {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  background: #0B1120;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 10px 30px -10px rgba(59,130,246,0.15);
+  transition: all 0.5s ease;
+}
+.digital-img-wrapper:hover .digital-img-inner {
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 20px 40px -10px rgba(59,130,246,0.3);
+  transform: translateY(-5px);
+}
+.digital-img-inner img {
+  transition: transform 0.7s ease;
+}
+.digital-img-wrapper:hover .digital-img-inner img {
+  transform: scale(1.03);
+}
 </style>
 </head>
 
@@ -264,13 +298,17 @@ h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT (Sleek Digital Look) -->
 <section id="about" class="py-24">
   <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
     <div class="flex justify-center">
-      <div class="relative w-72 sm:w-80">
-        <div class="absolute inset-0 rounded-3xl border border-blue-500/20 translate-x-4 translate-y-4"></div>
-        <img src="naeem2.jpg" alt="Naeem Hossen, IT Executive" loading="lazy" decoding="async" width="640" height="640" class="relative rounded-3xl w-full aspect-square object-cover border border-slate-700/50 shadow-2xl">
+      <!-- Digital Minimal Image Wrapper -->
+      <div class="w-72 sm:w-80 digital-img-wrapper">
+        <div class="digital-img-inner aspect-square">
+          <img src="naeem2.jpg" alt="Naeem Hossen, IT Executive" loading="lazy" decoding="async" width="640" height="640" class="w-full h-full object-cover opacity-90 hover:opacity-100">
+        </div>
+        <!-- Digital Glow Effect -->
+        <div class="absolute inset-0 bg-blue-500/20 blur-3xl -z-10 rounded-full"></div>
       </div>
     </div>
     <div>
@@ -324,19 +362,25 @@ h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT (Original Layout, 4 Links) -->
 <section id="contact" class="pb-24">
   <div class="max-w-6xl mx-auto px-6">
     <div class="card !transform-none rounded-3xl p-8 md:p-14 relative overflow-hidden grid md:grid-cols-2 gap-12 border border-line bg-panel/50">
       <div class="absolute top-0 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="relative">
+      <div class="relative flex flex-col h-full">
         <p class="eyebrow">Get in touch</p>
         <h2 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-4">Let's work together</h2>
         <p class="text-slate-400 leading-relaxed mb-8">Open to freelance web development and digital marketing projects, plus collaborations around news-media technology.</p>
-        <ul class="space-y-4 text-sm">
-          <template x-for="c in contacts" :key="c[1]">
-            <li><a :href="c[2]" :target="c[2].startsWith('http')?'_blank':null" rel="noopener noreferrer" class="flex items-center gap-4 text-slate-300 hover:text-blue-400 transition-colors group">
-              <span class="w-11 h-11 grid place-items-center rounded-xl bg-ink border border-line text-blue-400 text-sm font-bold group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-all shadow-sm" x-text="c[0]"></span><span class="font-medium" x-text="c[1]"></span></a></li>
+        
+        <!-- 4 Links aligned nicely -->
+        <ul class="space-y-4 text-sm mt-auto mb-4">
+          <template x-for="c in primaryContacts" :key="c[1]">
+            <li>
+              <a :href="c[2]" :target="c[2].startsWith('http')?'_blank':null" rel="noopener noreferrer" class="flex items-center gap-4 text-slate-300 hover:text-blue-400 transition-colors group">
+                <span class="w-11 h-11 grid place-items-center rounded-xl bg-ink border border-line text-blue-400 text-sm font-bold group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-all shadow-sm" x-text="c[0]"></span>
+                <span class="font-medium" x-text="c[1]"></span>
+              </a>
+            </li>
           </template>
         </ul>
       </div>
@@ -382,9 +426,10 @@ h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
       </div>
       <div class="lg:col-span-3">
         <p class="text-sm font-semibold text-white mb-4">Connect</p>
+        <!-- Footer shows all social links for completeness -->
         <ul class="space-y-2.5 text-sm text-slate-400 mb-6"><li><a href="mailto:naeeminsight@gmail.com" class="hover:text-blue-400 transition-colors">naeeminsight@gmail.com</a></li><li><a href="tel:+8801307707245" class="hover:text-blue-400 transition-colors">+88 01307707245</a></li></ul>
-        <div class="flex gap-2">
-          <template x-for="c in contacts.slice(2)" :key="c[1]"><a :href="c[2]" target="_blank" rel="noopener noreferrer" :aria-label="c[3]" class="w-10 h-10 grid place-items-center rounded-xl border border-line text-xs font-bold text-slate-400 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all shadow-sm" x-text="c[0]"></a></template>
+        <div class="flex flex-wrap gap-2">
+          <template x-for="c in socialLinks" :key="c[1]"><a :href="c[2]" target="_blank" rel="noopener noreferrer" :aria-label="c[3]" class="w-10 h-10 grid place-items-center rounded-xl border border-line text-xs font-bold text-slate-400 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all shadow-sm" x-text="c[0]"></a></template>
         </div>
       </div>
     </div>
@@ -416,7 +461,16 @@ projects:[
 {title:'Business Landing Page',cat:'Web Development',tags:['Web Dev'],img:'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',alt:'Responsive business website development',sum:'Clean, fast, mobile-responsive landing pages for businesses.',desc:'Designed and developed fast, responsive landing pages using Tailwind CSS and Alpine.js. Optimized assets and removed heavy dependencies to support better page performance and Core Web Vitals.'}],
 exp:[['IT Executive','Agamir Shomoy — News Media','Manage the IT operations behind a live newsroom: system uptime, publishing infrastructure and internal tooling.',1],['Digital Marketing Specialist','Freelance / Naeem Insight','Run SEO and social-growth campaigns for clients: keyword research, content strategy and performance reporting.',0],['Web Developer','Freelance / Independent','Design and build responsive websites and landing pages using HTML, CSS and JavaScript.',0],['B.Sc. in Computer Science Engineering','Uttara University — In progress','Building a formal foundation in algorithms, systems and software engineering alongside full-time work.',0]],
 blogTopics:[['Web Development','Front-end performance, Tailwind patterns and Core Web Vitals fixes from real projects.'],['SEO & Digital Marketing','Technical SEO checklists, keyword strategy and campaigns measured by real numbers.'],['IT Ops & Security','Newsroom infrastructure, backups, access hygiene and lessons from a live publishing desk.']],
-contacts:[['@','naeeminsight@gmail.com','mailto:naeeminsight@gmail.com','Email'],['#','+88 01307707245','tel:+8801307707245','Phone'],['in','linkedin.com/in/naeeminsight','https://www.linkedin.com/in/naeeminsight/','LinkedIn'],['f','Naeem Insight (Facebook Page)','https://www.facebook.com/NaeemInsight.me','Facebook Page'],['f','Naeem Hossen (Personal)','https://www.facebook.com/naeemhossen.me/','Personal Facebook'],['yt','youtube.com/@NaeemInsight','https://www.youtube.com/@NaeemInsight','YouTube'],['gh','github.com/naeeminsights','https://github.com/naeeminsights','GitHub']],
+
+// 4 Primary Links for the main Contact section
+primaryContacts:[
+  ['@','naeeminsight@gmail.com','mailto:naeeminsight@gmail.com'],
+  ['#','+88 01307707245','tel:+8801307707245'],
+  ['in','LinkedIn','https://www.linkedin.com/in/naeeminsight/'],
+  ['gh','GitHub','https://github.com/naeeminsights']
+],
+
+socialLinks:[['in','linkedin.com/in/naeeminsight','https://www.linkedin.com/in/naeeminsight/','LinkedIn'],['f','Naeem Insight (Facebook Page)','https://www.facebook.com/NaeemInsight.me','Facebook Page'],['f','Naeem Hossen (Personal)','https://www.facebook.com/naeemhossen.me/','Personal Facebook'],['yt','youtube.com/@NaeemInsight','https://www.youtube.com/@NaeemInsight','YouTube'],['gh','github.com/naeeminsights','https://github.com/naeeminsights','GitHub']],
 init(){
   addEventListener('scroll',()=>{this.sc=scrollY>20;const h=document.documentElement,m=h.scrollHeight-h.clientHeight;this.progress=m>0?scrollY/m*100:0;
   for(const id of ['contact','experience','about','work','services','skills','hero']){const el=document.getElementById(id);if(el&&scrollY>=el.offsetTop-130){this.s=id;break}}},{passive:true});
