@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0A0B0D" id="metaTheme">
+<meta name="theme-color" content="#F7F3EC" id="metaTheme">
 <meta name="color-scheme" content="dark light">
-<script>(function(){var t="dark";try{t=localStorage.getItem("theme")||"dark"}catch(e){}if(t!=="light")t="dark";document.documentElement.setAttribute("data-theme",t);if(t==="light")document.querySelector('meta[name="theme-color"]').setAttribute("content","#FAFAF9")})();</script>
+<script>(function(){var t="light";try{t=localStorage.getItem("theme")||"light"}catch(e){}if(t!=="dark")t="light";document.documentElement.setAttribute("data-theme",t);if(t==="dark")document.querySelector('meta[name="theme-color"]').setAttribute("content","#141A22")})();</script>
 <meta name="google-site-verification" content="8YT5-7vkbx41ZaCHSAw9LsGgwmQkm-S8L5XZWjUuvIg" />
 <meta name="p:domain_verify" content="ece5207a5fb74550b67e90b528c78895"/>
 
@@ -1060,6 +1060,59 @@ dialog.pd[open]{animation:pop .4s var(--ease)}
   .arch-card strong{font-size:.84rem}
   .gi{width:32px;height:32px}
 }
+
+/* ===== Warm natural palette (light is default, warm navy for dark) ===== */
+:root,[data-theme="light"]{
+  color-scheme:light;
+  --bg:#F7F3EC;--bg2:#F0EADF;--surface:#FFFFFF;--surface2:#FBF8F3;
+  --line:#E6DED1;--line2:#D5CABA;
+  --text:#1E232B;--muted:#5D646E;--h1-end:#3A4A63;
+  --accent:#2B5FA8;--accent-soft:rgba(43,95,168,.1);--red:#B8322F;
+  --glow-a:rgba(236,190,165,.42);--glow-b:rgba(43,95,168,.09);--glow:rgba(60,40,20,.04);
+  --grid:rgba(70,50,30,.045);
+  --nav-bg:rgba(255,255,255,.78);--header-bg:rgba(247,243,236,.9);
+  --chip-bg:rgba(255,255,255,.88);--glass-bg:rgba(255,255,255,.94);
+  --ok:#16A34A;--ok-text:#15803D;--err:#B8322F;--wa:#1FA855;
+  --shadow:0 1px 2px rgba(60,40,20,.05),0 16px 36px -20px rgba(60,40,20,.22);
+  --photo-shadow:0 50px 90px -50px rgba(60,40,20,.45);
+}
+[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#141A22;--bg2:#18202A;--surface:#1E2632;--surface2:#242D3A;
+  --line:#2C3542;--line2:#3D4857;
+  --text:#F3EEE6;--muted:#A9B0BA;--h1-end:#9FB3D1;
+  --accent:#86ABE3;--accent-soft:rgba(134,171,227,.14);--red:#E2716A;
+  --glow-a:rgba(226,113,106,.12);--glow-b:rgba(134,171,227,.14);--glow:rgba(255,255,255,.05);
+  --grid:rgba(255,255,255,.03);
+  --nav-bg:rgba(30,38,50,.7);--header-bg:rgba(20,26,34,.88);
+  --chip-bg:rgba(30,38,50,.75);--glass-bg:rgba(24,31,41,.9);
+  --ok:#16A34A;--ok-text:#6EE7A0;--err:#F3A39D;--wa:#1FA855;
+  --shadow:0 1px 0 rgba(255,255,255,.03),0 24px 48px -28px rgba(0,0,0,.7);
+  --photo-shadow:0 60px 110px -50px rgba(0,0,0,.8);
+}
+/* Primary action in warm red, labels in red, headline name split ink + blue */
+.btn-p{background:var(--red);color:#fff}
+.btn-p:hover{box-shadow:0 14px 30px -14px var(--red)}
+.mnav .btn{color:#fff}
+.kick,.sec-head .kick,.side .kick{color:var(--red)}
+.kick::before{background:var(--red)}
+.hero h1{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--text)}
+.hero h1 .nm+.nm{color:var(--accent)}
+.arch-card{border-left:3px solid var(--red)}
+.hero-visual.arch::after{border-color:var(--accent);opacity:.35}
+/* Service panel and footer: deep navy blocks, like an ink section */
+.dark{--bg:#1A2230;--surface:#212A38;--surface2:#273141;--line:#2E3848;--line2:#414C5D;--text:#F7F3EC;--muted:#AEB5BF}
+.console{border-color:#2E3848;box-shadow:0 50px 90px -50px rgba(20,26,34,.55)}
+.console-top,.console-foot{background:#18202C}
+.ftr{--text:#F3EEE6;--muted:#A9B0BA;--line:#2C3542;background:#1A2230;color:var(--text);border-top:0}
+.ftr .logo-mark{border-color:#3D4857}
+.totop{background:var(--red);color:#fff}
+/* ===== Portrait frame: matted arch, face pulled toward the centre ===== */
+.arch-frame{border:8px solid var(--surface);box-shadow:0 1px 0 var(--line),var(--photo-shadow);background-color:var(--surface2)}
+.arch-frame img{width:135%;height:135%;max-width:none;left:-35%;top:-4%;object-fit:cover;object-position:50% 50%;transition:transform 1.2s var(--ease)}
+.hero-visual.arch:hover .arch-frame img{transform:scale(1.03)}
+.arch-frame::after{background:linear-gradient(0deg,rgba(30,20,10,.25),transparent 30%),radial-gradient(120% 80% at 50% 0%,rgba(255,240,220,.12),transparent 60%)}
+.hero-visual.arch::after{inset:-16px -16px 16px 16px}
 </style>
 </head>
 
@@ -1633,11 +1686,11 @@ dialog.pd[open]{animation:pop .4s var(--ease)}
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
   });
 
-  // Theme toggle: dark by default, the visitor's choice is remembered
+  // Theme toggle: light (warm) by default, the visitor's choice is remembered
   var root=document.documentElement,tb=document.getElementById('themeBtn'),mt=document.getElementById('metaTheme');
   function applyTheme(t){
     root.setAttribute('data-theme',t);
-    if(mt)mt.setAttribute('content',t==='light'?'#FAFAF9':'#0A0B0D');
+    if(mt)mt.setAttribute('content',t==='light'?'#F7F3EC':'#141A22');
     tb.setAttribute('aria-pressed',t==='light'?'true':'false');
     tb.setAttribute('aria-label',t==='light'?'Switch to dark mode':'Switch to light mode');
   }
